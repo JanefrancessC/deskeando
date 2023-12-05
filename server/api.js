@@ -23,10 +23,29 @@ router.post("/signup", async (req, res) => {
     const hash = await bcrypt.hash(JSON.stringify(password), 10)
 
     const newUser = await db.query(`INSERT INTO users (first_name, last_name, role, email, password) VALUES ($1, $2, $3, $4, $5) RETURNING *`, [first_name, last_name, role, email, hash])
-    res.status(201).json(newUser.rows[0])
+    res.status(201).json({ message: "User successfully created" })
   } catch (error) {
     console.error(error.message);
     res.status(500).send("Server Error")
+  }
+})
+
+router.post("/login", async (req, res) => {
+  try {
+    const {  email, password } = req.body
+    const user = await db.query(`SELECT * FROM users WHERE email = $1`, [email])
+
+    if (!user) {
+      res.status(400).json({ error: "User not found"})
+      return
+    }
+
+    if (email === user.rows[0].email) {
+      res.json(user.rows[0])
+    }
+  } catch (error) {
+    console.error(error.message)
+    res.status(400).json({ error: error.message })
   }
 })
 
