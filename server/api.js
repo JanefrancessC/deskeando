@@ -26,7 +26,7 @@ router.post("/signup", async (req, res) => {
     res.status(201).json({ message: "User successfully created" })
   } catch (error) {
     console.error(error.message);
-    res.status(500).send("Server Error")
+    res.status(500).json({ error: error.message })
   }
 })
 
