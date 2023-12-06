@@ -1,0 +1,19 @@
+.title-text {
+    font-size: 36px;
+    line-height: 42px;
+    font-weight: normal;
+    width: 180px;
+    margin: 0px;
+}
+
+.sign-in {
+    width: 74px;
+    font-size: 24px;
+    font-weight: normal;
+    line-height: 28px;
+    margin: 50px 0px 0px 0px;
+}
+
+input {
+    line-height: 40px;
+}

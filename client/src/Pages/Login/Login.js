@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./Login.css";
 
 const user = "john@john.com";
 const pword = "password";
@@ -19,74 +20,84 @@ const Login = () => {
 
 	const { email, password } = inputs;
 
-	const checkEmail = (email) => {
-		return "This is an email.";
+	// function to handle inputted email and password
+	const handleInputs = (e) => {
+		setInputs({ ...inputs, [e.target.name]: e.target.value });
 	};
 
-	const handleInputs = (e) => {
-		if (e.target.name === "email") {
-			setInputs({ ...inputs, email: e.target.value });
-		} else {
-			setInputs({ ...inputs, password: e.target.value });
-		}
+	const checkInputs = (checkEmail, checkPassword) => {
+		let isEmail = /[a-zA-Z0-9]{3}@[a-zA-Z0-9\.]{4}/g.test(checkEmail);
+		let isPassword = checkPassword.length >= 3;
+		isEmail === false ? setEmailError(true) : null;
+		isPassword === false ? setPasswordError(true) : null;
+		return isEmail && isPassword;
 	};
+
+ const tryLogin = async () => {
+	const options = {
+		
+	}
+ }
+
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		setEmailError(false);
 		setPasswordError(false);
-		if (email === user && password === pword) {
+		if (checkInputs(email, password)) {
 			navigate("/");
 		}
 	};
 
 	return (
-		<div className="container-sm mt-5 p-4 text-center">
-			<div className="col">
-				<h3> Deskeando Login</h3>
-				<form
-					onSubmit={handleSubmit}
-					className="form-control-sm"
-					// noValidate="novalidate"
-				>
-					<div className="row p-1 justify-content-center">
-						<div className="col-2 fs-xs-6 fs-sm-4 p-0">
-							<label className="email-label">Email:</label>
-						</div>
-						<div className="col-5 col-sm-4 p-0 text-start" >
+		<div className="container mt-5">
+			<div className="row justify-content-center ">
+				<h3 className="title-text text-center p-0">Deskeando</h3>
+			</div>
+			<div className="row justify-content-center">
+				<div className="col-7 col-sm-6 col-md-5 col-lg-4 col-xl-3 align-self-center">
+					<div className="row">
+						<h3 className=" col-2 p-0 sign-in text-center">Sign in</h3>
+					</div>
+					<form
+						onSubmit={handleSubmit}
+						className="mt-3 px-2"
+						// noValidate="novalidate"
+					>
+						<div className="row">
 							<input
 								type="email"
 								name="email"
+								placeholder="Email"
 								value={email.toLowerCase()}
 								onChange={(e) => handleInputs(e)}
+								required
 							/>
 						</div>
-					</div>
-
-					<div className="row p-1 justify-content-center">
-						<div className="col-3 col-sm-2 p-0 ">
-							<label className="password-label">Password:</label>
-						</div>
-						<div className="col-5 col-sm-4 p-0 text-start">
+						<div>{emailError && <h6>email error</h6>}</div>
+						<div className="row mt-4">
 							<input
 								type="password"
 								name="password"
+								placeholder="Password"
 								value={password}
 								onChange={(e) => handleInputs(e)}
 								required
 							/>
 						</div>
-					</div>
-					{emailError && <h6>email error</h6>}
-					{passwordError && <h6>password error</h6>}
-					<div className=" row pt-2">
-						<div className="col">
-							<button type="submit" className="btn btn-primary">
-								Login
-							</button>
+						{passwordError && <h6>password error</h6>}
+						<div className=" row pt-2 mt-4">
+							<div className="col">
+								<button
+									type="submit"
+									className="btn btn-primary btn-block w-100"
+								>
+									Login
+								</button>
+							</div>
 						</div>
-					</div>
-				</form>
+					</form>
+				</div>
 			</div>
 		</div>
 	);
