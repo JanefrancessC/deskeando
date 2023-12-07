@@ -33,12 +33,12 @@ const Login = () => {
 		return isEmail && isPassword;
 	};
 
- const tryLogin = async () => {
-	const options = {
-		
-	}
- }
-
+	const tryLogin = async () => {
+		const options = {
+			method: "POST",
+			headers: {},
+		};
+	};
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -55,14 +55,13 @@ const Login = () => {
 				<h3 className="title-text text-center p-0">Deskeando</h3>
 			</div>
 			<div className="row justify-content-center">
-				<div className="col-7 col-sm-6 col-md-5 col-lg-4 col-xl-3 align-self-center">
+				<div className="col-7 col-sm-7 col-md-6 col-lg-5 col-xl-4 align-self-center">
 					<div className="row">
 						<h3 className=" col-2 p-0 sign-in text-center">Sign in</h3>
 					</div>
 					<form
 						onSubmit={handleSubmit}
-						className="mt-3 px-2"
-						// noValidate="novalidate"
+						className="mt-4 px-2"
 					>
 						<div className="row">
 							<input
