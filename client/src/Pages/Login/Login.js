@@ -15,8 +15,6 @@ const Login = () => {
 	});
 
 	// state for login errors
-	const [emailError, setEmailError] = useState(false);
-	const [passwordError, setPasswordError] = useState(false);
 	const [loginError, setLoginError] = useState(false);
 
 	const { email, password } = inputs;
@@ -26,28 +24,41 @@ const Login = () => {
 		setInputs({ ...inputs, [e.target.name]: e.target.value });
 	};
 
-	const checkInputs = (checkEmail, checkPassword) => {
-		let isEmail = /[a-zA-Z0-9]{3}@[a-zA-Z0-9\.]{4}/g.test(checkEmail);
-		let isPassword = checkPassword.length >= 3;
-		isEmail === false ? setEmailError(true) : null;
-		isPassword === false ? setPasswordError(true) : null;
-		return isEmail && isPassword;
-	};
+	// const checkInputs = (checkEmail, checkPassword) => {
+	// 	let isEmail = /[a-zA-Z0-9]{3}@[a-zA-Z0-9\.]{4}/g.test(checkEmail);
+	// 	let isPassword = checkPassword.length >= 3;
+	// 	isEmail === false ? setEmailError(true) : null;
+	// 	isPassword === false ? setPasswordError(true) : null;
+	// 	return isEmail && isPassword;
+	// };
 
 	const tryLogin = async () => {
+		const body = { email, password };
 		const options = {
 			method: "POST",
-			headers: {},
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify(body),
 		};
+		fetch("/api/login", options)
+			.then((response) => response.json())
+			.then((response) => {
+				if (response.user_id) {
+					navigate("/");
+				} else {
+					setLoginError(true);
+					// setInputs({ email: "", password: "" });
+				}
+			})
+			.catch((error) => {
+				console.error(error);
+				throw error;
+			});
 	};
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		setEmailError(false);
-		setPasswordError(false);
-		if (checkInputs(email, password)) {
-			navigate("/");
-		}
+		setLoginError(false);
+		tryLogin();
 	};
 
 	return (
@@ -60,32 +71,28 @@ const Login = () => {
 					<div className="row">
 						<h3 className=" col-2 p-0 sign-in text-center">Sign in</h3>
 					</div>
-					<form
-						onSubmit={handleSubmit}
-						className="mt-4 px-2"
-					>
+					<form onSubmit={handleSubmit} className="mt-4 px-2">
 						<div className="row">
 							<input
 								type="email"
 								name="email"
 								placeholder="Email"
-								value={email.toLowerCase()}
+								value={inputs.email.toLowerCase()}
 								onChange={(e) => handleInputs(e)}
 								required
 							/>
 						</div>
-						<div>{emailError && <h6>email error</h6>}</div>
 						<div className="row mt-4">
 							<input
 								type="password"
 								name="password"
 								placeholder="Password"
-								value={password}
+								value={inputs.password}
 								onChange={(e) => handleInputs(e)}
 								required
 							/>
 						</div>
-						{passwordError && <h6>password error</h6>}
+
 						<div className=" row pt-2 mt-4">
 							<div className="col">
 								<button
@@ -96,6 +103,9 @@ const Login = () => {
 								</button>
 							</div>
 						</div>
+						{loginError && (
+							<h6>Login error: Please enter the correct email and password.</h6>
+						)}
 					</form>
 				</div>
 			</div>
