@@ -17,6 +17,7 @@ const Login = () => {
 	// state for login errors
 	const [emailError, setEmailError] = useState(false);
 	const [passwordError, setPasswordError] = useState(false);
+	const [loginError, setLoginError] = useState(false);
 
 	const { email, password } = inputs;
 
