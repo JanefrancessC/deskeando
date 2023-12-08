@@ -22,6 +22,7 @@ const Login = () => {
 
 	// function to handle inputted email and password
 	const handleFormData = (e) => {
+		setLoginError(false);
 		setFormData({ ...formData, [e.target.name]: e.target.value });
 	};
 
@@ -58,10 +59,10 @@ const Login = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		// if (formData.email.trim() === "" || formData.password.trim() === "") {
-		// 	setIsValid(false);
-		// 	return;
-		// }
+		if (formData.email.trim() === "" || formData.password.trim() === "") {
+			setIsValid(false);
+			return;
+		}
 		setLoginError(false);
 		tryLogin();
 	};
@@ -86,7 +87,7 @@ const Login = () => {
 									novalidate
 								>
 									<div className="form-group">
-										<div className="d-flex flex-row p-2">
+										<div className="d-flex flex-row py-2">
 											<input
 												className="form-control w-100 form-control-lg"
 												type="email"
@@ -107,7 +108,7 @@ const Login = () => {
 										</div>
 									</div>
 									<div className="form-group">
-										<div className="d-flex flex-row p-2">
+										<div className="d-flex flex-row py-2">
 											<input
 												className="form-control w-100 form-control-lg"
 												type="password"
@@ -125,6 +126,7 @@ const Login = () => {
 												Please enter your password.
 											</div>
 										</div>
+										<div className="text-start">* Forgot password</div>
 									</div>
 									<br />
 									<div className="row d-flex justify-content-center p-3">
@@ -135,12 +137,23 @@ const Login = () => {
 											Sign In
 										</button>
 									</div>
+
 									{loginError && (
-										<h6>
+										<h6 className="login-error">
 											Login error: Please enter the correct email and password.
 										</h6>
 									)}
 								</form>
+								<div className="text-center">
+									<div>
+										By clicking Continue with or Log in, you agree to
+										<br /> Deskeando
+										<span className="font-weight-bold d-flex justify-content-center">
+											Terms of Service and Privacy Policy
+										</span>
+										&nbsp; &nbsp;
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -151,4 +164,3 @@ const Login = () => {
 };
 
 export default Login;
-
