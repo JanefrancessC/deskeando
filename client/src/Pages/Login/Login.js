@@ -2,9 +2,6 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
 
-const user = "john@john.com";
-const pword = "password";
-
 const Login = () => {
 	const navigate = useNavigate();
 
@@ -25,14 +22,6 @@ const Login = () => {
 		setLoginError(false);
 		setFormData({ ...formData, [e.target.name]: e.target.value });
 	};
-
-	// const checkFormData = (checkEmail, checkPassword) => {
-	// 	let isEmail = /[a-zA-Z0-9]{3}@[a-zA-Z0-9\.]{4}/g.test(checkEmail);
-	// 	let isPassword = checkPassword.length >= 3;
-	// 	isEmail === false ? setEmailError(true) : null;
-	// 	isPassword === false ? setPasswordError(true) : null;
-	// 	return isEmail && isPassword;
-	// };
 
 	const tryLogin = async () => {
 		const body = { email, password };
