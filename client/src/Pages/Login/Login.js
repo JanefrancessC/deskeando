@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
 
+const token =
+	"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoxMywiaWF0IjoxNzAyMDcxMzE5LCJleHAiOjE3MDIwNzMxMTl9.xMWGwOTFANVYsx5tuDE0y-MaxccJ-E6VCDoOB4Ulzkk";
+
 const Login = () => {
 	const navigate = useNavigate();
 
@@ -27,7 +30,10 @@ const Login = () => {
 		const body = { email, password };
 		const options = {
 			method: "POST",
-			headers: { "Content-Type": "application/json" },
+			headers: {
+				"Content-Type": "application/json",
+				Authorization: `Bearer ${token}`,
+			},
 			body: JSON.stringify(body),
 		};
 		fetch("/api/login", options)
