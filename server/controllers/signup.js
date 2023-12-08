@@ -29,8 +29,8 @@ export const signup = async (req, res) => {
 			[first_name, last_name, department, is_admin, email, hash]
 		);
         const token = jwtToken(newUser.rows[0].user_id)
-		res.status(201).json({ token: token });
-		// res.status(201).json({ message: "User successfully created" });
+		// res.status(201).json({ token: token });
+		res.status(201).json({ message: "User successfully created" });
 	} catch (error) {
 		console.error(error.message);
 		res.status(500).json({ error: "Server error" });
