@@ -11,7 +11,7 @@ export const signup = async (req, res) => {
 		]);
 
 		if (user.rows.length > 0) {
-			res.status(401).json("User already exists");
+			res.status(409).json({ error: "User already exists" });
 			return;
 		}
 
@@ -29,8 +29,7 @@ export const signup = async (req, res) => {
 			[first_name, last_name, department, is_admin, email, hash]
 		);
         const token = jwtToken(newUser.rows[0].user_id)
-		// res.status(201).json({ token: token });
-		res.status(201).json({ message: "User successfully created" });
+		res.status(200).json({ message: "User successfully created", token: token });
 	} catch (error) {
 		console.error(error.message);
 		res.status(500).json({ error: "Server error" });
@@ -55,11 +54,14 @@ export const login = async (req, res) => {
 		);
 
 		if (!isValidPassword) {
-			return res.status(401).json({ message: "Invalid credentials" });
+			return res.status(401).json({ error: "Invalid credentials" });
 		}
-
+        if (user.rows[0].is_admin) {
+            return res.json({ message: "Welcome to Admin Dashboard"})
+        } else {
+            res.json({ message: "Welcome to Booking Dashboard" })
+        }
         const token = jwtToken(user.rows[0].user_id)
-		res.status(201).json({ token: token });
 	} catch (error) {
 		console.error(error.message);
 		res.status(400).json({ error: "Server error" });

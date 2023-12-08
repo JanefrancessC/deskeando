@@ -1,23 +1,31 @@
-// import jwt from "jsonwebtoken";
+import db from "../db.js"
+import jwt from "jsonwebtoken";
 
-// function authenticateToken(req, res, next) {
-// 	const authHeader = req.headers["authorization"];
-// 	const token = authHeader && authHeader.split(" ")[1];
+const authenticateToken = async (req, res, next) => {
+	try {
+		const jwtToken = req.header("token");
 
-// 	if (token === null) {
-// 		return res.sendStatus(403);
-// 	}
+		if (!jwtToken) {
+			return res.status(403).json({ error: "Not Authorized" });
+		}
 
-// 	jwt.verify(token, process.env.TOKEN_SECRET, (err, user) => {
-// 		console.log(err);
+		const payload = jwt.verify(jwtToken, process.env.TOKEN_SECRET);
 
-// 		if (err) {
-// 			return res.sendStatus(403);
-// 		}
-//         req.user = payload.user;
-// 	});
+        const user = await db.query(`SELECT * FROM users WHERE user_id = $1`, [payload.user_id])
 
-// 	next();
-// }
+        if (!user.rows.length) {
+            return res.status(403).json({ error: "User not found" });
+        }
 
-// export default authenticateToken;
+		req.user = user.rows[0];
+
+		next();
+	} catch (error) {
+		console.error(error.message);
+		res.status(403).json({ error: "Unauthorized" });
+
+	}
+};
+
+
+export default authenticateToken;
