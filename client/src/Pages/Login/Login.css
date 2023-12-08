@@ -1,27 +1,17 @@
-.title-text {
-    font-size: 36px;
-    line-height: 42px;
-    font-weight: normal;
-    width: 180px;
-    margin: 0px;
+
+.background {
+    border-color: red;
 }
-
-.sign-in {
-    width: 90px;
-    font-size: 24px;
-    font-weight: normal;
-    line-height: 28px;
-    margin: 60px 0px 0px 0px;
+.login {
+    color: #75BFB9;
 }
-
-input {
-    line-height: 40px;
+.sign_up-heading {
+    font-weight: 600;
 }
-
-/* @media screen and (min-width: ) {
-
+.font-weight-bold {
+    font-weight: 600;
 }
-
-@media screen and (min-width: ) {
-
-} */
+.sign_in_btn {
+    color: #FCFCFF !important;
+    background-color: #4D44B5 !important;
+}
