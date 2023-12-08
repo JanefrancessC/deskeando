@@ -7,7 +7,7 @@ import Login from "./Pages/Login/Login.js";
 const App = () => (
 	<Routes>
 		<Route path="/" element={<Home />} />
-		<Route path="/login/here" element={<Login />} />
+		<Route path="/login" element={<Login />} />
 		<Route path="/about/this/site" element={<About />} />
 	</Routes>
 );

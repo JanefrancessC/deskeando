@@ -46,7 +46,7 @@ const Login = () => {
 					navigate("/");
 				} else {
 					setLoginError(true);
-					// setInputs({ email: "", password: "" });
+				    setInputs({ email: "", password: "" });
 				}
 			})
 			.catch((error) => {
