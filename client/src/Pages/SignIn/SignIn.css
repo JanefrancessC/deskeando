@@ -1,0 +1,19 @@
+.background {
+	border-color: red;
+}
+.login {
+	color: #75bfb9;
+}
+.sign_up-heading {
+	font-weight: 600;
+}
+.font-weight-bold {
+	font-weight: 600;
+}
+.sign_in_btn {
+	color: #fcfcff !important;
+	background-color: #4d44b5 !important;
+}
+.login-error {
+	color: red;
+}
