@@ -68,11 +68,11 @@
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "helmet": "^7.1.0",
+    "jsonwebtoken": "^9.0.2",
     "morgan": "^1.10.0",
     "pg": "^8.11.3",
     "winston": "^3.11.0"
   },
-  "type": "module",
   "engines": {
     "node": "^18.3 || ^20",
     "npm": ">=8"
