@@ -2,9 +2,6 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./SignIn.css";
 
-const token =
-	"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoxMywiaWF0IjoxNzAyMDcxMzE5LCJleHAiOjE3MDIwNzMxMTl9.xMWGwOTFANVYsx5tuDE0y-MaxccJ-E6VCDoOB4Ulzkk";
-
 const Login = () => {
 	const navigate = useNavigate();
 
@@ -32,16 +29,18 @@ const Login = () => {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
-				Authorization: `Bearer ${token}`,
 			},
 			body: JSON.stringify(body),
 		};
 		fetch("/api/login", options)
 			.then((response) => response.json())
 			.then((response) => {
-				if (response.user_id) {
-					navigate("/");
-				} else {
+				let { message } = response
+				if (message && message.status === "admin")
+					navigate("/admin", { state: { key: message.name } });
+				else if (message && message.status === "employee")
+					navigate("/")
+				else {
 					setLoginError(true);
 					setFormData({ email: "", password: "" });
 				}
