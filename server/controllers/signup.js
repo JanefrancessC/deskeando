@@ -28,8 +28,10 @@ export const signup = async (req, res) => {
 		  VALUES ($1, $2, $3, $4, $5, $6) RETURNING *`,
 			[first_name, last_name, department, is_admin, email, hash]
 		);
-        const token = jwtToken(newUser.rows[0].user_id)
-		res.status(200).json({ message: "User successfully created", token: token });
+		const token = jwtToken(newUser.rows[0].user_id);
+		res
+			.status(200)
+			.json({ message: "User successfully created", token: token });
 	} catch (error) {
 		console.error(error.message);
 		res.status(500).json({ error: "Server error" });
@@ -48,20 +50,21 @@ export const login = async (req, res) => {
 			return;
 		}
 
-		const isValidPassword = await bcrypt.compare(
-			password,
-			user.rows[0].passwd
-		);
+		const isValidPassword = await bcrypt.compare(password, user.rows[0].passwd);
 
 		if (!isValidPassword) {
 			return res.status(401).json({ error: "Invalid credentials" });
 		}
-        if (user.rows[0].is_admin) {
-            return res.json({ message: "Welcome to Admin Dashboard"})
-        } else {
-            res.json({ message: "Welcome to Booking Dashboard" })
-        }
-        const token = jwtToken(user.rows[0].user_id)
+		if (user.rows[0].is_admin) {
+			return res.json({
+				message: { status: "admin", name: user.rows[0].first_name },
+			});
+		} else {
+			res.json({
+				message: { status: "employee", name: user.rows[0].first_name },
+			});
+		}
+		const token = jwtToken(user.rows[0].user_id);
 	} catch (error) {
 		console.error(error.message);
 		res.status(400).json({ error: "Server error" });
