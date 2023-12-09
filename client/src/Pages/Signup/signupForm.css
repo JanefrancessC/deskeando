@@ -32,4 +32,5 @@
 
 .form-control {
 	color: #525560;
+	box-shadow: none !important;
 }

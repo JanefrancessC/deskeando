@@ -3,6 +3,7 @@ import "./signupForm.css";
 import { Link, Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
+
 function SignUp() {
 	const navigate = useNavigate();
 	const [isValid, setIsValid] = useState(true);
@@ -49,8 +50,7 @@ function SignUp() {
 		return emailRegex.test(email);
 	};
 
-	const trySignUp = async (data) => {
-		console.log(data);
+	const trySignUp = async (url, data = {}) => {
 		const options = {
 			method: "POST",
 			headers: {
@@ -58,21 +58,17 @@ function SignUp() {
 			},
 			body: JSON.stringify(data),
 		};
-		fetch("/api/signup", options)
-			.then((response) => {
-				console.log(options);
-				response.json();
-			})
-			.then((response) => {
-				console.log(response);
-			})
-			.catch((error) => {
-				console.error(error);
-				throw error;
-			});
+		const response = await fetch(url, options)
+		if (response.status === 200) {
+			resetForm();
+			navigate("/signin", { state: { key: "value" } });
+		} else {
+			
+		}
+		
 	};
 
-	const handleSubmit = (event) => {
+	const handleSubmit = async (event) => {
 		event.preventDefault();
 
 		if (!validateEmail(formData.email)) {
@@ -96,11 +92,7 @@ function SignUp() {
 			return;
 		}
 
-		trySignUp(formData);
-		// navigate("/signin");
-		// console.log(formData);
-
-		// resetForm();
+		trySignUp("/api/signup", formData)
 		setIsValid(true);
 		setSignUpError(false);
 	};
@@ -238,7 +230,7 @@ function SignUp() {
 											id="validationEmail"
 											className="invalid-feedback text-start"
 										>
-											Please enter your email address.
+											Please enter a valid email address.
 										</div>
 									</div>
 
