@@ -35,11 +35,11 @@ const Login = () => {
 		fetch("/api/login", options)
 			.then((response) => response.json())
 			.then((response) => {
-				let { message } = response
+				let { message } = response;
 				if (message && message.status === "admin")
 					navigate("/admin", { state: { key: message.name } });
 				else if (message && message.status === "employee")
-					navigate("/")
+					navigate("/employee", { state: { key: message.name } });
 				else {
 					setLoginError(true);
 					setFormData({ email: "", password: "" });
