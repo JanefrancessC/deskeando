@@ -1,0 +1,36 @@
+#title {
+	font-size: 28px;
+}
+
+.login {
+	color: #75bfb9;
+}
+.sign_up-heading {
+	font-weight: 600;
+}
+.font-weight-bold {
+	font-weight: 600;
+}
+.sign_in_btn {
+	color: #fcfcff !important;
+	background-color: #4d44b5 !important;
+}
+.login-error {
+	color: red;
+}
+#already-registered {
+	display: flex;
+	justify-content: flex-start;
+}
+.p-5 {
+	padding: 2rem !important;
+}
+
+.text-center {
+	font-size: 11px;
+}
+
+.form-control {
+	color: #525560;
+	box-shadow: none !important;
+}
