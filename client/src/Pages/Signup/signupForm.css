@@ -1,6 +1,7 @@
-.background {
-	border-color: red;
+#title {
+	font-size: 28px;
 }
+
 .login {
 	color: #75bfb9;
 }
@@ -16,4 +17,19 @@
 }
 .login-error {
 	color: red;
+}
+#already-registered {
+	display: flex;
+	justify-content: flex-start;
+}
+.p-5 {
+	padding: 2rem !important;
+}
+
+.text-center {
+	font-size: 11px;
+}
+
+.form-control {
+	color: #525560;
 }
