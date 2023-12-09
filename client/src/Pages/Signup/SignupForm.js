@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "./signupForm.css";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function SignUp() {
+	const navigate = useNavigate();
 	const [isValid, setIsValid] = useState(true);
 	const [formData, setFormData] = useState({
 		firstName: "",
@@ -47,6 +49,29 @@ function SignUp() {
 		return emailRegex.test(email);
 	};
 
+	const trySignUp = async (data) => {
+		console.log(data);
+		const options = {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(data),
+		};
+		fetch("/api/signup", options)
+			.then((response) => {
+				console.log(options);
+				response.json();
+			})
+			.then((response) => {
+				console.log(response);
+			})
+			.catch((error) => {
+				console.error(error);
+				throw error;
+			});
+	};
+
 	const handleSubmit = (event) => {
 		event.preventDefault();
 
@@ -71,7 +96,11 @@ function SignUp() {
 			return;
 		}
 
-		resetForm();
+		trySignUp(formData);
+		// navigate("/signin");
+		// console.log(formData);
+
+		// resetForm();
 		setIsValid(true);
 		setSignUpError(false);
 	};
@@ -108,7 +137,7 @@ function SignUp() {
 								<h3 className="form-group d-flex flex-row p-1">Sign Up</h3>
 								&nbsp;
 								<p id="already-registered">
-									Already registered? <Link to="/login">Log In</Link>
+									Already registered? <Link to="/signin">Sign In</Link>
 								</p>
 								<form
 									onSubmit={handleSubmit}
