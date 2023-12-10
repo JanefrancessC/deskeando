@@ -7,7 +7,7 @@ import morgan from "morgan";
 import logger from "./logger.js";
 
 export const clientRouter = (apiRoot) => {
-  const staticDir = path.join("dist", "static");
+  const staticDir = path.join(__dirname, "..", "static");
   const router = Router();
   router.use(express.static(staticDir));
   router.use((req, res, next) => {
