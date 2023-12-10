@@ -4,7 +4,7 @@ import { jwtToken } from "../utils/jwtToken.js";
 
 export const signup = async (req, res) => {
 	try {
-		const { first_name, last_name, department, email, password } = req.body;
+		const { firstName, lastName, department, email, password } = req.body;
 
 		const user = await db.query(`SELECT * FROM users WHERE email = $1`, [
 			email,
@@ -26,7 +26,7 @@ export const signup = async (req, res) => {
 		const newUser = await db.query(
 			`INSERT INTO users (first_name, last_name, department, is_admin, email, passwd)
 		  VALUES ($1, $2, $3, $4, $5, $6) RETURNING *`,
-			[first_name, last_name, department, is_admin, email, hash]
+			[firstName, lastName, department, is_admin, email, hash]
 		);
 		const token = jwtToken(newUser.rows[0].user_id);
 		res
