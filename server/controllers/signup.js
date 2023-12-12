@@ -67,6 +67,6 @@ export const login = async (req, res) => {
 		const token = jwtToken(user.rows[0].user_id);
 	} catch (error) {
 		console.error(error.message);
-		res.status(400).json({ error: "Server error" });
+		res.status(500).json({ error: "Server error" });
 	}
 };
