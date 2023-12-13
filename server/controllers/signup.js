@@ -52,19 +52,28 @@ export const login = async (req, res) => {
 
 		const isValidPassword = await bcrypt.compare(password, user.rows[0].passwd);
 
+		const userInformation = {
+            user_id: user.rows[0].user_id,
+            email: user.rows[0].email,
+            first_name: user.rows[0].first_name,
+        };
+
+        const token = jwtToken(userInformation);
+        console.log("login token is: ", token);
+
 		if (!isValidPassword) {
 			return res.status(401).json({ error: "Invalid credentials" });
 		}
 		if (user.rows[0].is_admin) {
-			return res.json({
-				message: { status: "admin", name: user.rows[0].first_name },
+			res.json({
+				message: { status: "admin", name: user.rows[0].first_name, id: user.rows[0].user_id, token: token },
 			});
 		} else {
 			res.json({
-				message: { status: "employee", name: user.rows[0].first_name },
+				message: { status: "employee", name: user.rows[0].first_name, id: user.rows[0].user_id, token: token  },
 			});
 		}
-		const token = jwtToken(user.rows[0].user_id);
+		
 	} catch (error) {
 		console.error(error.message);
 		res.status(500).json({ error: "Server error" });

@@ -1,31 +1,23 @@
-import db from "../db.js"
 import jwt from "jsonwebtoken";
 
-const authenticateToken = async (req, res, next) => {
+const authenticateToken = (req, res, next) => {
 	try {
-		const jwtToken = req.header("token");
-
-		if (!jwtToken) {
-			return res.status(403).json({ error: "Not Authorized" });
+		const authHeader = req.headers["authorization"];
+		const token = authHeader && authHeader.split(" ")[1];
+		
+		if (token === null) {
+			return res.status(401).json({ error: "Invalid token" });
 		}
-
-		const payload = jwt.verify(jwtToken, process.env.TOKEN_SECRET);
-
-        const user = await db.query(`SELECT * FROM users WHERE user_id = $1`, [payload.user_id])
-
-        if (!user.rows.length) {
-            return res.status(403).json({ error: "User not found" });
-        }
-
-		req.user = user.rows[0];
-
-		next();
+		
+		jwt.verify(token, process.env.TOKEN_SECRET, (error, user) => {
+			if (error) return res.status(403).json({ error: error.message });
+			req.user = user;
+			next();
+		});
 	} catch (error) {
 		console.error(error.message);
 		res.status(403).json({ error: "Unauthorized" });
-
 	}
 };
-
 
 export default authenticateToken;

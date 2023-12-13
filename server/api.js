@@ -1,7 +1,7 @@
 import { Router } from "express";
 import logger from "./utils/logger.js";
 import { signup, login } from "./controllers/signup.js";
-// import auth from "./utils/auth.js"
+import authenticateToken from "./utils/auth.js"
 import { userBookings } from "./controllers/userBookings.js"
 
 const router = Router();
@@ -13,6 +13,6 @@ router.get("/", (_, res) => {
 
 router.post("/signup", signup);
 router.post("/login", login);
-// router.get("/bookings", userBookings)
+router.get("/bookings", authenticateToken, userBookings)
 
 export default router;
