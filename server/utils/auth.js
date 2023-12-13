@@ -1,5 +1,6 @@
 import jwt from "jsonwebtoken";
 
+// middleware to authenticate a user token
 const authenticateToken = (req, res, next) => {
 	try {
 		const authHeader = req.headers["authorization"];
@@ -11,6 +12,7 @@ const authenticateToken = (req, res, next) => {
 		
 		jwt.verify(token, process.env.TOKEN_SECRET, (error, user) => {
 			if (error) return res.status(403).json({ error: error.message });
+			// set the request to the user input from jwtToken
 			req.user = user;
 			next();
 		});
