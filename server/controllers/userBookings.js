@@ -1,5 +1,6 @@
 import db from "../db.js";
 
+// list a logged in user's bookings
 export const userBookings = async (req, res) => {
 	try {
 		const user = req.user;

@@ -14,12 +14,12 @@ export const signup = async (req, res) => {
 			res.status(409).json({ error: "User already exists" });
 			return;
 		}
-
+		// set all HR department to admin
 		let is_admin = false;
 		if (department.toUpperCase() === "HR") {
 			is_admin = true;
 		}
-
+		// hash user password
 		const passwordString = String(password);
 		const hash = await bcrypt.hash(passwordString, 10);
 
@@ -28,6 +28,7 @@ export const signup = async (req, res) => {
 		  VALUES ($1, $2, $3, $4, $5, $6) RETURNING *`,
 			[first_name, last_name, department, is_admin, email, hash]
 		);
+		// generate a token for the new user
 		const token = jwtToken(newUser.rows[0].user_id);
 		res
 			.status(200)
@@ -49,17 +50,16 @@ export const login = async (req, res) => {
 			res.status(400).json({ error: "User not found" });
 			return;
 		}
-
+		// compare saved password with user input
 		const isValidPassword = await bcrypt.compare(password, user.rows[0].passwd);
-
+		// get user information if password is valid
 		const userInformation = {
             user_id: user.rows[0].user_id,
             email: user.rows[0].email,
             first_name: user.rows[0].first_name,
         };
-
+		// create token for the client
         const token = jwtToken(userInformation);
-        console.log("login token is: ", token);
 
 		if (!isValidPassword) {
 			return res.status(401).json({ error: "Invalid credentials" });
