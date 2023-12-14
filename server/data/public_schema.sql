@@ -7,7 +7,7 @@ DROP TABLE IF EXISTS public.desk_type CASCADE;
 
 CREATE TABLE IF NOT EXISTS public.department(
     department_id int UNIQUE GENERATED ALWAYS AS IDENTITY,
-    name text NOT NULL
+    name text UNIQUE NOT NULL
 )
 TABLESPACE pg_default;
 
