@@ -1,4 +1,4 @@
-class Booking {
+export class Booking {
     constructor({userId, deskId, createdAt}) {
         this.userId = userId
         this.deskId = deskId
@@ -6,5 +6,3 @@ class Booking {
     }
 }
 
-b1 = new Booking({ "hello": "world" })
-console.log(b1)
