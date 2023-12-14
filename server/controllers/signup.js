@@ -72,11 +72,21 @@ export const login = async (req, res) => {
 		}
 		if (user.rows[0].is_admin) {
 			return res.json({
-				message: { status: "admin", name: user.rows[0].first_name, id: user.rows[0].user_id, token: token },
+				message: {
+					status: "admin",
+					name: user.rows[0].first_name,
+					id: user.rows[0].user_id,
+					token: token,
+				},
 			});
 		} else {
 			res.json({
-				message: { status: "employee", name: user.rows[0].first_name, id: user.rows[0].user_id, token: token },
+				message: {
+					status: "employee",
+					name: user.rows[0].first_name,
+					id: user.rows[0].user_id,
+					token: token,
+				},
 			});
 		}
 	} catch (error) {

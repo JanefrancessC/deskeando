@@ -3,7 +3,6 @@ import "./signupForm.css";
 import { Link, Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-
 function SignUp() {
 	const navigate = useNavigate();
 	const [isValid, setIsValid] = useState(true);
@@ -58,14 +57,12 @@ function SignUp() {
 			},
 			body: JSON.stringify(data),
 		};
-		const response = await fetch(url, options)
+		const response = await fetch(url, options);
 		if (response.status === 200) {
 			resetForm();
 			navigate("/signin", { state: { key: "value" } });
 		} else {
-			
 		}
-		
 	};
 
 	const handleSubmit = async (event) => {
@@ -92,7 +89,13 @@ function SignUp() {
 			return;
 		}
 
-		trySignUp("/api/signup", formData)
+		// formatted department name to match with master data
+		const deptFormatted = formData.department.replace(
+			/(^\w{1})|(\s+\w{1})/g,
+			(letter) => letter.toUpperCase()
+		);
+
+		trySignUp("/api/signup", { ...formData, department: deptFormatted });
 		setIsValid(true);
 		setSignUpError(false);
 	};
