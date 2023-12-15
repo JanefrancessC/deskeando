@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./SideBar.css";
-import BookingsList from "../BookingsList/BookingsList";
 
 const SideBar = () => {
-	// state to set name and icon type for each nav item
+	// state to set name and icon type for each nav item,this data could be abstracted?
 	const [navItems, setNavItems] = useState([
 		{ name: "Dashboard", icon: "bi-house" },
 		{ name: "User", icon: "bi-person" },
@@ -42,8 +41,7 @@ const SideBar = () => {
 							</ul>
 						</div>
 					</div>
-					<div className="col align-content-center bg-dark">
-						<BookingsList />
+					<div className="col align-content-center">
 					</div>
 				</div>
 			</div>
