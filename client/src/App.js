@@ -9,18 +9,21 @@ import Signup from "./Pages/Signup/Signup";
 import NotFound from "./Pages/Error/NotFound.js";
 import NavBar from "./HomePage/Navbar/NavBar.js";
 import Hero from "./Pages/HomePage/Hero.js";
+import NavBar from "./NavBar/NavBar.js";
+import Footer from "./Footer/Footer.js";
 
 const App = () => (
 	<Routes>
 		<Route path="/" element={<Home />} />
 		<Route path="/signin" element={<SignIn />} />
 		<Route path="/signup" element={<Signup />} />
-		<Route path="/navbar" element={<NavBar />} />
 		<Route path="/about/this/site" element={<About />} />
 		<Route path="/admin" element={<Dashboard />} />
 		<Route path="/employee" element={<EmployeeDsh />} />
 		<Route path="*" element={<NotFound />} />
 		<Route path="/hero" element={<Hero />} />
+		<Route path="/navbar" element={<NavBar />} />
+		<Route path="/footer" element={<Footer />} />
 	</Routes>
 );
 

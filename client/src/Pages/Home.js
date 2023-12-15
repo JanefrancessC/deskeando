@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Home.css";
 import logo from "./logo.svg";
-import Hero from './HomePage/Hero';
 
 export function Home() {
 	const [message, setMessage] = useState("Loading...");
@@ -37,8 +36,8 @@ export function Home() {
 				</h1>
 				<Link to="/about/this/site">About</Link>
 				<Link to="/signup">Signup</Link>
-				<Link to="/Navbar">NavBar</Link>
-				<Link to="/Hero">Hero</Link>
+				<Link to="/navbar">NavBar</Link>
+				<Link to="/footer">Footer</Link>
 			</div>
 		</main>
 	);
