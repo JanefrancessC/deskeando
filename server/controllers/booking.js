@@ -1,29 +1,26 @@
 import { Booking } from "../models/Booking";
-import { getUser, checkAvailability } from "./dataAccess";
-import db from "../db";
+import { ErrorMessage } from "../models/Error";
+import { validateBooking } from "./validators";
+
+/**
+ * Creates a new booking based on the provided request data.
+ * @param {Object} req - request object containing booking details.
+ * @param {Object} res - response object for sending the result.
+ */
 
 export const createBooking = async (req, res) => {
 	const errors = [];
-	let d1 = new Date();
 
-	const user = await validate({ user: "Chidima", desk: 1, date: d1 }, errors);
-	if (errors.length > 0) res.send(errors[0]);
+	// Check for validation errors
+	const user = await validateBooking(req.body, errors);
+	if (errors.length > 0) res.status(400).send(errors[0]);
 	else {
+		// Creates and saves a new bookings instance
 		const b1 = new Booking(user);
-		console.log(errors);
-		res.send(b1);
-		// b1.save()
+		const result = await Booking.save(b1);
+		if (!result)
+			res.status(500).send(new ErrorMessage("Internal Server Error"));
+        else
+            res.send({ message: "Booking created successfully" });
 	}
-};
-
-const validate = async (user, errors) => {
-	const id = await getUser(user.user);
-	if (!id) {
-		errors.push({ error: "User not found" });
-	}
-	const availability_status = await checkAvailability(user.desk, user.date);
-	if (!availability_status) {
-		errors.push({ error: "Desk is not available" });
-	}
-	return { userId: id, deskId: user.desk, createdAt: user.date };
 };
