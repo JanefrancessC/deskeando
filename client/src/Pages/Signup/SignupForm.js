@@ -58,6 +58,7 @@ function SignUp() {
 			body: JSON.stringify(data),
 		};
 		const response = await fetch(url, options);
+		const response = await fetch(url, options);
 		if (response.status === 200) {
 			resetForm();
 			navigate("/signin", { state: { key: "value" } });
