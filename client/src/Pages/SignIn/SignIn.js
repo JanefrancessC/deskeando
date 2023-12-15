@@ -75,11 +75,18 @@ const Login = () => {
 					<div className="col-12 col-md-8 col-lg-6 col-xl-5">
 						<div className="card shadow-2-strong ">
 							<div className="card-body p-5 text-center">
-								<p className="text-center h1 sign_up-heading fw-bold p-2">
-									Deskeando
-								</p>
+								<h1 className="display-6 fw-bold p-2">Deskeando</h1>
 								<h3 className="form-group d-flex flex-row p-1">Sign in</h3>
 								&nbsp;
+								<div className="row d-flex">
+									<h6 className="col-3 p-0 m-0 ps-2 fw-bold">New User?</h6>
+									<h6
+										className="col-3 p-0 m-0 sign-up-link text-start"
+										onClick={() => navigate("/signup")}
+									>
+										Sign Up.
+									</h6>
+								</div>
 								<form
 									onSubmit={handleSubmit}
 									className={`w-100 requires-validation ${
