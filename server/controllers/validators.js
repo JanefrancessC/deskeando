@@ -12,7 +12,7 @@ import { getUser, checkAvailability } from "./dataAccess";
  * @returns {Object|null} - An object containing validated booking information if successful, otherwise null.
  */
 export const validateBooking = async (booking, errors) => {
-	const { name, desk, date } = booking;
+	const { userId, desk, date } = booking;
 	const formattedDate = new Date(`${date}T12:30:00.000Z`);
 
 	if (isPast(formattedDate)) {
@@ -20,17 +20,13 @@ export const validateBooking = async (booking, errors) => {
 		return;
 	}
 
-	const id = await getUser(name);
-
-	if (!id) errors.push(new ErrorMessage("User not found"));
-
 	const availability_status = await checkAvailability(desk, date);
 
 	if (!availability_status.status)
 		errors.push(new ErrorMessage(`${desk} is not available on ${date}`));
 
 	return {
-		userId: id,
+		userId,
 		deskId: availability_status.deskId,
 		createdAt: new Date(),
 		reservationDate: formattedDate,

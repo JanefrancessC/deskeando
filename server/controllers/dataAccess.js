@@ -1,23 +1,4 @@
 import db from "../db";
-
-/**
- * Retrieves the user ID associated with a given username from the database.
- *
- * @param {string} userName - The name of the desk for which to retrieve the ID.
- * @returns {string|null} - The user ID if found, otherwise null.
- */
-const getUser = async (userName) => {
-	try {
-		const result = await db.query(
-			"SELECT user_id FROM public.users WHERE first_name = $1",
-			[userName]
-		);
-		return result.rows[0]?.user_id || null;
-	} catch (err) {
-		console.log(err);
-	}
-};
-
 /**
  * Retrieves the desk ID associated with a given desk name from the database.
  *
@@ -89,4 +70,4 @@ const saveBooking = async (data) => {
 	}
 };
 
-export { checkAvailability, getUser, saveBooking };
+export { checkAvailability, saveBooking };
