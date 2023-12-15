@@ -1,0 +1,30 @@
+.navbar {
+    background-color: white;
+}
+
+.btn {
+    background-color: #4D44B5;
+    color: white;
+    margin-left: 30px;
+}
+
+.btn:hover {
+    background-color: rgba(193, 187, 235, 1);
+}
+
+.nav-link:hover {
+    color: #ED5D34;
+}
+
+.nav-link {
+    font-weight: 400;
+        font-size: 1.2rem;
+        padding-left: 70px !important;
+        height: 60px;
+}
+.nav-link {
+    padding-top: 20px;
+}   
+.logo {
+    padding-right: 70px;
+}

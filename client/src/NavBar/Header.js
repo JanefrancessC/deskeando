@@ -1,14 +1,15 @@
 import React, { useState } from "react";
-import "./NavBar.css";
+import { Link } from "react-router-dom";
+
+import "./Header.css";
 import logo from "../Pages/images/logo-01.svg";
 
-function NavBar() {
+function Header() {
 	return (
 		<div className="">
 			<nav className="navbar px-2 navbar-expand-lg bg-body-tertiary">
-				<div className="container-fluid">
-					<img src={logo} alt="Logo" />
-
+				<div className="container-fluid	">
+					<img src={logo} className="logo" alt="Logo" height="30" weight="60" />
 					<button
 						className="navbar-toggler"
 						type="button"
@@ -21,11 +22,11 @@ function NavBar() {
 						<span className="navbar-toggler-icon"></span>
 					</button>
 					<div className="collapse navbar-collapse" id="navbarSupportedContent">
-						<ul className="navbar-nav me-auto mb-2 mb-lg-0">
+						<ul className="navbar-nav me-auto mb-lg-0">
 							<li className="nav-item">
-								<a className="nav-link px-4" aria-current="page" href="#">
+								<Link className="nav-link" role="button" to="/">
 									Home
-								</a>
+								</Link>
 							</li>
 							<li className="nav-item">
 								<a className="nav-link px-4" href="#">
@@ -34,12 +35,12 @@ function NavBar() {
 							</li>
 						</ul>
 						<form className="d-flex" role="search">
-							<button className="btn btn-outline-success px-4" type="submit">
-								Signin
-							</button>
-							<button className="btn btn-outline-success px-4" type="submit">
+							<Link className="btn btn-pinks px-4" role="button" to="/signup">
 								Signup
-							</button>
+							</Link>
+							<Link className="btn btn-pinks px-4" role="button" to="/signin">
+								SignIn
+							</Link>
 						</form>
 					</div>
 				</div>
@@ -48,4 +49,4 @@ function NavBar() {
 	);
 }
 
-export default NavBar;
+export default Header;

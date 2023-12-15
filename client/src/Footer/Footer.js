@@ -23,14 +23,11 @@ const Footer = () => (
 				</div>
 			</div>
 			<div className="d-flex flex-column flex-md-row p-4 gap-5 py-md-5 align-items-center justify-content-center">
-				&nbsp;
+				&nbsp; &nbsp;
 			</div>
-			<div
-				className="position-static d-flex flex-column flex-lg-row align-items-stretch
-"
-			>
+			<div className="position-static d-flex flex-column flex-lg-row align-items-stretch">
 				<label className="d-flex flex-column">
-					<div class="col">
+					<div className="col">
 						<div className="logo"></div>
 						&nbsp; &nbsp;
 						<div>
