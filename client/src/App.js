@@ -8,6 +8,7 @@ import SignIn from "./Pages/SignIn/SignIn.js";
 import Signup from "./Pages/Signup/Signup";
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import NotFound from "./Pages/Error/NotFound.js";
 =======
 import NavBar from "./HomePage/Navbar/NavBar.js";
@@ -17,6 +18,12 @@ import Hero from "./Pages/HomePage/Hero.js";
 import NavBar from "./NavBar/NavBar.js";
 import Footer from "./Footer/Footer.js";
 >>>>>>> navbar, footer added
+=======
+import NavBar from "./NavBar/Header.js";
+import Footer from "./Footer/Footer.js";
+import Hero from "./Hero/Hero.js";
+import Feature from "./Feature/Feature.js";
+>>>>>>> added new features
 
 const App = () => (
 	<Routes>
@@ -34,6 +41,10 @@ const App = () => (
 >>>>>>> image and logo added
 =======
 		<Route path="/navbar" element={<NavBar />} />
+		<Route path="/navbar" element={<NavBar />} />
+		<Route path="/hero" element={<Hero />} />
+		<Route path="/hero" element={<Hero />} />
+		<Route path="/feature" element={<Feature />} />
 		<Route path="/footer" element={<Footer />} />
 >>>>>>> navbar, footer added
 	</Routes>
