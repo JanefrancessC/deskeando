@@ -39,8 +39,8 @@ TABLESPACE pg_default;
 CREATE TABLE IF NOT EXISTS public.bookings
 (
     booking_id int UNIQUE GENERATED ALWAYS AS IDENTITY,
-    user_id int,
-    desk_id int,
+    user_id int NOT NULL,
+    desk_id int NOT NULL,
     created_at date NOT NULL DEFAULT NOW(),
     reservation_date date NOT NULL,
     updated_at date,

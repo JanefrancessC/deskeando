@@ -11,7 +11,7 @@ const getDeskId = async (deskName) => {
 			"SELECT desk_id FROM public.desks WHERE desk_name = $1",
 			[deskName]
 		);
-		return result.rows[0]?.desk_id || null;
+		return result.rows[0]?.desk_id || -1;
 	} catch (err) {
 		console.log(err);
 	}

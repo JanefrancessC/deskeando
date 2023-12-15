@@ -1,5 +1,5 @@
 import { ErrorMessage } from "../models/Error";
-import { getUser, checkAvailability } from "./dataAccess";
+import { checkAvailability } from "./dataAccess";
 
 /**
  * Validates booking details and retrieves additional information for creating a new booking.
@@ -13,6 +13,12 @@ import { getUser, checkAvailability } from "./dataAccess";
  */
 export const validateBooking = async (booking, errors) => {
 	const { userId, desk, date } = booking;
+
+	if (!userId) {
+		errors.push(new ErrorMessage("User not found"));
+		return
+	}
+
 	const formattedDate = new Date(`${date}T12:30:00.000Z`);
 
 	if (isPast(formattedDate)) {
