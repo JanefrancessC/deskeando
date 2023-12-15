@@ -32,23 +32,30 @@ const Login = () => {
 			},
 			body: JSON.stringify(body),
 		};
-		fetch("/api/login", options)
-			.then((response) => response.json())
-			.then((response) => {
-				let { message } = response;
-				if (message && message.status === "admin")
-					navigate("/admin", { state: { key: message.name } });
-				else if (message && message.status === "employee")
-					navigate("/employee", { state: { key: message.name } });
+		try {
+			const response = await fetch("/api/login", options);
+
+			if (response.status === 200) {
+				const data = await response.json();
+				const { token } = data;
+
+				// store token in local storage
+				localStorage.setItem("token", token);
+
+				// redirect on successful login
+				if (data && data.message.status === "admin")
+					navigate("/admin", { state: { key: data.message.name } });
+				else if (data && data.message.status === "employee")
+					navigate("/employee", { state: { key: data.message.name } });
 				else {
 					setLoginError(true);
 					setFormData({ email: "", password: "" });
 				}
-			})
-			.catch((error) => {
-				console.error(error);
-				throw error;
-			});
+			}
+		} catch (error) {
+			console.error(error);
+			throw new Error();
+		}
 	};
 
 	const handleSubmit = async (e) => {
