@@ -15,5 +15,6 @@ router.get("/", (_, res) => {
 router.post("/signup", signup);
 router.post("/login", login);
 router.post("/bookings", auth, createBooking);
+router.get("/bookings", auth, viewBookings);
 
 export default router;

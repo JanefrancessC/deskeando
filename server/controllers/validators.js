@@ -13,6 +13,12 @@ import { checkAvailability } from "./dataAccess";
  */
 export const validateBooking = async (booking, errors) => {
 	const { userId, desk, date } = booking;
+
+	if (!userId) {
+		errors.push(new ErrorMessage("User not found"));
+		return
+	}
+
 	const formattedDate = new Date(`${date}T12:30:00.000Z`);
 
 	if (isPast(formattedDate)) {
