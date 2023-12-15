@@ -17,3 +17,8 @@
 .login-error {
 	color: red;
 }
+
+.sign-up-link {
+	color: #4743E0 !important;
+    cursor: pointer;
+}
