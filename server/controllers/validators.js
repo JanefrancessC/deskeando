@@ -1,5 +1,5 @@
 import { ErrorMessage } from "../models/Error";
-import { getUser, checkAvailability } from "./dataAccess";
+import { checkAvailability } from "./dataAccess";
 
 /**
  * Validates booking details and retrieves additional information for creating a new booking.
