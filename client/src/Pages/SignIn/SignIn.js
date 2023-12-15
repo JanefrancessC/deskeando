@@ -37,10 +37,10 @@ const Login = () => {
 
 			if (response.status === 200) {
 				const data = await response.json();
-				const { token } = data;
+				const { token, id } = data.message;
 
 				// store token in local storage
-				localStorage.setItem("token", token);
+				localStorage.setItem("data", JSON.stringify({ "token": token, "id": id }));
 
 				// redirect on successful login
 				if (data && data.message.status === "admin")
