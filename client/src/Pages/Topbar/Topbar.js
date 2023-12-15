@@ -1,9 +1,5 @@
 import React, { useState } from "react";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import "bootstrap/dist/css/bootstrap.min.css";
 import "./topbar.css";
-
 import blueDot from "./bluedot.svg";
 import bell from "./bell.svg";
 import gear from "./gear.svg";

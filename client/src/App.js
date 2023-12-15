@@ -6,11 +6,8 @@ import Home from "./Pages/Home.js";
 import EmployeeDsh from "./Pages/EmployeeDash/EmployeeDsh.js";
 import SignIn from "./Pages/SignIn/SignIn.js";
 import Signup from "./Pages/Signup/Signup";
-<<<<<<< HEAD
 import NotFound from "./Pages/Error/NotFound.js";
-=======
-import Topbar from "./Pages/TopBar/Topbar";
->>>>>>> cbc557d (topBar-inProgres)
+import Topbar from "./Pages/TopBar/Topbar.js";
 
 const App = () => (
 	<Routes>
@@ -20,11 +17,8 @@ const App = () => (
 		<Route path="/about/this/site" element={<About />} />
 		<Route path="/admin" element={<Dashboard />} />
 		<Route path="/employee" element={<EmployeeDsh />} />
-<<<<<<< HEAD
-		<Route path="*" element={<NotFound />} />
-=======
 		<Route path="/topbar" element={<Topbar />} />
->>>>>>> cbc557d (topBar-inProgres)
+		<Route path="*" element={<NotFound />} />
 	</Routes>
 );
 
