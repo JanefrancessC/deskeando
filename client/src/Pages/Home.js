@@ -36,6 +36,7 @@ export function Home() {
 				</h1>
 				<Link to="/about/this/site">About</Link>
 				<Link to="/signup">Signup</Link>
+				<Link to="/topbar">Topbar</Link>
 			</div>
 		</main>
 	);
