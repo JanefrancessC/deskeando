@@ -1,0 +1,42 @@
+.card-header {
+	background-color: #4d44b5 !important;
+	/* color: */
+}
+
+.card {
+	;
+    padding: 8px;
+}
+
+.table {
+    text-align: center;
+    
+}
+
+.table-row th {
+    padding: 6px;
+    font-size: 18px;
+    color: #303972 !important
+}
+
+#trash, #amend {
+    width: 5%;
+    padding: 0px;
+}
+
+@media only screen and (max-width: 470px) {
+
+	.table-row th {
+		font-size: 14px;
+	}
+}
+
+@media only screen and (max-width: 676px) {
+    .time, .deskType, .amenities {
+        display: none !important;
+    }
+
+    #desk_num {
+        text-align: start;
+    }
+}
