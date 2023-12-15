@@ -3,6 +3,7 @@ import logger from "./utils/logger.js";
 import { signup, login } from "./controllers/signup.js";
 import auth from "./utils/auth.js";
 import { createBooking } from "./controllers/booking.js";
+import { viewBookings } from "./controllers/viewBookings.js";
 
 const router = Router();
 
