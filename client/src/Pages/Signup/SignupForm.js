@@ -88,7 +88,6 @@ function SignUp() {
 			setSignUpError(true);
 			return;
 		}
-
 		// formatted department name to match with master data
 		const deptFormatted = formData.department.replace(
 			/(^\w{1})|(\s+\w{1})/g,
