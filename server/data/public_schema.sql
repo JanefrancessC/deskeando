@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS public.bookings
     user_id int,
     desk_id int,
     created_at date NOT NULL DEFAULT NOW(),
-    reservation_date date NOT NULL UNIQUE,
+    reservation_date date NOT NULL,
     updated_at date,
     CONSTRAINT booking_user_fkey FOREIGN KEY(user_id) REFERENCES public.users(user_id),
     CONSTRAINT booking_desk_fkey FOREIGN KEY(desk_id) REFERENCES public.desks(desk_id)
