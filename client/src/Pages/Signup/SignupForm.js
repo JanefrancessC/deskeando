@@ -88,8 +88,13 @@ function SignUp() {
 			setSignUpError(true);
 			return;
 		}
+		// formatted department name to match with master data
+		const deptFormatted = formData.department.replace(
+			/(^\w{1})|(\s+\w{1})/g,
+			(letter) => letter.toUpperCase()
+		);
 
-		trySignUp("/api/signup", formData);
+		trySignUp("/api/signup", { ...formData, department: deptFormatted });
 		setIsValid(true);
 		setSignUpError(false);
 	};
