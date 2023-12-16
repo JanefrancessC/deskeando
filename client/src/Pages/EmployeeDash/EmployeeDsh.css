@@ -3,10 +3,13 @@
     color: #4D44B5;
 }
 
-.btn-wrap:nth-child(1):hover{
-    border-color: #4D44B5;
+#c-btn:hover{
     color: #4D44B5;
     background-color:  #ed5d34;
+}
+#f-btn:hover{
+    color: #4D44B5;
+    background-color:  #c1bbeb;
 }
 
 .btn-wrap:nth-child(2):hover{
@@ -14,3 +17,11 @@
     color: #4D44B5;
     background-color:  #ed5d34;
 }
+
+.bi-alarm, .bi-calendar{
+    color: #f9c91f;
+
+}
+.bi-pencil-square:hover, .bi-trash:hover {
+    color:  #ed5d34;
+ }
