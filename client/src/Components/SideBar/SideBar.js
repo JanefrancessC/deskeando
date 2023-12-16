@@ -42,8 +42,10 @@ const SideBar = (prop) => {
 						</div>
 					</div>
 					<div className="col align-content-center">
-						{prop.children}
+						{prop.topBar}
+						{prop.bookingDetails}
 					</div>
+					
 				</div>
 			</div>
 		</section>
