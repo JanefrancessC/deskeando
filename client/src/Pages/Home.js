@@ -8,8 +8,11 @@ import Footer from "../Footer/Footer";
 import Feature from "../Feature/Feature";
 =======
 import logo from "./logo.svg";
+<<<<<<< HEAD
 import Hero from './HomePage/Hero';
 >>>>>>> image and logo added
+=======
+>>>>>>> navbar, footer added
 
 export function Home() {
 	const [message, setMessage] = useState("Loading...");
@@ -50,9 +53,14 @@ export function Home() {
 				</h1>
 				<Link to="/about/this/site">About</Link>
 				<Link to="/signup">Signup</Link>
+<<<<<<< HEAD
 				<Link to="/Navbar">NavBar</Link>
 				<Link to="/Hero">Hero</Link>
 >>>>>>> image and logo added
+=======
+				<Link to="/navbar">NavBar</Link>
+				<Link to="/footer">Footer</Link>
+>>>>>>> navbar, footer added
 			</div>
 		</main>
 	);
