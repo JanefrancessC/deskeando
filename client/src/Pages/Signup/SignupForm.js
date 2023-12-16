@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import "./signupForm.css";
 import { Link, Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -18,6 +19,22 @@ function SignUp() {
 		password: "",
 	});
 	const [signUpError, setSignUpError] = useState(false);
+	const [departments, setDepartments] = useState([]);
+
+	// fetch department data from server
+	useEffect(() => {
+		const fetchDepartments = async () => {
+			try {
+				const response = await axios.get("/api/departments");
+				console.log(response.data);
+				setDepartments(response.data);
+			} catch (error) {
+				console.error("Error fetching departments:", error);
+			}
+		};
+
+		fetchDepartments();
+	}, []);
 
 	const handleInputChange = (event) => {
 		const { name, value } = event.target;
@@ -88,13 +105,8 @@ function SignUp() {
 			setSignUpError(true);
 			return;
 		}
-		// formatted department name to match with master data
-		const deptFormatted = formData.department.replace(
-			/(^\w{1})|(\s+\w{1})/g,
-			(letter) => letter.toUpperCase()
-		);
 
-		trySignUp("/api/signup", { ...formData, department: deptFormatted });
+		trySignUp("/api/signup", { ...formData });
 		setIsValid(true);
 		setSignUpError(false);
 	};
@@ -112,8 +124,6 @@ function SignUp() {
 			password: "",
 		});
 	};
-
-	useEffect(() => {}, []);
 
 	return (
 		<section className="vh-100">
@@ -201,14 +211,11 @@ function SignUp() {
 											<option value="" disabled>
 												Department
 											</option>
-											<option value="it">IT</option>
-											<option value="marketing">Marketing</option>
-											<option value="finance">Finance</option>
-											<option value="sales">Sales</option>
-											<option value="hr">HR</option>
-											<option value="customer service">Customer Service</option>
-											<option value="legal">Legal</option>
-											<option value="operations">Operations</option>
+											{departments.map((dept) => (
+												<option key={dept.department_id} value={dept.name}>
+													{dept.name}
+												</option>
+											))}
 										</select>
 										<div className="invalid-feedback text-start">
 											Please select your department.

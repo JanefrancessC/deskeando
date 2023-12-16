@@ -20,9 +20,10 @@ const SideBar = (prop) => {
 							</div>
 
 							<ul className="navbar-nav flex-column align-items-end mb-sm-auto mb-0 mt-4 gap-2">
-								{navItems.map((item) => {
+								{navItems.map((item, index) => {
 									return (
 										<li
+											key={index}
 											className="nav-item rounded-start-pill bg-white d-flex justify-content-start ps-3 pt-1"
 											onClick={() => console.log(item.name)}
 										>

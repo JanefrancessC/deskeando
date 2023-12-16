@@ -2,64 +2,64 @@ import React from 'react'
 
 const BookingDetails = () => {
   return (
-     <div class="w-100 d-flex justify-content-around">
-			<div class="card w-50">
+     <div className="w-100 d-flex justify-content-around">
+			<div className="card w-50">
 				<h5
-					class="card-header"
+					className="card-header"
 					style={{ backgroundColor: "#4D44B5", color: "#FCFCFF" }}
 				>
 					Booking Form
 				</h5>
-				<div class="card-body" style={{ backgroundColor: "#faf9ff" }}>
-					<div class="form-group">
-						<label class="card-text" for="exampleInputEmail1">
+				<div className="card-body" style={{ backgroundColor: "#faf9ff" }}>
+					<div className="form-group">
+						<label className="card-text" htmlFor="exampleInputEmail1">
 							Email address
 						</label>
 						<input
 							type="email"
-							class="form-control card-text"
+							className="form-control card-text"
 							id="exampleInputEmail1"
 							aria-describedby="emailHelp"
 							placeholder="Enter email"
 						/>
-						<small id="emailHelp" class="form-text text-muted">
+						<small id="emailHelp" className="form-text text-muted">
 							We'll never share your email with anyone else.
 						</small>
 					</div>
-					<div class="form-group">
-						<label for="exampleInputPassword1">Password</label>
+					<div className="form-group">
+						<label htmlFor="exampleInputPassword1">Password</label>
 						<input
 							type="password"
-							class="form-control"
+							className="form-control"
 							id="exampleInputPassword1"
 							placeholder="Password"
 						/>
 					</div>
-					<div class="form-check">
+					<div className="form-check">
 						<input
 							type="checkbox"
-							class="form-check-input"
+							className="form-check-input"
 							id="exampleCheck1"
 						/>
-						<label class="form-check-label" for="exampleCheck1">
+						<label className="form-check-label" htmlFor="exampleCheck1">
 							Check me out
 						</label>
 					</div>
-					<button type="submit" class="btn btn-primary">
+					<button type="submit" className="btn btn-primary">
 						Submit
 					</button>
 				</div>
 			</div>
 
-			<div class="card">
-				<div class="card-header">Featured</div>
-				<div class="card-body">
-					<h5 class="card-title">Special title treatment</h5>
-					<p class="card-text">
+			<div className="card">
+				<div className="card-header">Featured</div>
+				<div className="card-body">
+					<h5 className="card-title">Special title treatment</h5>
+					<p className="card-text">
 						With supporting text below as a natural lead-in to additional
 						content.
 					</p>
-					<a href="#" class="btn btn-primary">
+					<a href="#" className="btn btn-primary">
 						Go somewhere
 					</a>
 				</div>
