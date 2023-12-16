@@ -11,8 +11,7 @@ const EmployeeDsh = () => {
 				<h1>{`Hello ${userName} welcome to the employee dashboard`}</h1>
 			) : (
 				<>
-					<BookingsList />
-					{/* <Forbidden /> */}
+					<Forbidden />
 				</>
 			)}
 		</div>

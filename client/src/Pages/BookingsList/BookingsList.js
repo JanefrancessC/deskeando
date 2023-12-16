@@ -20,7 +20,7 @@ const BookingsList = () => {
 
 	return (
 		<section>
-			<div className="container-fluid">
+			<div className="container-fluid p-5">
 				<div className="row flex">
 					<div className="card p-0 rounded-top-4">
 						<div className="card-header text-white fw-bold ps-4 rounded-top-4">

@@ -4,7 +4,7 @@
 }
 
 .card {
-	;
+	
     padding: 8px;
 }
 
@@ -16,8 +16,9 @@
 .table-row th {
     padding: 6px;
     font-size: 18px;
-    color: #303972 !important
+    color: #303972 !important;
 }
+
 
 #trash, #amend {
     width: 5%;
