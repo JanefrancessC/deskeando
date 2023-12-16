@@ -58,10 +58,6 @@ function SignUp() {
 			body: JSON.stringify(data),
 		};
 		const response = await fetch(url, options);
-<<<<<<< HEAD
-		const response = await fetch(url, options);
-=======
->>>>>>> image and logo added
 		if (response.status === 200) {
 			resetForm();
 			navigate("/signin", { state: { key: "value" } });
@@ -98,11 +94,7 @@ function SignUp() {
 			(letter) => letter.toUpperCase()
 		);
 
-<<<<<<< HEAD
 		trySignUp("/api/signup", { ...formData, department: deptFormatted });
-=======
-		trySignUp("/api/signup", formData);
->>>>>>> image and logo added
 		setIsValid(true);
 		setSignUpError(false);
 	};
