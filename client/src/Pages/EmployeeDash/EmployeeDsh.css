@@ -1,0 +1,16 @@
+.btn-wrap > button {
+    border-color: #4D44B5;
+    color: #4D44B5;
+}
+
+.btn-wrap:nth-child(1):hover{
+    border-color: #4D44B5;
+    color: #4D44B5;
+    background-color:  #ed5d34;
+}
+
+.btn-wrap:nth-child(2):hover{
+    border-color: #4D44B5;
+    color: #4D44B5;
+    background-color:  #ed5d34;
+}
