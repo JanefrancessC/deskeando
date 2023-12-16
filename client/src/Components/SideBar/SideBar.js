@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./SideBar.css";
 
-const SideBar = () => {
+const SideBar = (prop) => {
 	// state to set name and icon type for each nav item,this data could be abstracted?
 	const [navItems, setNavItems] = useState([
 		{ name: "Dashboard", icon: "bi-house" },
@@ -27,8 +27,8 @@ const SideBar = () => {
 											onClick={() => console.log(item.name)}
 										>
 											<a
-												href="#"
-												className="nav-link p-0 d-flex align-items-center"
+												href=""
+												className="nav-link border-0 p-0 d-flex align-items-center"
 											>
 												<i className={item.icon}></i>{" "}
 												<span className="item-label ms-1 d-none d-sm-inline">
@@ -42,6 +42,7 @@ const SideBar = () => {
 						</div>
 					</div>
 					<div className="col align-content-center">
+						{prop.children}
 					</div>
 				</div>
 			</div>
