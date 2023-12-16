@@ -3,9 +3,6 @@ import "./Feature.css";
 
 function Feature() {
 	return (
-<<<<<<< HEAD
-		<div>Feature</div>
-=======
 		<div>
 			<div className="container px-4 py-5" id="hanging-icons">
 				<div className="row g-4 py-5 row-cols-1 row-cols-lg-3">
@@ -45,7 +42,6 @@ function Feature() {
 				</div>
 			</div>
 		</div>
->>>>>>> added new features
 	);
 }
 
