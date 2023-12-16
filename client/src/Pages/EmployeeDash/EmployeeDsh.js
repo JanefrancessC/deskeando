@@ -7,10 +7,14 @@ import BookingDetails from "./BookingDetails";
 
 const EmployeeDsh = () => {
 	let userName = useLocation().state?.key || null;
+	let role = "User"
 	return (
 		<div>
 			{userName ? (
-				<SideBar topBar={<Topbar />} bookingDetails={ <BookingDetails />} />
+				<SideBar
+					topBar={<Topbar userName={userName} role={role} />}
+					bookingDetails={<BookingDetails />}
+				/>
 			) : (
 				<Forbidden />
 			)}
