@@ -29,7 +29,7 @@ function Header() {
 								</Link>
 							</li>
 							<li className="nav-item">
-								<a className="nav-link px-4" href="#">
+								<a className="nav-link px-4" href="/about/this/site">
 									About Us
 								</a>
 							</li>
