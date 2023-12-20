@@ -1,0 +1,28 @@
+name: cleanup-old-branches-dmf
+
+on:
+  # Run daily at midnight
+  schedule:
+    - cron: "0 0 * * *"
+
+  # Allow workflow to be manually run from the GitHub UI
+  workflow_dispatch:
+
+jobs:
+  cleanup_old_branches:
+    runs-on: ubuntu-latest
+    name: Sanitize my repo CDO
+    steps:
+      - name: Delete those pesky dead branches
+        uses: drew-dectech/github-action-inactive-branches@1.2.1
+        id: delete_stuff
+        with:
+          github_token: ${{ github.token }}
+          last_commit_age_days: 2
+          ignore_branches: master,dev
+
+          # Disable dry run and actually get stuff deleted
+          dry_run: yes
+
+      - name: Get output
+        run: "echo 'Deleted branches: ${{ steps.delete_stuff.outputs.deleted_branches }}'"
