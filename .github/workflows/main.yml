@@ -20,6 +20,7 @@ jobs:
           github_token: ${{ github.token }}
           last_commit_age_days: 2
           ignore_branches: master,dev
+          ignore_suffix: '*'
 
           # Disable dry run and actually get stuff deleted
           dry_run: yes
