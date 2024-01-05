@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import "./Home.css";
-import Header from "../NavBar/Header";
-import Hero from "../Hero/Hero";
-import Feature from "../Feature/Feature";
-import Footer from "../Footer/Footer";
+import Header from "../Components/NavBar/Header";
+import Hero from "../Components/Hero/Hero";
+import Feature from "../Components/Feature/Feature";
+import Footer from "../Components/Footer/Footer";
 export function Home() {
 	const [message, setMessage] = useState("Loading...");
 
