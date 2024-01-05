@@ -13,10 +13,6 @@
     background-color: rgba(193, 187, 235, 1);
 }
 
-.nav-link:hover {
-    color: #ED5D34;
-}
-
 .nav-link {
     font-weight: 400;
         font-size: 1.2rem;

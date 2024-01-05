@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import "./Header.css";
-import logo from "../../images/logo-01.svg";
+import logo from "../../images/SVG/logo-01.svg";
 
 function Header() {
 	return (

@@ -161,27 +161,17 @@ function SignUp() {
 					<div className="col-12 col-md-8 col-lg-6 col-xl-5">
 						<div className="card shadow-2-strong">
 							<div className="card-body p-5 text-center">
-								<article className="bothLogos">
-									<img
-										src={thefirstlogo}
-										className="theFirstlogo"
-										alt="Logo"
-										// height="90"
-										// width="280"
-									/>
-									<img
-										src={thelogo}
-										className="theSecondlogo"
-										alt="Logo"
-										// height="100"
-										// width="280"
-									/>
-								</article>
-								<h3 className="form-group d-flex flex-row p-1">Sign Up</h3>
+								<h1
+									id="title"
+									className="text-center sign_up-heading fw-bold p-2"
+								>
+									Deskeando
+								</h1>
+								<h3 className="form-group d-flex flex-row p-1 ">Sign Up</h3>
 								&nbsp;
-								<p id="already-registered">
-									Already registered? <Link to="/signin">Sign In</Link>
-								</p>
+								<h6 className="fw-bold already-registered gap-2">
+									Already registered? <Link to="/signin" className="sign">Sign In</Link>
+								</h6>
 								<form
 									onSubmit={handleSubmit}
 									className={`w-100 requires-validation ${
@@ -310,7 +300,7 @@ function SignUp() {
 									<div className="row d-flex justify-content-center p-3">
 										<button
 											type="submit"
-											className="btn sign_in_btn btn-lg w-100"
+											className="btn sign_in_btn btn-lg w-100 ms-0 my-4"
 										>
 											Sign Up
 										</button>

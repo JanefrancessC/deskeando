@@ -18,9 +18,14 @@
 .login-error {
 	color: red;
 }
-#already-registered {
+.already-registered {
 	display: flex;
 	justify-content: flex-start;
+}
+.sign {
+	color: #4d44b5;
+	text-decoration: none;
+
 }
 .p-5 {
 	padding: 2rem !important;

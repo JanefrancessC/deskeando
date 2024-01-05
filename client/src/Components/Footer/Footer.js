@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Footer.css";
-import logo from "../../images/darkBG-logo-02.svg";
+import logo from "../../images/SVG/darkBG-logo-02.svg";
 
 const Footer = () => (
 	<footer className="footer">
