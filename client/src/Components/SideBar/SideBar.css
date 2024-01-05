@@ -2,25 +2,31 @@
 
 .side-col {
 	height: 100vh;
-	background-color: #4d44b5 !important;
+	/* background-color: #4d44b5 !important; */
+    background-color: #4d44b5;
 }
 
 .nav-item {
 	height: 50px;
-	background-color: #4d44b5 !important;
+	/* background-color: #4d44b5 !important; */
+    background-color: #4d44b5;
 	color: white;
-    width: 85% !important;
+    width: 85%;
+    /* width: 85% !important; */
     cursor: pointer;
 
 }
 
 .nav-item:hover {
-	background-color: white !important;
-	color: #4d44b5 !important;
+	/* background-color: white !important; */
+    /* color: #4d44b5 !important; */
+	background-color: white;
+    color: #4d44b5;
 }
 
 .bi-person, .bi-calendar-date, .bi-house {
-    font-size: 30px !important;
+    font-size: 30px;
+    /* font-size: 30px !important; */
     padding-bottom: 5px;
 }
 
@@ -33,7 +39,8 @@
 @media only screen and (max-width: 576px) {
 
     h4 {
-        font-size: 18px !important;
+        font-size: 18px 
+        /* font-size: 18px !important; */
     }
 
     .nav-item .item-label {
