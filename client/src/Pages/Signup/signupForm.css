@@ -12,8 +12,8 @@
 	font-weight: 600;
 }
 .sign_in_btn {
-	color: #fcfcff !important;
-	background-color: #4d44b5 !important;
+	color: #fcfcff;
+	background-color: #4d44b5;
 }
 .login-error {
 	color: red;
@@ -27,15 +27,7 @@
 	text-decoration: none;
 
 }
-.p-5 {
-	padding: 2rem !important;
-}
 
 .text-center {
 	font-size: 11px;
-}
-
-.form-control {
-	color: #525560;
-	box-shadow: none !important;
 }
