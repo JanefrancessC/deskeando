@@ -1,5 +1,4 @@
 import { Route, Routes } from "react-router-dom";
-
 import About from "./Pages/About.js";
 import Dashboard from "./Pages/AdminDash/Dashboard.js";
 import Home from "./Pages/Home.js";
@@ -19,5 +18,4 @@ const App = () => (
 		<Route path="*" element={<NotFound />} />
 	</Routes>
 );
-
 export default App;
