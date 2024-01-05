@@ -140,11 +140,11 @@ const BookingForm = () => {
 					/>
 				</div>
 
-				<div class="btn-wrap d-flex w-50 justify-content-between">
-					<button type="submit" class="btn rounded-pill" id="f-btn">
+				<div class="btn-wrap d-flex w-50 justify-content-start gap-5">
+					<button type="submit" className="btn f-btn">
 						Confirm Booking
 					</button>
-					<button type="submit" class="btn rounded-pill" id="c-btn">
+					<button type="submit" className="btn btn-danger btn-lg ">
 						Cancel
 					</button>
 				</div>

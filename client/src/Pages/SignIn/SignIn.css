@@ -11,14 +11,14 @@
 	font-weight: 600;
 }
 .sign_in_btn {
-	color: #fcfcff !important;
-	background-color: #4d44b5 !important;
+	color: #fcfcff; 
+	background-color: #4d44b5;
 }
 .login-error {
 	color: red;
 }
 
 .sign-up-link {
-	color: #4743E0 !important;
+	color: #4743E0;
     cursor: pointer;
 }

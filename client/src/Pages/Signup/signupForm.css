@@ -12,25 +12,22 @@
 	font-weight: 600;
 }
 .sign_in_btn {
-	color: #fcfcff !important;
-	background-color: #4d44b5 !important;
+	color: #fcfcff;
+	background-color: #4d44b5;
 }
 .login-error {
 	color: red;
 }
-#already-registered {
+.already-registered {
 	display: flex;
 	justify-content: flex-start;
 }
-.p-5 {
-	padding: 2rem !important;
+.sign {
+	color: #4d44b5;
+	text-decoration: none;
+
 }
 
 .text-center {
 	font-size: 11px;
-}
-
-.form-control {
-	color: #525560;
-	box-shadow: none !important;
 }

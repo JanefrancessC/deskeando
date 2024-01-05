@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./SignIn.css";
+import Header from "../../Components/NavBar/Header.js";
 
 const Login = () => {
 	const navigate = useNavigate();
@@ -70,6 +71,7 @@ const Login = () => {
 
 	return (
 		<section className="vh-100">
+			<Header />
 			<div className="container py-5 h-75">
 				<div className="row d-flex justify-content-center align-items-center">
 					<div className="col-12 col-md-8 col-lg-6 col-xl-5">
@@ -78,15 +80,6 @@ const Login = () => {
 								<h1 className="display-6 fw-bold p-2">Deskeando</h1>
 								<h3 className="form-group d-flex flex-row p-1">Sign in</h3>
 								&nbsp;
-								<div className="row d-flex">
-									<h6 className="col-3 p-0 m-0 ps-2 fw-bold">New User?</h6>
-									<h6
-										className="col-3 p-0 m-0 sign-up-link text-start"
-										onClick={() => navigate("/signup")}
-									>
-										Sign Up.
-									</h6>
-								</div>
 								<form
 									onSubmit={handleSubmit}
 									className={`w-100 requires-validation ${
@@ -94,6 +87,15 @@ const Login = () => {
 									}`}
 									novalidate
 								>
+								<div className="d-flex gap-2">
+									<h6 className="fw-bold">New User?</h6>
+									<h6
+										className="sign-up-link fw-bold"
+										onClick={() => navigate("/signup")}
+									>
+										Sign Up.
+									</h6>
+								</div>
 									<div className="form-group">
 										<div className="d-flex flex-row py-2">
 											<input
@@ -140,7 +142,7 @@ const Login = () => {
 									<div className="row d-flex justify-content-center p-3">
 										<button
 											type="submit"
-											className="btn sign_in_btn btn-lg w-100"
+											className="btn sign_in_btn btn-lg w-100 ms-0 mb-2"
 										>
 											Sign In
 										</button>
@@ -152,6 +154,7 @@ const Login = () => {
 										</h6>
 									)}
 								</form>
+								{/* </div> */}
 								<div className="text-center">
 									<div>
 										By clicking Continue with or Log in, you agree to
