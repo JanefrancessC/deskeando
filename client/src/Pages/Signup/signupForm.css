@@ -18,6 +18,7 @@
 .login-error {
 	color: red;
 }
+
 .already-registered {
 	display: flex;
 	justify-content: flex-start;
@@ -30,4 +31,9 @@
 
 .text-center {
 	font-size: 11px;
+}
+
+.sign_in_btn:hover {
+	color: #fcfcff; 
+	background-color: #6c63d3;
 }

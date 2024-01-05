@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import "./signupForm.css";
 import { Link, Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import thelogo from "../../images/logo-02.png";
-import thefirstlogo from "../../images/logo-icon-01.png";
 
 function SignUp() {
 	const navigate = useNavigate();
@@ -71,6 +69,7 @@ function SignUp() {
 			setErrorMessage(error.error);
 			// Handle signup error
 			setSignUpError(true);
+			resetForm();
 		}
 	};
 
