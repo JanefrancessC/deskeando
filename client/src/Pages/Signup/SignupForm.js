@@ -63,14 +63,11 @@ function SignUp() {
 		};
 
 		const response = await fetch(url, signUpOptions);
-
 		if (response.status === 200) {
-			console.log(response);
 			resetForm();
 			navigate("/signin", { state: { key: "value" } });
 		} else {
 			let error = await response.json();
-			console.log(error);
 			setErrorMessage(error.error);
 			// Handle signup error
 			setSignUpError(true);
