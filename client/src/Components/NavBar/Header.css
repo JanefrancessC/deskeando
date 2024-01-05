@@ -3,34 +3,25 @@
     padding: 20px;
 }
 
-.btn {
+.btn-nav {
     background-color: #4D44B5;
     color: white;
     margin-left: 30px;
 }
 
-.btn:hover {
+.btn-nav:hover {
     background-color: rgba(193, 187, 235, 1);
 }
 
-.nav-link {
-    font-weight: 400;
-        font-size: 1.2rem;
-        padding-left: 70px;
-        height: 60px;
-}
-.nav-link {
-    padding-top: 20px;
-}   
 .logo {
     padding-left: 50px;
     padding-right: 70px;
+    cursor: pointer;
 }
 .nav-item-left {
     color: #4D44B5;
     font-weight: 500;
     font-size: 1.2rem;
-    padding-left: 70px;
     height: 60px;
     text-decoration: none;
 }

@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "./SideBar.css";
 import logo from "../../images/SVG/logo-dark-bg-01.svg";
+import { useNavigate } from "react-router-dom";
 
 const SideBar = (prop) => {
+	const navigate = useNavigate()
 	// state to set name and icon type for each nav item,this data could be abstracted?
 	const [navItems, setNavItems] = useState([
 		{ name: "Dashboard", icon: "bi-house" },
@@ -23,6 +25,7 @@ const SideBar = (prop) => {
 									alt="Logo"
 									height="35"
 									weight="65"
+									onClick={() => navigate("/")}
 								/>
 							</div>
 

@@ -307,7 +307,7 @@ function SignUp() {
 									</div>
 
 									{signUpError && (
-										<h6 className="signup-error" role="alert">
+										<h6 className="text-danger mb-2" role="alert">
 											{errorMessage}
 										</h6>
 									)}
