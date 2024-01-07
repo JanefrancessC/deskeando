@@ -160,16 +160,14 @@ function SignUp() {
 					<div className="col-12 col-md-8 col-lg-6 col-xl-5">
 						<div className="card shadow-2-strong">
 							<div className="card-body p-5 text-center">
-								<h1
-									id="title"
-									className="text-center sign_up-heading fw-bold p-2"
-								>
-									Deskeando
-								</h1>
+								<h1 className="display-6 fw-bold p-2">Deskeando</h1>
 								<h3 className="form-group d-flex flex-row p-1 ">Sign Up</h3>
 								&nbsp;
 								<h6 className="fw-bold already-registered gap-2">
-									Already registered? <Link to="/signin" className="sign">Sign In</Link>
+									Already registered?{" "}
+									<Link to="/signin" className="sign">
+										Sign In
+									</Link>
 								</h6>
 								<form
 									onSubmit={handleSubmit}

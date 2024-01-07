@@ -1,7 +1,3 @@
-#title {
-	font-size: 28px;
-}
-
 .login {
 	color: #75bfb9;
 }
@@ -26,7 +22,6 @@
 .sign {
 	color: #4d44b5;
 	text-decoration: none;
-
 }
 
 .text-center {
@@ -34,6 +29,6 @@
 }
 
 .sign_in_btn:hover {
-	color: #fcfcff; 
+	color: #fcfcff;
 	background-color: #6c63d3;
 }
