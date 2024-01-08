@@ -6,6 +6,8 @@ export const updateBooking = async (req, res) => {
 	try {
 		const user = req.user;
 		const { desk, date } = req.body;
+		const newDateStamp = Date.now()
+		const newDate = new Date(newDateStamp)
 		
 		// Get user booking details
 		const bookID = await db.query(
@@ -24,8 +26,8 @@ export const updateBooking = async (req, res) => {
         }
 
 		const newBooking = await db.query(
-			`UPDATE bookings SET desk_id = $1, reservation_date = $2 WHERE booking_id = $3 RETURNING *`,
-			[validDesk.rows[0].desk_id, date, bookID.rows[0].booking_id]
+			`UPDATE bookings SET desk_id = $1, reservation_date = $2, updated_at = $3 WHERE booking_id = $4 RETURNING *`,
+			[validDesk.rows[0].desk_id, date, newDate, bookID.rows[0].booking_id]
 		);
 		res.status(200).json({ message: "Booking updated", updatedBooking: newBooking.rows[0] });
 	} catch (error) {
