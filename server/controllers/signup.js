@@ -79,11 +79,6 @@ export const login = async (req, res) => {
 					id: user.rows[0].user_id,
 					token: token,
 				},
-				message: {
-					status: "admin",
-					name: user.rows[0].first_name,
-					token: token,
-				},
 			});
 		} else {
 			res.json({
