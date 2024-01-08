@@ -144,7 +144,7 @@ const BookingForm = () => {
 					<button type="submit" className="btn f-btn">
 						Confirm Booking
 					</button>
-					<button type="submit" className="btn btn-danger btn-lg ">
+					<button type="submit" className="btn btn-danger">
 						Cancel
 					</button>
 				</div>
