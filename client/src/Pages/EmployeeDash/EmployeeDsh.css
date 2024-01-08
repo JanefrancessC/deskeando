@@ -17,3 +17,13 @@
 .bi-pencil-square:hover, .bi-trash:hover {
     color:  #ed5d34;
  }
+
+ .splitView {
+    width: 50%;
+ }
+ .card-tb {
+    width: 100%;
+ }
+ .time-hide, .type-hide, .size-hide {
+    display: none;
+ }

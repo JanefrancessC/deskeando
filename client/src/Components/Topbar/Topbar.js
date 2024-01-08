@@ -4,11 +4,7 @@ import iconuser from "./icon-user.svg";
 import bell from "./bell.svg";
 import { Link } from "react-router-dom";
 
-function Topbar(prop) {
-	const [startDate, setStartDate] = useState(null);
-	const [userName, setUserName] = useState("");
-	const [userRole, setUserRole] = useState("");
-	const [showDropdown, setShowDropdown] = useState(false);
+function Topbar({userDetails, handleClick}) {
 
 	const CustomInput = ({ value, onClick }) => (
 		<button
@@ -20,30 +16,18 @@ function Topbar(prop) {
 		</button>
 	);
 
-	const dropdownRef = useRef(null);
-
-	const toggleDropdown = () => {
-		setShowDropdown(!showDropdown);
-	};
-
-	const handleClickOutside = (event) => {
-		if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-			setShowDropdown(false);
-		}
-	};
-
-	const stopPropagation = (event) => {
-		event.stopPropagation();
-	};
 
 	return (
 		<nav id="navbar" className="navbar navbar-expand-lg navbar-light bg-light">
 			<div className="container-fluid">
 				<div className="navbar-nav">
-					<button id="book-link" className="nav-link" href="#">
+					<button id="map-link" className="dropdown-toggle nav-link" href="#">
+						Map
+					</button>
+					<button id="book-link" className="nav-link" onClick={handleClick}>
 						Book
 					</button>
-					<button id="bookings-link" className="nav-link" href="#">
+					<button id="bookings-link" className="nav-link" href="#" onClick={handleClick}>
 						Bookings
 					</button>
 					<button id="map-link" className="dropdown-toggle nav-link" href="#">
@@ -56,8 +40,8 @@ function Topbar(prop) {
 				<img className="bell" src={bell} alt="The Bell" />
 				{/* <img className="gear" src={gear} alt="The Gear" /> */}
 				<span className="user-info">
-					<strong className="user-name">{prop.userName}</strong> <br />
-					<span className="user-role">{prop.role}</span>
+					<strong className="user-name">{userDetails.userName}</strong> <br />
+					<span className="user-role">{userDetails.role}</span>
 				</span>
 				<div className="the-icon-user-background" ref={dropdownRef}>
 					<div onClick={toggleDropdown}>

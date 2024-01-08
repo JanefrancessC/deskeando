@@ -3,11 +3,17 @@ import BookingForm from "./BookingForm";
 import Table from "./Table";
 import "./EmployeeDsh.css";
 
-const BookingDetails = () => {
+const BookingDetails = ({ isSplitView }) => {
 	return (
 		<div class="w-100 d-flex justify-content-around">
-			<BookingForm />
-			<Table />
+			{isSplitView ? (
+				<>
+					<BookingForm />
+					<Table isSplitView={isSplitView} />
+				</>
+			) : (
+				<Table isSplitView={isSplitView} />
+			)}
 		</div>
 	);
 };
