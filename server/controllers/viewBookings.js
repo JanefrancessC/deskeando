@@ -5,7 +5,7 @@ export const viewBookings = async (req, res) => {
 	try {
 		const user = req.user;
 		const bookingResult = await db.query(
-			`SELECT * FROM bookings WHERE user_id = $1`,
+			`SELECT b.*, d.* FROM bookings b JOIN desks d ON b.desk_id = d.desk_id  WHERE user_id = $1`,
 			[user.user_id]
 		);
         
@@ -14,6 +14,9 @@ export const viewBookings = async (req, res) => {
 			"User Id": booking.user_id,
 			"Booking Id": booking.booking_id,
 			"Desk Id": booking.desk_id,
+			"Desk Name": booking.desk_name,
+			"Desk Size": booking.size,
+			"Desk Type": booking.type,
 			"Reserved Date": new Date(booking.reservation_date).toLocaleDateString(
 				"en-UK",
 				{
