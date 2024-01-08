@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import "./topbar.css";
 import iconuser from "./icon-user.svg";
 import bell from "./bell.svg";
-// import gear from "./gear.svg";
+import { Link } from "react-router-dom";
 
 function Topbar(prop) {
 	const [startDate, setStartDate] = useState(null);
@@ -23,19 +23,16 @@ function Topbar(prop) {
 	const dropdownRef = useRef(null);
 
 	const toggleDropdown = () => {
-		console.log("Toggle dropdown");
 		setShowDropdown(!showDropdown);
 	};
 
 	const handleClickOutside = (event) => {
-		console.log("Handle click outside");
 		if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
 			setShowDropdown(false);
 		}
 	};
 
 	const stopPropagation = (event) => {
-		console.log("Stop propagation");
 		event.stopPropagation();
 	};
 
@@ -67,12 +64,14 @@ function Topbar(prop) {
 						<img className="icon-user" src={iconuser} alt="The Blue Dot" />
 					</div>
 					{showDropdown && (
-						<button
-							className="dropdown-menu-buttons"
-							onClick={() => console.log("Log Out clicked")}
-						>
-							Sign out
-						</button>
+						<Link className="dropdown-button" to="/">
+							<button
+								className="dropdown-menu-buttons"
+								onClick={() => localStorage.clear()}
+							>
+								Sign out
+							</button>
+						</Link>
 					)}
 				</div>
 			</div>

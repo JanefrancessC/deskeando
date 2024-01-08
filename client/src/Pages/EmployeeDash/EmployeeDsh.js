@@ -7,10 +7,11 @@ import BookingDetails from "./BookingDetails";
 
 const EmployeeDsh = () => {
 	let userName = useLocation().state?.key || null;
-	let role = "User"
+	let role = "User";
+	let token = localStorage.getItem("data");
 	return (
 		<div>
-			{userName ? (
+			{token ? (
 				<SideBar
 					topBar={<Topbar userName={userName} role={role} />}
 					bookingDetails={<BookingDetails />}
