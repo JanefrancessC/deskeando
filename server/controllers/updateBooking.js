@@ -1,5 +1,4 @@
 import db from "../db.js";
-import { viewBookings } from "./viewBookings.js";
 
 // update booking by id
 export const updateBooking = async (req, res) => {
