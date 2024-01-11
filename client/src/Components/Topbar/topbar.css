@@ -1,0 +1,144 @@
+.dropdown-toggle::after {
+	display: inline-block;
+	width: 0;
+	height: 0;
+	margin-left: 0.755em;
+	vertical-align: 0.155em;
+	content: "";
+	border-top: 0.5em solid;
+	border-right: 0.5em solid transparent;
+	border-bottom: 0;
+	border-left: 0.5em solid transparent;
+}
+
+.triangle-down {
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+	border-top: 5px solid #000;
+	margin-left: 5px;
+}
+
+.form-control.dropdown-toggle {
+	border: 2px solid #4d44b5;
+	border-radius: 30px;
+	width: 130px;
+	height: 37px;
+}
+
+.form-control.dropdown-toggle:focus {
+	outline: none;
+}
+.nav-link {
+	border: 2px solid #4d44b5;
+	border-radius: 30px;
+	width: 100px;
+	height: 37px;
+	padding-top: 5px;
+}
+
+#book-link,
+#bookings-link {
+	border: 2px solid #009b1b;
+	color: white;
+	background-color: #009b1b;
+}
+
+/* CALENDAR MAP BOOK */
+.navbar-expand-lg .navbar-nav {
+	flex-direction: row;
+	gap: 22px;
+	/* margin-top: 15px; */
+}
+
+/* BELL GEAR USER ROLE BLUE-DOT */
+.end-of-page {
+	display: flex;
+	gap: 2rem;
+}
+
+.bell {
+	width: 28px;
+}
+
+.user-info {
+	width: 64px;
+}
+
+.user-role {
+	color: #a098ae;
+}
+
+.blue-dot {
+	width: 51px;
+	margin-right: 2rem;
+}
+.icon-user {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	justify-items: center;
+	width: 23px;
+	height: 47px;
+}
+.the-icon-user-background {
+	background-color: #4743e0;
+	border-radius: 50%;
+	width: 50px;
+	height: 50px;
+	margin-right: 1rem;
+	cursor: pointer;
+}
+
+.dropdown-menu {
+	display: block;
+	position: absolute;
+	border: 1px solid red; /* Add a border for testing */
+	/* Add other necessary styles */
+}
+
+/* ALL THE BAR */
+.bg-light {
+	height: 8rem;
+}
+/* .dropdown-menu {
+	display: grid;
+	position: absolute;
+	border: none;
+} */
+.dropdown-menu-buttons {
+	margin-top: 0.5rem;
+	margin-left: -14px;
+	justify-items: center;
+	width: 5rem;
+	border: 4px;
+	border-radius: 8px;
+	color: #303972;
+	background-color: #d9d9d9;
+}
+
+.navbar {
+	background-color: #ffffff;
+}
+
+/* Media query to hide the entire page when screen width is less than 991px */
+@media (max-width: 750px) {
+	#navbar {
+		display: none;
+		flex-wrap: nowrap;
+		justify-content: flex-start;
+	}
+}
+
+@media (max-width: 991px) {
+	#navbar {
+		display: grid;
+		justify-content: end;
+		margin: 1rem;
+		gap: 14px;
+	}
+	.end-of-page {
+		display: flex;
+		gap: 2rem;
+		justify-content: end;
+	}
+}

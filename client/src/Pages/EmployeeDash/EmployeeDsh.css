@@ -1,0 +1,19 @@
+.btn-wrap > :nth-child(1) {
+    background-color: #4D44B5;
+    color: #f7f6fa;
+    border: none;
+}
+
+.f-btn:hover{
+    color: #4D44B5;
+    background-color: rgba(193, 187, 235, 1);
+}
+
+.bi-alarm, .bi-calendar{
+    color: #f9c91f;
+
+}
+
+.bi-pencil-square:hover, .bi-trash:hover {
+    color:  #ed5d34;
+ }

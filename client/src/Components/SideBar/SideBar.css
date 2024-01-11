@@ -1,0 +1,42 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css");
+
+.side-col {
+	height: 100vh;
+    background-color: #4d44b5;
+}
+
+.nav-item-sd {
+    width: 100%;
+
+}
+.nav-item-sd:hover {
+	background-color: white;
+    color: #4d44b5;
+}
+
+
+.bi-person, .bi-calendar-date, .bi-house {
+    font-size: 30px;
+    padding-bottom: 5px;
+}
+
+.item-label {
+    font-size: 16px;
+    line-height: 20px;
+}
+
+
+@media only screen and (max-width: 576px) {
+
+    h4 {
+        font-size: 18px 
+    }
+
+    .nav-item .item-label {
+        display: none;
+    }
+
+    .bi-person, .bi-calendar-date, .bi-house {
+    padding-bottom: 0px;
+}
+}

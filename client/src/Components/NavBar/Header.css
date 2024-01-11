@@ -1,0 +1,33 @@
+.navbar {
+    background-color: white;
+    padding: 20px;
+}
+
+.btn-nav {
+    background-color: #4D44B5;
+    color: white;
+    margin-left: 30px;
+}
+
+.btn-nav:hover {
+    background-color: rgba(193, 187, 235, 1);
+}
+
+.logo {
+    padding-left: 50px;
+    padding-right: 70px;
+    cursor: pointer;
+}
+.nav-item-left {
+    color: #4D44B5;
+    font-weight: 500;
+    font-size: 1.2rem;
+    height: 60px;
+    text-decoration: none;
+}
+.nav-item-left:hover {
+    color: #ED5D34;
+}
+.btn-pinks {
+    padding-left: 90px;
+}
