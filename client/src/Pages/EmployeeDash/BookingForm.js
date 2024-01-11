@@ -141,10 +141,10 @@ const BookingForm = () => {
 				</div>
 
 				<div class="btn-wrap d-flex w-50 justify-content-start gap-5">
-					<button type="submit" className="btn f-btn">
+					<button type="submit" className="btn border border-primary">
 						Confirm Booking
 					</button>
-					<button type="submit" className="btn btn-danger">
+					<button type="submit" className="btn f-btn">
 						Cancel
 					</button>
 				</div>

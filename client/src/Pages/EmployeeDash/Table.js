@@ -48,7 +48,7 @@ const Table = ({ isSplitView }) => {
 				Booking Details
 			</h5>
 			<div class="card-body">
-				<table class="table">
+				<table class="table table-responsive">
 					<TableHead isSplitView={isSplitView} />
 					<tbody>
 						{fakeData.map((el, index) => (

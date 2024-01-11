@@ -4,7 +4,7 @@ import logo from "../../images/SVG/logo-dark-bg-01.svg";
 import { useNavigate } from "react-router-dom";
 
 const SideBar = (prop) => {
-	const navigate = useNavigate()
+	const navigate = useNavigate();
 	// state to set name and icon type for each nav item,this data could be abstracted?
 	const [navItems, setNavItems] = useState([
 		{ name: "Dashboard", icon: "bi-house" },
@@ -15,10 +15,10 @@ const SideBar = (prop) => {
 	return (
 		<section>
 			<div className="container-fluid">
-				<div className="row flex-nowrap ">
-					<div className="side-col col-auto col-sm-3 col-md-3 col-xl-2 text-white p-0">
+				<div className="row flex-nowrap w-100">
+					<div className="side-col col-1 text-white p-0">
 						<div className="d-flex flex-column h-75">
-							<div className="align-self-center pt-4 px-1 m-0">
+							{/* <div className="align-self-center pt-4 px-1 m-0">
 								<img
 									src={logo}
 									className="logo"
@@ -27,7 +27,7 @@ const SideBar = (prop) => {
 									weight="65"
 									onClick={() => navigate("/")}
 								/>
-							</div>
+							</div> */}
 
 							<ul className="navbar-nav nav-bar-sd flex-column align-items-center mb-sm-auto mb-0 mt-5 gap-2">
 								{navItems.map((item) => {
@@ -38,12 +38,10 @@ const SideBar = (prop) => {
 										>
 											<a
 												href=""
-												className="nav-link border-0 p-0 d-flex align-items-center gap-3" 
+												className="nav-link border-0 p-0 d-flex align-items-center gap-3"
 											>
 												<i className={item.icon}></i>{" "}
-												<span className="item-label ms-1 d-none d-sm-inline">
-													{item.name}
-												</span>
+												
 											</a>
 										</li>
 									);
