@@ -5,16 +5,19 @@ export const viewBookings = async (req, res) => {
 	try {
 		const user = req.user;
 		const bookingResult = await db.query(
-			`SELECT * FROM bookings WHERE user_id = $1`,
+			`SELECT b.*, d.* FROM bookings b JOIN desks d ON b.desk_id = d.desk_id  WHERE user_id = $1`,
 			[user.user_id]
 		);
         
 		const bookings = bookingResult.rows;
 		const bookingDetails = bookings.map((booking) => ({
-			"User Id": booking.user_id,
-			"Booking Id": booking.booking_id,
-			"Desk Id": booking.desk_id,
-			"Reserved Date": new Date(booking.reservation_date).toLocaleDateString(
+			"UserId": booking.user_id,
+			"BookingId": booking.booking_id,
+			"DeskId": booking.desk_id,
+			"DeskName": booking.desk_name,
+			"DeskSize": booking.size,
+			"DeskType": booking.type,
+			"ReservedDate": new Date(booking.reservation_date).toLocaleDateString(
 				"en-UK",
 				{
 					year: "numeric",
