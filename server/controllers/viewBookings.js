@@ -10,6 +10,10 @@ export const viewBookings = async (req, res) => {
 		);
         
 		const bookings = bookingResult.rows;
+		if (bookings.length === 0) {
+			res.status(404).json({ message: "No booking found" });
+			return;
+		}
 		const bookingDetails = bookings.map((booking) => ({
 			"UserId": booking.user_id,
 			"BookingId": booking.booking_id,
