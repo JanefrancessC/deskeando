@@ -6,18 +6,18 @@ import Topbar from "../../Components/Topbar/Topbar";
 import BookingDetails from "./BookingDetails";
 
 const EmployeeDsh = () => {
+	let token = localStorage.getItem("data");
 	const [splitView, setSplitView] = useState(false);
 	let userDetails = {
 		userName: useLocation().state?.key || null,
-		role: "User";
-	let token = localStorage.getItem("data");,
+		role: "User",
 	};
 	const handleClick = (e) => {
 		e.target.id === "book-link" ? setSplitView(true) : setSplitView(false);
 	};
 	return (
 		<div>
-			{userDetails.userName ? (
+			{token ? (
 				<SideBar
 					topBar={
 						<Topbar userDetails={userDetails} handleClick={handleClick} />
