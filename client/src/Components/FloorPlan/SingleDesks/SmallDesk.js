@@ -11,9 +11,6 @@ const SmallDesk = () => {
 			height="95"
 			width="90"
 		>
-			<defs>
-				{/* <style>.cls-1-sm-desk{fill:#676766;stroke-width:0.25px;}.cls-1-sm-desk,.cls-2-sm-desk{stroke:#1d1d1b;stroke-miterlimit:10;}.cls-2-sm-desk{fill:#999;}</style> */}
-			</defs>
 
 			<image
 				width="130"

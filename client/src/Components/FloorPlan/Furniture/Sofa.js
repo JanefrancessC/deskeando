@@ -11,9 +11,6 @@ const Sofa = ({xPoint,yPoint}) => {
 			x={xPoint}
 			y={yPoint}
 		>
-			<defs>
-				{/* <style>.cls-1-sofa{fill:none;stroke:#1d1d1b;stroke-miterlimit:10;}</style> */}
-			</defs>
 			<rect
 				class="cls-1-sofa"
 				x="214.03"

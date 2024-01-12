@@ -13,9 +13,6 @@ const ReceptionDesk = ({ xPoint, yPoint }) => {
             x={xPoint}
             y={yPoint}
 		>
-			<defs>
-				{/* <style>.cls-1-recep{fill:#999;}.cls-1-recep,.cls-2-recep{stroke:#1d1d1b;stroke-miterlimit:10;}.cls-2-recep{fill:#676766;stroke-width:0.25px;}</style> */}
-			</defs>
 			<path
 				class="cls-1-recep"
 				d="M2.37,89.62v49.67S73,137.09,104.69,99.36C126,74,131.94,55.61,134.64,0H86.05S89.83,42.65,68.5,64.25,11,90.16,2.37,89.62Z"
