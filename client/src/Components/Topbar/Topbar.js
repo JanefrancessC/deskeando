@@ -4,18 +4,20 @@ import iconuser from "./icon-user.svg";
 import bell from "./bell.svg";
 import { Link } from "react-router-dom";
 
-function Topbar({userDetails, handleClick}) {
+function Topbar({ userDetails, handleClick }) {
+	const [showDropdown, setShowDropdown] = useState(false)
 
-	const CustomInput = ({ value, onClick }) => (
-		<button
-			className="form-control dropdown-toggle"
-			onClick={onClick}
-			id="calendar-link"
-		>
-			{value || "Calendar"}
-		</button>
-	);
+	const dropdownRef = useRef(null);
 
+	const toggleDropdown = () => {
+		setShowDropdown(!showDropdown);
+	};
+
+	const handleClickOutside = (event) => {
+		if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+			setShowDropdown(false);
+		}
+	};
 
 	return (
 		<nav id="navbar" className="navbar navbar-expand-lg navbar-light bg-light">
@@ -43,7 +45,7 @@ function Topbar({userDetails, handleClick}) {
 					<strong className="user-name">{userDetails.userName}</strong> <br />
 					<span className="user-role">{userDetails.role}</span>
 				</span>
-				<div className="the-icon-user-background" ref={dropdownRef}>
+				<div className="the-icon-user-background" ref={handleClickOutside}>
 					<div onClick={toggleDropdown}>
 						<img className="icon-user" src={iconuser} alt="The Blue Dot" />
 					</div>
@@ -62,5 +64,4 @@ function Topbar({userDetails, handleClick}) {
 		</nav>
 	);
 }
-
 export default Topbar;
