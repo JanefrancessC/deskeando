@@ -5,6 +5,7 @@ import EmployeeDsh from "./Pages/EmployeeDash/EmployeeDsh.js";
 import SignIn from "./Pages/SignIn/SignIn.js";
 import Signup from "./Pages/Signup/Signup";
 import NotFound from "./Pages/Error/NotFound.js";
+import FloorPlan from "./Components/FloorPlan/FloorPlan.js"
 
 const App = () => (
 	<Routes>
@@ -13,6 +14,7 @@ const App = () => (
 		<Route path="/signup" element={<Signup />} />
 		<Route path="/admin" element={<Dashboard />} />
 		<Route path="/employee" element={<EmployeeDsh />} />
+		<Route path="/floorplan" element={<FloorPlan />} />
 		<Route path="*" element={<NotFound />} />
 	</Routes>
 );
