@@ -2,42 +2,66 @@
 
 .side-col {
 	height: 100vh;
-    background-color: #4d44b5;
-    width: 5%;
+	background-color: #4d44b5;
+	width: 5%;
 }
 
 .nav-item-sd {
-    width: 100%;
-
+	width: 75%;
+    height: 37px;
+	cursor: pointer;
 }
 .nav-item-sd:hover {
 	background-color: white;
+}
+
+.nav-item-sd:hover .bi-home {
+	fill: #4d44b5;
+}
+
+.nav-item-sd:hover .bi-map {
+	stroke: #4d44b5;
+}
+
+.nav-item-sd:hover .label {
+    display: block;
+	position: absolute;
+    color: black;
+    left: 80px;
     color: #4d44b5;
 }
 
+.nav-item-sd:hover .bi-calendar-date,
+.nav-item-sd:hover .bi-gear {
+	color: #4d44b5;
+}
 
-.bi-person, .bi-calendar-date, .bi-house {
-    font-size: 30px;
-    padding-bottom: 5px;
+.bi-gear,
+.bi-calendar-date {
+	color: white;
+	font-size: 21px;
+}
+.label {
+    display: none;
 }
 
 .item-label {
-    font-size: 16px;
-    line-height: 20px;
+	font-size: 16px;
+	line-height: 20px;
 }
-
 
 @media only screen and (max-width: 576px) {
+	h4 {
+		font-size: 18px;
+	}
 
-    h4 {
-        font-size: 18px 
-    }
+	.nav-item .item-label {
+		display: none;
+	}
 
-    .nav-item .item-label {
-        display: none;
-    }
-
-    .bi-person, .bi-calendar-date, .bi-house {
-    padding-bottom: 0px;
-}
+	.bi-person,
+	.bi-calendar-date,
+	.bi-house {
+		padding-bottom: 0px;
+	}
 }
