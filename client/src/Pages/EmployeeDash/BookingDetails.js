@@ -5,7 +5,7 @@ import "./EmployeeDsh.css";
 
 const BookingDetails = ({ isSplitView }) => {
 	return (
-		<div class="w-100 d-flex justify-content-around">
+		<div class="w-100 h-75 d-flex justify-content-around">
 			{isSplitView ? (
 				<>
 					<BookingForm />
