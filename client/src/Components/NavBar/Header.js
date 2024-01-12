@@ -4,12 +4,19 @@ import "./Header.css";
 import logo from "../../images/SVG/logo-01.svg";
 
 function Header() {
-	const navigate = useNavigate()
+	const navigate = useNavigate();
 	return (
 		<div className="">
 			<nav className="navbar px-2 navbar-expand-lg bg-body-tertiary">
 				<div className="container-fluid	">
-					<img src={logo} className="logo" alt="Logo" height="35" weight="65" onClick={() => navigate("/")} />
+					<img
+						src={logo}
+						className="logo"
+						alt="Logo"
+						height="35"
+						weight="65"
+						onClick={() => navigate("/")}
+					/>
 					<button
 						className="navbar-toggler"
 						type="button"
@@ -23,22 +30,34 @@ function Header() {
 					</button>
 					<div className="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul className="navbar-nav me-auto mb-lg-0">
-							<li className="">
-								<Link className="nav-item-left" role="button" to="/">
+							<li className="nav-item active">
+								<Link className="nav-item nav-item-left" role="button" to="/">
 									Home
 								</Link>
 							</li>
 							<li className="">
-								<Link className="nav-item-left" role="button" to="/about">
+								<Link
+									className="nav-item nav-item-left"
+									role="button"
+									to="/about"
+								>
 									About Us
 								</Link>
 							</li>
 						</ul>
 						<form className="btn-link px-4" role="search">
-							<Link className="btn btn-nav btn-pinks px-4 " role="button" to="/signup">
+							<Link
+								className="btn btn-nav btn-pinks px-4 "
+								role="button"
+								to="/signup"
+							>
 								Signup
 							</Link>
-							<Link className="btn btn-nav btn-pinks px-4" role="button" to="/signin">
+							<Link
+								className="btn btn-nav btn-pinks px-4"
+								role="button"
+								to="/signin"
+							>
 								SignIn
 							</Link>
 						</form>
