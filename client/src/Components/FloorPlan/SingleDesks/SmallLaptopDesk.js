@@ -11,9 +11,6 @@ const SmallLaptopDesk = () => {
 			height="95"
 			width="90"
 		>
-			<defs>
-				{/* <style>.cls-1-sm-laptop{fill:#676766;stroke-width:0.25px;}.cls-1-sm-laptop,.cls-2-sm-laptop{stroke:#1d1d1b;stroke-miterlimit:10;}.cls-2-sm-laptop{fill:#999;}.cls-3-sm-laptop{fill:#010101;}.cls-4-sm-laptop{fill:#e9e8e8;}.cls-5-sm-laptop{fill:#fff;}.cls-6-sm-laptop{fill:#d9d9d9;}</style> */}
-			</defs>
 			<g transform="scale(1 -1) translate(0,-100)">
 				<image
 					width="130"

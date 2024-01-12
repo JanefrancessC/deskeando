@@ -8,9 +8,6 @@ const WallPlan = () => {
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 1765.71 1151.65"
 		>
-			<defs>
-				{/* <!-- <style>.cls-1-walls,.cls-2-walls{fill:#010101;}.cls-1-walls,.cls-2-walls,.cls-3-walls,.cls-4-walls,.cls-5-walls{stroke:#010101;}.cls-1-walls,.cls-3-walls,.cls-5-walls{stroke-miterlimit:10;}.cls-3-walls{fill:none;}.cls-4-walls,.cls-5-walls,.cls-7-walls{fill:#fff;}.cls-6-walls{fill:#ccc;}.cls-8-walls{fill:#999;}</style> --> */}
-			</defs>
 			<path
 				className="cls-1-walls"
 				d="M1456.14,776.62l261.7,2.7V626.38h17V796.32l-278.69-2.71Z"

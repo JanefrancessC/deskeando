@@ -20,20 +20,6 @@ import {
 const FloorPlan = () => {
 	const [deskInformation, setDeskInformation] = useState(deskData);
 
-	// const mergeDeskData = (data) => {
-	// 	console.log(data);
-	// };
-
-	// const fetchDeskData = async () => {
-	// 	const response = await fetch("http://localhost:5000/desks");
-	// 	const newData = await response.json();
-	// 	mergeDeskData(newData);
-	// };
-
-	// useEffect(() => {
-	// 	console.log(fetchDeskData());
-	// }, []);
-
 	return (
 		<svg
 			className="deskplan-container"

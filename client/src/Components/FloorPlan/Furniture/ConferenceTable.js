@@ -12,9 +12,6 @@ const ConferenceTable = ({ xPoint, yPoint }) => {
 			x={xPoint}
 			y={yPoint}
 		>
-			<defs>
-				{/* <style>.cls-1-conf-table,.cls-2-conf-table{fill:none;stroke:#010101;}.cls-1-conf-table,.cls-3-conf-table{stroke-miterlimit:10;}.cls-3-conf-table{fill:#999;stroke:#1d1d1b;}</style> */}
-			</defs>
 			<path
 				class="cls-1-conf-table"
 				d="M147.2,256.3V276c-.32,3.69-2.44,6.64-5.21,7.24l-25,3.11a9.4,9.4,0,0,1-9.36-4.15,102,102,0,0,1,0-32.06A9.37,9.37,0,0,1,117,246l25,3.11C144.76,249.65,146.88,252.61,147.2,256.3Z"

@@ -11,9 +11,6 @@ const LaptopDeskGroup = () => {
             height="180"
             width="180"
 		>
-			<defs>
-				{/* <style>.cls-1-lg{fill:#676766;stroke-width:0.25px;}.cls-1-lg,.cls-2-lg{stroke:#1d1d1b;stroke-miterlimit:10;}.cls-2-lg{fill:#999;}.cls-3-lg{fill:#010101;}.cls-4-lg{fill:#e9e8e8;}.cls-5-lg{fill:#fff;}.cls-6-lg{fill:#d9d9d9;}.cls-7-lg{fill:#51402e;}</style> */}
-			</defs>
 			<image
 				width="168"
 				height="171"
