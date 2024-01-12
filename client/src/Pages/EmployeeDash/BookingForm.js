@@ -3,14 +3,17 @@ import "./EmployeeDsh.css";
 
 const BookingForm = () => {
 	return (
-		<div class="card" style={{ width: "45%" }}>
+		<div class="card ms-4 h-100 border-0" style={{ width: "37%" }}>
 			<h5
 				class="card-header"
 				style={{ backgroundColor: "#4D44B5", color: "#FCFCFF" }}
 			>
 				Booking Form
 			</h5>
-			<div class="card-body h-100" style={{ backgroundColor: "#faf9ff" }}>
+			<div
+				class="card-body d-flex flex-column gap-2 h-100 px-4"
+				style={{ backgroundColor: "#faf9ff" }}
+			>
 				<div class="form-group">
 					<label class="card-text mt-1" for="exampleInputEmail1">
 						Name
@@ -91,41 +94,43 @@ const BookingForm = () => {
 					</div>
 				</div>
 
-				<div class="form-check form-check-inline my-2">
-					<input
-						class="form-check-input"
-						type="radio"
-						name="inlineRadioOptions"
-						id="inlineRadio1"
-						value="option1"
-					/>
-					<label class="form-check-label" for="inlineRadio1">
-						Small
-					</label>
-				</div>
-				<div class="form-check form-check-inline">
-					<input
-						class="form-check-input"
-						type="radio"
-						name="inlineRadioOptions"
-						id="inlineRadio2"
-						value="option2"
-					/>
-					<label class="form-check-label" for="inlineRadio2">
-						Medium
-					</label>
-				</div>
-				<div class="form-check form-check-inline m">
-					<input
-						class="form-check-input"
-						type="radio"
-						name="inlineRadioOptions"
-						id="inlineRadio3"
-						value="option3"
-					/>
-					<label class="form-check-label" for="inlineRadio3">
-						Large
-					</label>
+				<div>
+					<div class="form-check form-check-inline my-2">
+						<input
+							class="form-check-input"
+							type="radio"
+							name="inlineRadioOptions"
+							id="inlineRadio1"
+							value="option1"
+						/>
+						<label class="form-check-label" for="inlineRadio1">
+							Small
+						</label>
+					</div>
+					<div class="form-check form-check-inline">
+						<input
+							class="form-check-input"
+							type="radio"
+							name="inlineRadioOptions"
+							id="inlineRadio2"
+							value="option2"
+						/>
+						<label class="form-check-label" for="inlineRadio2">
+							Medium
+						</label>
+					</div>
+					<div class="form-check form-check-inline m">
+						<input
+							class="form-check-input"
+							type="radio"
+							name="inlineRadioOptions"
+							id="inlineRadio3"
+							value="option3"
+						/>
+						<label class="form-check-label" for="inlineRadio3">
+							Large
+						</label>
+					</div>
 				</div>
 
 				<div class="form-group">
@@ -140,11 +145,11 @@ const BookingForm = () => {
 					/>
 				</div>
 
-				<div class="btn-wrap d-flex w-50 justify-content-start gap-5">
-					<button type="submit" className="btn border border-primary">
+				<div class="d-flex w-50 justify-content-start gap-5">
+					<button type="submit" id="s-btn" className="btn rounded-pill">
 						Confirm Booking
 					</button>
-					<button type="submit" className="btn f-btn">
+					<button type="submit" id="c-btn" className="btn rounded-pill">
 						Cancel
 					</button>
 				</div>

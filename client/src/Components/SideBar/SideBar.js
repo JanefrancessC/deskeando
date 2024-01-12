@@ -4,10 +4,11 @@ import logo from "../../images/SVG/logo-dark-bg-01.svg";
 import { useNavigate } from "react-router-dom";
 import SidebarIcons from "./SidebarIcons";
 
-const SideBar = (prop) => {
+const SideBar = ({ topBar, bookingDetails, handleClick }) => {
 	const navigate = useNavigate();
+
 	// state to set name and icon type for each nav item,this data could be abstracted?
-	
+
 	return (
 		<section>
 			<div className="container-fluid">
@@ -19,18 +20,18 @@ const SideBar = (prop) => {
 									src={logo}
 									className="logo"
 									alt="Logo"
-									height="35"
+									height="35"d
 									weight="65"
 									onClick={() => navigate("/")}
 								/>
 							</div> */}
 
-							<SidebarIcons />
+							<SidebarIcons handleClick={handleClick} />
 						</div>
 					</div>
 					<div className="col align-content-center">
-						{prop.topBar}
-						{prop.bookingDetails}
+						{topBar}
+						{bookingDetails}
 					</div>
 				</div>
 			</div>
