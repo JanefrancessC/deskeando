@@ -1,0 +1,30 @@
+.cls-1-walls,
+.cls-2-walls {
+	fill: #010101;
+}
+.cls-1-walls,
+.cls-2-walls,
+.cls-3-walls,
+.cls-4-walls,
+.cls-5-walls {
+	stroke: #010101;
+}
+.cls-1-walls,
+.cls-3-walls,
+.cls-5-walls {
+	stroke-miterlimit: 10;
+}
+.cls-3-walls {
+	fill: none;
+}
+.cls-4-walls,
+.cls-5-walls,
+.cls-7-walls {
+	fill: #fff;
+}
+.cls-6-walls {
+	fill: #ccc;
+}
+.cls-8-walls {
+	fill: #999;
+}
