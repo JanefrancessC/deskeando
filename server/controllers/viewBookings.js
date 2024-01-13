@@ -27,32 +27,24 @@ export const viewBookings = async (req, res) => {
 		);
 
 		const isAdmin = userAdmin.rows[0].is_admin;
-		/***
-		 SELECT 
-    b.*, 
-    d.*, 
-    u.user_id, 
-    CONCAT(u.f_name, ' ', u.l_name) AS user_name,
-    u.email AS user_email,
-    dp.department_name
-FROM desks d
-LEFT JOIN bookings b ON d.desk_id = b.desk_id
-INNER JOIN users u ON b.user_id = u.user_id
-INNER JOIN departments dp ON dp.dept_id = u.dept_id;
-
-		 */
 
 		// Admin view
 		if (isAdmin) {
 			const adminBookingResult = await db.query(`SELECT
-				b.*,
+				b.booking_id,
+				b.user_id,
+				b.desk_id,
+				b.reservation_date,
 				d.*, 
 				u.user_id,
-				CONCAT(u.first_name, ' ', u.last_name) AS name,
-				FROM bookings b 
-				JOIN desks d ON b.desk_id = d.desk_id 
-				JOIN users u ON b.user_id = u.user_id`);
-			console.log(adminBookingResult.rows);
+				CONCAT(u.first_name, ' ', u.last_name) AS username,
+				u.email,
+				dp.name AS department
+				FROM desks d
+				LEFT JOIN bookings b ON b.desk_id = d.desk_id 
+				INNER JOIN users u ON b.user_id = u.user_id
+				INNER JOIN department dp on dp.department_id = u.dept_id
+				`);
 			bookingDetails = adminBookingResult.rows;
 		}
 
