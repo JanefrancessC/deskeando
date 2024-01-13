@@ -33,9 +33,9 @@ const DeskLabel = ({ deskDetails, coords }) => {
 				{...{ contentStyle }}
 			>
 				<div className="popup-container">
-					<div className="card">
-						<div className="card-body">
-							<h6 className="card-title">Desk Information</h6>
+					<div className="card floor-plan-card">
+						<div className="card-body floor-plan-label">
+							<h6 className="card-title floor-plan-title">Desk Information</h6>
 							<h6>Desk: {deskDetails.desk}</h6>
 							<h6>Status: {deskDetails.status}</h6>
 							<Button
