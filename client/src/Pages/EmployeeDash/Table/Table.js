@@ -1,39 +1,29 @@
 import { React, useEffect, useState } from "react";
-import TableHead from "./TableHead";
+import TableHead from "../TableHead";
 import classNames from "classnames";
 
 const Table = ({ isSplitView }) => {
-	const fakeData = [
-		{
-			"Booking Id": 7,
-			"Desk Id": 1,
-			"Reserved Date": "25 Apr 2025",
-			"Time": "04:00:00",
-			"User Id": 3,
-			"Desk Type": "Standing Desk",
-			"Desk size": "Medium",
-		},
-	];
 	const [data, setData] = useState([]);
 	let cardClass = "card border-0";
 	cardClass = isSplitView ? (cardClass += "splitView") : cardClass;
 
-	// useEffect(() => {
-	// 	const token = JSON.parse(localStorage.getItem("data")).token;
-	// 	const options = {
-	// 		headers: { Authorization: `Bearer ${token}` },
-	// 	};
+	const fetchData = async (url, options) => {
+		return fetch(url, options)
+			.then((response) => response.json())
+			.then((data) => data);
+	};
 
-	// 	fetchData("/api/bookings", options).then((data) => {
-	// 		setData(data);
-	// 	});
-	// }, []);
+	useEffect(() => {
+		const token = JSON.parse(localStorage.getItem("data")).token;
+		const options = {
+			headers: { Authorization: `Bearer ${token}` },
+		};
 
-	// const fetchData = async (url, options) => {
-	// 	return fetch(url, options)
-	// 		.then((response) => response.json())
-	// 		.then((data) => data);
-	// };
+		fetchData("/api/bookings", options).then((data) => {
+			setData(data);
+		});
+	}, []);
+
 	return (
 		<div
 			className={classNames("card border-0", {
@@ -51,7 +41,7 @@ const Table = ({ isSplitView }) => {
 				<table class="table table-responsive">
 					<TableHead isSplitView={isSplitView} />
 					<tbody>
-						{fakeData.map((el, index) => (
+						{data.map((el, index) => (
 							<tr>
 								<td>{`${index + 1}`.padStart(2, 0)}</td>
 								<td>
@@ -80,9 +70,7 @@ const Table = ({ isSplitView }) => {
 								<td className={classNames({ "type-hide": isSplitView })}>
 									{el["Desk Type"]}
 								</td>
-								<td >
-									{el["Desk size"]}
-								</td>
+								<td>{el["Desk size"]}</td>
 								<td>
 									<i class="bi bi-pencil-square mx-2"></i>
 									<i class="bi bi-trash mx-2"></i>
