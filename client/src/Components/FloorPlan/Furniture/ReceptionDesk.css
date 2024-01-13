@@ -1,0 +1,12 @@
+.cls-1-recep {
+	fill: #999;
+}
+.cls-1-recep,
+.cls-2-recep {
+	stroke: #1d1d1b;
+	stroke-miterlimit: 10;
+}
+.cls-2-recep {
+	fill: #676766;
+	stroke-width: 0.25px;
+}

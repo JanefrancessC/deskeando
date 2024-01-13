@@ -74,6 +74,8 @@
     "jsonwebtoken": "^9.0.2",
     "morgan": "^1.10.0",
     "pg": "^8.11.3",
+    "react-bootstrap": "^2.9.2",
+    "reactjs-popup": "^2.0.6",
     "winston": "^3.11.0"
   },
   "engines": {

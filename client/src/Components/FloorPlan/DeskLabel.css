@@ -1,0 +1,62 @@
+.open {
+	color: #009b1b;
+}
+
+.closed {
+	color: #ed5d34;
+}
+
+.light-tone-letters {
+	color: white;
+}
+
+.info-div {
+	height: 100%;
+	width: 100%;
+	background-color: currentColor;
+	padding: 6px 0px 0px 7px;
+	cursor: pointer;
+	border-radius: 15px;
+}
+
+.card {
+	border-radius: 10px;
+}
+
+.card h6 {
+	font-size: 10px;
+}
+.card-body {
+	padding: 5px;
+	margin: 0px auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
+}
+
+.card-title {
+	background-color: #4d44b5;
+	color: white;
+	padding: 5px;
+	font-size: 12px;
+	text-align: center;
+}
+
+.popup-button {
+	height: 20px;
+	width: 80%;
+	padding: 0px;
+	font-size: 10px;
+	align-self: center;
+}
+
+.popup-content {
+	border-radius: 10px;
+}
+
+@media only screen and (max-width: 992px) {
+}
+
+@media only screen and (max-width: 576px) {
+}

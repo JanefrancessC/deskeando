@@ -1,0 +1,13 @@
+
+.cls-1-conf-table, .cls-2-conf-table {
+	fill: none;
+	stroke: #010101;
+}
+.cls-1-conf-table,
+.cls-3-conf-table {
+	stroke-miterlimit: 10;
+}
+.cls-3-conf-table {
+	fill: #999;
+	stroke: #1d1d1b;
+}
