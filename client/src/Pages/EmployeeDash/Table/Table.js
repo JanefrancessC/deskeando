@@ -20,6 +20,7 @@ const Table = ({ isSplitView }) => {
 		};
 
 		fetchData("/api/bookings", options).then((data) => {
+			console.log(data)
 			setData(data);
 		});
 	}, []);

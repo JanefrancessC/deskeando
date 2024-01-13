@@ -20,23 +20,8 @@ function Topbar({ userDetails, handleClick }) {
 	};
 
 	return (
-		<nav id="navbar" className="navbar navbar-expand-lg navbar-light bg-light">
-			<div className="container-fluid">
-				<div className="navbar-nav">
-					<button id="map-link" className="dropdown-toggle nav-link" href="#">
-						Map
-					</button>
-					<button id="book-link" className="nav-link" onClick={handleClick}>
-						Book
-					</button>
-					<button id="bookings-link" className="nav-link" href="#" onClick={handleClick}>
-						Bookings
-					</button>
-					<button id="map-link" className="dropdown-toggle nav-link" href="#">
-						Map
-					</button>
-				</div>
-			</div>
+		<nav id="navbar" className="navbar navbar-expand-lg  justify-content-end">
+			
 
 			<div className="end-of-page">
 				<img className="bell" src={bell} alt="The Bell" />
