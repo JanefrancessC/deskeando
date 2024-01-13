@@ -19,6 +19,22 @@ function SignUp() {
 	});
 	const [signUpError, setSignUpError] = useState(false);
 	const [errorMessage, setErrorMessage] = useState("");
+	const [departments, setDepartments] = useState([]);
+
+	// fetch department data from server
+	useEffect(() => {
+		const fetchDepartments = async () => {
+			try {
+				const response = await fetch("/api/departments");
+				const data = await response.json();
+				setDepartments(data);
+			} catch (error) {
+				console.error("Error fetching departments:", error);
+			}
+		};
+
+		fetchDepartments();
+	}, []);
 
 	const handleInputChange = (event) => {
 		const { name, value } = event.target;
@@ -128,13 +144,8 @@ function SignUp() {
 			setSignUpError(true);
 			return;
 		}
-		// formatted department name to match with master data
-		const deptFormatted = formData.department.replace(
-			/(^\w{1})|(\s+\w{1})/g,
-			(letter) => letter.toUpperCase()
-		);
-
-		trySignUp("/api/signup", { ...formData, department: deptFormatted });
+		
+		trySignUp("/api/signup", { ...formData });
 		setIsValid(true);
 		setSignUpError(false);
 	};
@@ -237,14 +248,11 @@ function SignUp() {
 											<option value="" disabled>
 												Department
 											</option>
-											<option value="it">IT</option>
-											<option value="marketing">Marketing</option>
-											<option value="finance">Finance</option>
-											<option value="sales">Sales</option>
-											<option value="hr">HR</option>
-											<option value="customer service">Customer Service</option>
-											<option value="legal">Legal</option>
-											<option value="operations">Operations</option>
+											{departments.map((department) => (
+												<option key={department.id} value={department.name}>
+													{department.name}
+												</option>
+											))}
 										</select>
 										<div className="invalid-feedback text-start">
 											Please select your department.
