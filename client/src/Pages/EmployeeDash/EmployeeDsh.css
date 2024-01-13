@@ -31,3 +31,7 @@
  .time-hide, .type-hide, .size-hide {
     display: none;
  }
+
+.react-datepicker__calendar-icon {
+    margin-top: 7px;
+}
