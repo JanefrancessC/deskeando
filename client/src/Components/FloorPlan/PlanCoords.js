@@ -53,7 +53,7 @@ const deskData = [
 	{ desk: "DK-01", status: "open" },
 	{ desk: "DK-02", status: "open" },
 	{ desk: "DK-03", status: "closed" },
-	{ desk: "DK-04", status: "reserved" },
+	{ desk: "DK-04", status: "closed" },
 
 	{ desk: "DK-05", status: "open" },
 	{ desk: "DK-06", status: "open" },
@@ -61,7 +61,7 @@ const deskData = [
 	{ desk: "DK-08", status: "open" },
 
 	{ desk: "DK-09", status: "open" },
-	{ desk: "DK-10", status: "reserved" },
+	{ desk: "DK-10", status: "closed" },
 	{ desk: "DK-11", status: "open" },
 	{ desk: "DK-12", status: "open" },
 
@@ -72,14 +72,14 @@ const deskData = [
 
 	{ desk: "DK-17", status: "open" },
 	{ desk: "DK-18", status: "closed" },
-	{ desk: "DK-19", status: "reserved" },
+	{ desk: "DK-19", status: "closed" },
 	{ desk: "DK-20", status: "open" },
 ];
 const deskData2 = [
 	{ desk: "DK-01", status: "closed" },
 	{ desk: "DK-02", status: "open" },
 	{ desk: "DK-03", status: "closed" },
-	{ desk: "DK-04", status: "reserved" },
+	{ desk: "DK-04", status: "closed" },
 
 	{ desk: "DK-05", status: "open" },
 	{ desk: "DK-06", status: "open" },
@@ -87,18 +87,18 @@ const deskData2 = [
 	{ desk: "DK-08", status: "open" },
 
 	{ desk: "DK-09", status: "open" },
-	{ desk: "DK-10", status: "reserved" },
+	{ desk: "DK-10", status: "closed" },
 	{ desk: "DK-11", status: "open" },
 	{ desk: "DK-12", status: "open" },
 
 	{ desk: "DK-13", status: "closed" },
-	{ desk: "DK-14", status: "reserved" },
-	{ desk: "DK-15", status: "reserved" },
-	{ desk: "DK-16", status: "reserved" },
+	{ desk: "DK-14", status: "closed" },
+	{ desk: "DK-15", status: "closed" },
+	{ desk: "DK-16", status: "closed" },
 
-	{ desk: "DK-17", status: "reserved" },
+	{ desk: "DK-17", status: "closed" },
 	{ desk: "DK-18", status: "closed" },
-	{ desk: "DK-19", status: "reserved" },
+	{ desk: "DK-19", status: "closed" },
 	{ desk: "DK-20", status: "open" },
 ];
 

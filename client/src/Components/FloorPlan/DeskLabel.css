@@ -6,15 +6,8 @@
 	color: #ed5d34;
 }
 
-.reserved {
-	color: #f9c91f;
-}
-
 .light-tone-letters {
 	color: white;
-}
-.dark-tone-letters {
-	color: #023020;
 }
 
 .info-div {
@@ -28,7 +21,6 @@
 
 .card {
 	border-radius: 10px;
-	
 }
 
 .card h6 {
@@ -49,7 +41,6 @@
 	padding: 5px;
 	font-size: 12px;
 	text-align: center;
-	
 }
 
 .popup-button {
