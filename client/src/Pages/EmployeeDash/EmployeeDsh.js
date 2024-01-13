@@ -21,7 +21,7 @@ const EmployeeDsh = () => {
 	};
 	const handleClick = (e) => {
 		e.preventDefault();
-		setView(switchView(view, e.currentTarget.id))	
+		setView(switchView(e.currentTarget.id))	
 	};
 	return (
 		<div className="vh-100">
