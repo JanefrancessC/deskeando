@@ -2,7 +2,6 @@ import db from "../db.js";
 
 export const formatDateTime = (isoDateString) => {
 	const date = new Date(isoDateString)
-
 	const formattedDate = new Intl.DateTimeFormat("en-UK", {
 		year: "numeric",
 		month: "short",
@@ -22,6 +21,7 @@ export const updateBooking = async (req, res) => {
 		const { desk, date } = req.body;
 
 		const newDateStamp = Date.now();
+		console.log(newDateStamp);
 		const newDate = new Date(newDateStamp).toUTCString();
 
 		const currentDate = new Date();
