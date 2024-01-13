@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import "../EmployeeDsh.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -6,33 +6,42 @@ import DayTime from "./DayTime";
 
 const BookingForm = () => {
 	const { token, id } = JSON.parse(localStorage.getItem("data"));
+	const [desks, setDesks] = useState([]);
+
 	const notifySuccess = () => toast.success("Booking created successfully");
-	const [formData, setFormData] = useState([
-		{
-			userId: id,
-			desk: "",
-			date: null,
-		},
-	]);
+	const [formData, setFormData] = useState({
+		userId: id,
+		desk: "",
+		date: null,
+	});
 
 	const postData = async () => {
+		console.log(formData);
 		return await fetch("/api/bookings", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
 				Authorization: `Bearer ${token}`,
 			},
-			body: JSON.stringify({ hello: "world" }),
+			body: JSON.stringify(formData),
 		});
 	};
 
 	const handleSubmit = () => {
-		postData()
-			.then((response) => response.json())
-			.then((data) => {
-				console.log(data);
-				notifySuccess();
-			});
+		try {
+			postData()
+				.then((response) => response.json())
+				.then((data) => {
+					console.log(data);
+					notifySuccess();
+				});
+		} catch (err) {
+			console.log(err);
+		}
+	};
+
+	const handleFormData = (e) => {
+		setFormData({ ...formData, [e.target.name]: e.target.value });
 	};
 
 	return (
@@ -82,10 +91,15 @@ const BookingForm = () => {
 						<select
 							class="form-select card-text my-2 mb-3"
 							aria-label="Default select example"
+							onChange={handleFormData}
 						>
 							<option selected>Choose a desk name</option>
-							<option value="1">DK-01</option>
-							<option value="2">DK-02</option>
+							<option name="desk" value="DK-01">
+								DK-01
+							</option>
+							<option name="desk" value="DK-02">
+								DK-02
+							</option>
 						</select>
 					</div>
 				</div>
