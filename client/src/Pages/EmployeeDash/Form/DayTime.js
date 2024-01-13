@@ -2,7 +2,6 @@ import { React, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css"
 
-
 const DayTime = () => {
 	const [startDate, setStartDate] = useState(new Date());
 	return (
@@ -12,14 +11,16 @@ const DayTime = () => {
 					<label class="mt-1" for="exampleInputPassword1">
 						Date
 					</label>
-          <DatePicker
-            selected={startDate}
+					<DatePicker
+						selected={startDate}
 						onChange={(date) => setStartDate(date)}
-            className="form-control my-2 mb-3 w-100"
-            placeholderText="Select a date"
-            minDate={new Date()}
+						className="form-control my-2 mb-3 d-flex justify-content-end gap-2 w-100"
+						showTimeInput
+            showIcon
+						placeholderText="Select a date"
+						icon="bi bi-calendar3"
+						minDate={new Date()}
 					/>
-					
 				</div>
 
 				<div>
