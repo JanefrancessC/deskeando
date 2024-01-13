@@ -19,14 +19,14 @@
 	border-radius: 15px;
 }
 
-.card {
+.floor-plan-card {
 	border-radius: 10px;
 }
 
-.card h6 {
+.floor-plan-card h6 {
 	font-size: 10px;
 }
-.card-body {
+.floor-plan-label {
 	padding: 5px;
 	margin: 0px auto;
 	display: flex;
@@ -35,7 +35,7 @@
 	text-align: center;
 }
 
-.card-title {
+.floor-plan-title {
 	background-color: #4d44b5;
 	color: white;
 	padding: 5px;
