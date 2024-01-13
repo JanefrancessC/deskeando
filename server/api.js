@@ -6,6 +6,7 @@ import { createBooking } from "./controllers/booking.js";
 import { viewBookings } from "./controllers/viewBookings.js";
 import { updateBooking } from "./controllers/updateBooking.js";
 import { getDepartments } from "./controllers/getDepartments.js";
+import {getDesks } from "./controllers/getDesks.js"
 
 
 const router = Router();
@@ -21,6 +22,7 @@ router.post("/bookings", auth, createBooking);
 router.get("/bookings", auth, viewBookings);
 router.put("/bookings/:id", auth, updateBooking)
 router.get("/departments", getDepartments);
+router.get("/desks", getDesks);
 
 
 export default router;
