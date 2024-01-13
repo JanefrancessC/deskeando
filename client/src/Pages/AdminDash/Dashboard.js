@@ -1,6 +1,7 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 import Forbidden from "../Error/Forbidden";
+import BookingDetailsAdmin from "./BookingDetailsAdmin";
 
 const Dashboard = () => {
 	let userName = useLocation().state?.key;
@@ -11,6 +12,7 @@ const Dashboard = () => {
 			) : (
 				<Forbidden />
 			)}
+			<BookingDetailsAdmin />
 		</div>
 	);
 };
