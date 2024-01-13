@@ -1,4 +1,6 @@
-
+.btn-wrap {
+    height: 7%;
+}
 #s-btn, #c-btn {
     border: 2px solid #4D44B5;
     color: #4D44B5;

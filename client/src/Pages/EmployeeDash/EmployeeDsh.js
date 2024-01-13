@@ -7,7 +7,7 @@ import BookingDetails from "./BookingDetails";
 
 const EmployeeDsh = () => {
 	let token = localStorage.getItem("data");
-	const [splitView, setSplitView] = useState(true);
+	const [splitView, setSplitView] = useState(false);
 	let userDetails = {
 		userName: useLocation().state?.key || null,
 		role: "User",
@@ -22,8 +22,6 @@ const EmployeeDsh = () => {
 				setSplitView(true)
 				break;
 		}
-		//e.currentTarget.id == 0 ? setSplitView(true) : setSplitView(false)
-		//e.target.id === "book-link" ? setSplitView(true) : setSplitView(false);
 	};
 	return (
 		<div className="vh-100">
