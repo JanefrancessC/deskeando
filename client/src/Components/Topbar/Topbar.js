@@ -1,59 +1,52 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./topbar.css";
-import blueDot from "./bluedot.svg";
+import iconuser from "./icon-user.svg";
 import bell from "./bell.svg";
-import gear from "./gear.svg";
+import { Link } from "react-router-dom";
 
-function Topbar(prop) {
-	const [startDate, setStartDate] = useState(null);
-	const [userName, setUserName] = useState("");
-	const [userRole, setUserRole] = useState("");
+function Topbar({ userDetails, handleClick }) {
+	const [showDropdown, setShowDropdown] = useState(false)
 
-	const CustomInput = ({ value, onClick }) => (
-		<button
-			className="form-control dropdown-toggle"
-			onClick={onClick}
-			id="calendar-link"
-		>
-			{value || "Calendar"}
-		</button>
-	);
+	const dropdownRef = useRef(null);
+
+	const toggleDropdown = () => {
+		setShowDropdown(!showDropdown);
+	};
+
+	const handleClickOutside = (event) => {
+		if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+			setShowDropdown(false);
+		}
+	};
 
 	return (
-		<nav className="navbar navbar-expand-lg navbar-light bg-light">
-			<div className="container-fluid">
-				<div className="navbar-nav">
-					{/* <div className="nav-item">
-						<DatePicker
-							selected={startDate}
-							onChange={(date) => setStartDate(date)}
-							customInput={<CustomInput />}
-							popperClassName="popper-class"
-						/>
-					</div> */}
-					<button id="map-link" className="dropdown-toggle nav-link" href="#">
-						Map
-					</button>
-					<button id="book-link" className="nav-link" href="#">
-						Book
-					</button>
-					<button id="bookings-link" className="nav-link" href="#">
-						Bookings
-					</button>
-				</div>
-			</div>
+		<nav id="navbar" className="navbar navbar-expand-lg  justify-content-end">
+			
 
 			<div className="end-of-page">
 				<img className="bell" src={bell} alt="The Bell" />
-				<img className="gear" src={gear} alt="The Gear" />
+				{/* <img className="gear" src={gear} alt="The Gear" /> */}
 				<span className="user-info">
-					<strong className="user-name">{prop.userName}</strong> <br />
-					<span className="user-role">{prop.role}</span>
+					<strong className="user-name">{userDetails.userName}</strong> <br />
+					<span className="user-role">{userDetails.role}</span>
 				</span>
-				<img className="blue-dot" src={blueDot} alt="The Blue Dot" />
+				<div className="the-icon-user-background" ref={handleClickOutside}>
+					<div onClick={toggleDropdown}>
+						<img className="icon-user" src={iconuser} alt="The Blue Dot" />
+					</div>
+					{showDropdown && (
+						<Link className="dropdown-button" to="/">
+							<button
+								className="dropdown-menu-buttons"
+								onClick={() => localStorage.clear()}
+							>
+								Sign out
+							</button>
+						</Link>
+					)}
+				</div>
 			</div>
 		</nav>
 	);
 }
-
 export default Topbar;

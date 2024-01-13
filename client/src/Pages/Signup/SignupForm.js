@@ -19,6 +19,22 @@ function SignUp() {
 	});
 	const [signUpError, setSignUpError] = useState(false);
 	const [errorMessage, setErrorMessage] = useState("");
+	const [departments, setDepartments] = useState([]);
+
+	// fetch department data from server
+	useEffect(() => {
+		const fetchDepartments = async () => {
+			try {
+				const response = await fetch("/api/departments");
+				const data = await response.json();
+				setDepartments(data);
+			} catch (error) {
+				console.error("Error fetching departments:", error);
+			}
+		};
+
+		fetchDepartments();
+	}, []);
 
 	const handleInputChange = (event) => {
 		const { name, value } = event.target;
@@ -128,13 +144,8 @@ function SignUp() {
 			setSignUpError(true);
 			return;
 		}
-		// formatted department name to match with master data
-		const deptFormatted = formData.department.replace(
-			/(^\w{1})|(\s+\w{1})/g,
-			(letter) => letter.toUpperCase()
-		);
-
-		trySignUp("/api/signup", { ...formData, department: deptFormatted });
+		
+		trySignUp("/api/signup", { ...formData });
 		setIsValid(true);
 		setSignUpError(false);
 	};
@@ -160,16 +171,14 @@ function SignUp() {
 					<div className="col-12 col-md-8 col-lg-6 col-xl-5">
 						<div className="card shadow-2-strong">
 							<div className="card-body p-5 text-center">
-								<h1
-									id="title"
-									className="text-center sign_up-heading fw-bold p-2"
-								>
-									Deskeando
-								</h1>
+								<h1 className="display-6 fw-bold p-2">Deskeando</h1>
 								<h3 className="form-group d-flex flex-row p-1 ">Sign Up</h3>
 								&nbsp;
 								<h6 className="fw-bold already-registered gap-2">
-									Already registered? <Link to="/signin" className="sign">Sign In</Link>
+									Already registered?{" "}
+									<Link to="/signin" className="sign">
+										Sign In
+									</Link>
 								</h6>
 								<form
 									onSubmit={handleSubmit}
@@ -239,14 +248,11 @@ function SignUp() {
 											<option value="" disabled>
 												Department
 											</option>
-											<option value="it">IT</option>
-											<option value="marketing">Marketing</option>
-											<option value="finance">Finance</option>
-											<option value="sales">Sales</option>
-											<option value="hr">HR</option>
-											<option value="customer service">Customer Service</option>
-											<option value="legal">Legal</option>
-											<option value="operations">Operations</option>
+											{departments.map((department) => (
+												<option key={department.id} value={department.name}>
+													{department.name}
+												</option>
+											))}
 										</select>
 										<div className="invalid-feedback text-start">
 											Please select your department.

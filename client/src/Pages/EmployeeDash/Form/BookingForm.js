@@ -1,16 +1,52 @@
-import React from "react";
-import "./EmployeeDsh.css";
+import { React, useState } from "react";
+import "../EmployeeDsh.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import DayTime from "./DayTime";
 
 const BookingForm = () => {
+	const { token, id } = JSON.parse(localStorage.getItem("data"));
+	const notifySuccess = () => toast.success("Booking created successfully");
+	const [formData, setFormData] = useState([
+		{
+			userId: id,
+			desk: "",
+			date: null,
+		},
+	]);
+
+	const postData = async () => {
+		return await fetch("/api/bookings", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+				Authorization: `Bearer ${token}`,
+			},
+			body: JSON.stringify({ hello: "world" }),
+		});
+	};
+
+	const handleSubmit = () => {
+		postData()
+			.then((response) => response.json())
+			.then((data) => {
+				console.log(data);
+				notifySuccess();
+			});
+	};
+
 	return (
-		<div class="card" style={{ width: "45%" }}>
+		<div class="card ms-4 h-75 border-0" style={{ width: "37%" }}>
 			<h5
 				class="card-header"
 				style={{ backgroundColor: "#4D44B5", color: "#FCFCFF" }}
 			>
 				Booking Form
 			</h5>
-			<div class="card-body h-100" style={{ backgroundColor: "#faf9ff" }}>
+			<div
+				class="card-body gap-2 h-100 px-4"
+				style={{ backgroundColor: "#faf9ff" }}
+			>
 				<div class="form-group">
 					<label class="card-text mt-1" for="exampleInputEmail1">
 						Name
@@ -22,44 +58,7 @@ const BookingForm = () => {
 						placeholder="Enter your name"
 					/>
 				</div>
-
-				<div class="form-group d-flex justify-content-between ">
-					<div class="w-75">
-						<label class="mt-1" for="exampleInputPassword1">
-							Date
-						</label>
-						<input
-							type="password"
-							class="form-control my-2 mb-3 w-100"
-							id="exampleInputPassword1"
-							placeholder="Monday, January 2, 2024"
-						/>
-					</div>
-
-					<div>
-						<label class="mt-1 ms-4" for="exampleInputPassword1">
-							Time
-						</label>
-
-						<div class="d-flex justify-content-between" style={{}}>
-							<input
-								type="password"
-								class="form-control my-2 mb-3 ms-4"
-								id="exampleInputPassword1"
-								placeholder="from 9:00am"
-								style={{ width: "40%" }}
-							/>
-
-							<input
-								type="password"
-								class="form-control my-2 mb-3"
-								id="exampleInputPassword1"
-								placeholder="to 5:00pm"
-								style={{ width: "40%" }}
-							/>
-						</div>
-					</div>
-				</div>
+				<DayTime />
 
 				<div class="form-group d-flex justify-content-between">
 					<div style={{ width: "55%" }}>
@@ -140,13 +139,20 @@ const BookingForm = () => {
 					/>
 				</div>
 
-				<div class="btn-wrap d-flex w-50 justify-content-start gap-5">
-					<button type="submit" className="btn f-btn">
+				<div class="btn-wrap pb-2 d-flex w-75 justify-content-start gap-5">
+					<button
+						type="submit"
+						id="s-btn"
+						className="btn rounded"
+						onClick={handleSubmit}
+					>
 						Confirm Booking
 					</button>
-					<button type="submit" className="btn btn-danger btn-lg ">
+					<button type="submit" id="c-btn" className="btn rounded">
 						Cancel
 					</button>
+
+					<ToastContainer position="bottom-center" />
 				</div>
 			</div>
 		</div>

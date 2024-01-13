@@ -1,12 +1,16 @@
-.btn-wrap > :nth-child(1) {
-    background-color: #4D44B5;
-    color: #f7f6fa;
-    border: none;
+.btn-wrap {
+    height: 7%;
+}
+#s-btn, #c-btn {
+    border: 2px solid #4D44B5;
+    color: #4D44B5;
 }
 
-.f-btn:hover{
+#s-btn:hover, #c-btn:hover {
+    background-color: #c1bbeb;
+    border: none;
     color: #4D44B5;
-    background-color: rgba(193, 187, 235, 1);
+    font-weight: bold;
 }
 
 .bi-alarm, .bi-calendar{
@@ -16,4 +20,14 @@
 
 .bi-pencil-square:hover, .bi-trash:hover {
     color:  #ed5d34;
+ }
+
+ .splitView {
+    width: 50%;
+ }
+ .card-tb {
+    width: 80%;
+ }
+ .time-hide, .type-hide, .size-hide {
+    display: none;
  }
