@@ -1,41 +1,14 @@
 import React, { useState, useRef } from "react";
 import "./DeskLabel.css";
+// react-boostrap
 import Button from "react-bootstrap/Button";
-import OverlayTrigger from "react-bootstrap/OverlayTrigger";
-import Popover from "react-bootstrap/Popover";
+// react-popup
+import Popup from "reactjs-popup";
 import { useNavigate } from "react-router-dom";
 
 const DeskLabel = ({ deskDetails, coords }) => {
-	const [show, setShow] = useState(false);
-	const target = useRef(null);
+	const contentStyle = { background: "#FFFFFF" };
 	const navigate = useNavigate();
-
-	const popover = (
-		<Popover id="popover-basic" className="popover-basic">
-			<Popover.Header as="h2" className="popover-header">
-				Desk Information
-			</Popover.Header>
-			<Popover.Body>
-				<div>
-					<h6 className="popover-body-text">Desk: {deskDetails.desk}</h6>
-					<h6 className="popover-body-text">
-						Desk Status: {deskDetails.status}
-					</h6>
-					<h6 className="popover-body-text">Desk Type/Details: -</h6>
-					{deskDetails.status === "open" && (
-						<Button
-							className="popover-button-text"
-							onClick={() => {
-								navigate("/employee");
-							}}
-						>
-							Book This Desk?
-						</Button>
-					)}
-				</div>
-			</Popover.Body>
-		</Popover>
-	);
 
 	return (
 		<foreignObject
@@ -44,26 +17,39 @@ const DeskLabel = ({ deskDetails, coords }) => {
 			width="60"
 			height="30"
 			className={deskDetails.status}
-			id="foreign"
+			xmlns="http://www.w3.org/1999/xhtml"
 		>
-			<OverlayTrigger
-				trigger="click"
-				placement="bottom"
-				overlay={popover}
-				rootClose={true}
+
+			<Popup
+				trigger={
+					<div id="foreign" className="info-div">
+						<h6 className={"light-tone-letters"}>{deskDetails.desk}</h6>
+					</div>
+				}
+				position="bottom"
+				arrow={true}
+				// arrowStyle={"#000"}
+				repositionOnResize={true}
+				{...{ contentStyle }}
 			>
-				<div variant="success" className="info-div">
-					<h6
-						className={
-							deskDetails.status !== "open"
-								? "light-tone-letters"
-								: "dark-tone-letters"
-						}
-					>
-						{deskDetails.desk}
-					</h6>
+				<div className="popup-container">
+					<div className="card">
+						<div className="card-body">
+							<h6 className="card-title">Desk Information</h6>
+							<h6>Desk: {deskDetails.desk}</h6>
+							<h6>Status: {deskDetails.status}</h6>
+							<Button
+								className="popup-button"
+								onClick={() => {
+									navigate("/employee");
+								}}
+							>
+								Book this desk
+							</Button>
+						</div>
+					</div>
 				</div>
-			</OverlayTrigger>
+			</Popup>
 		</foreignObject>
 	);
 };

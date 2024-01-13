@@ -6,7 +6,6 @@ const ReceptionDesk = ({ xPoint, yPoint }) => {
 			id="Layer_1"
 			data-name="Layer 1"
 			xmlns="http://www.w3.org/2000/svg"
-			xmlnsLink="http://www.w3.org/1999/xlink"
 			viewBox="0 0 134.64 142.46"
 			height="90"
 			width="100"
@@ -14,7 +13,7 @@ const ReceptionDesk = ({ xPoint, yPoint }) => {
             y={yPoint}
 		>
 			<path
-				class="cls-1-recep"
+				className="cls-1-recep"
 				d="M2.37,89.62v49.67S73,137.09,104.69,99.36C126,74,131.94,55.61,134.64,0H86.05S89.83,42.65,68.5,64.25,11,90.16,2.37,89.62Z"
 			/>
 			<image
@@ -30,11 +29,11 @@ const ReceptionDesk = ({ xPoint, yPoint }) => {
 				xlinkHref="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGMAAABFCAYAAABezli+AAAACXBIWXMAAC4jAAAuIwF4pT92AAACAUlEQVR4Xu3dS47CMBRE0UqLpYZNddire4AeDSI/x3522a4rZYBglKMiAQZMIQQov5bHY/ME3+d5en88CSNveyd/K0MRRkJXTvxW93mehBFRzpO/1u3oBcofwRLGTqUQLGGsVBrBEsZbtRAsYaA+AvC8m/o5elHvMUBYwy6DCcE+9A2HwYQAfH4lMgwGGwLw/d1U9xiMCMA3BNAxBisCsA4BdIrBCrGFYHWFwYoAHEMAHWGwQpxBsJrHYEUA4iCAxjFYIWIRrCYxWBGA6xBAgxisECkIVjMYrAhAHgigEQxWiFwIFjUGKwKQHwIgxmCF8ECw6DBYEQBfCIAIY2QEi+JnV0E8q7oMIXxWDYMVogaCVRyDFQGoCwEUxmCFqI1gFbuAC+I492UI4XyuyxBEXG7LYIRgRbBcliGIa2VdhhDSyrYMQaSXZRlsEK0hWMnLEES+Li9DCPm7tAxB+BS9DCaIXhCsKAwWiN4QrNNvU4Lw79QyGCB6RrAOlyGIcu0uozbEKAjW5jIEUb5T14ySjYhgrS6j1ipGhgBWllEDYnQE6/BuyjtB/PexjJKrEMJ3r2UIon5F76aEsN8N8F+FEM7lfgEXxPnc3qaEEJ/LMgRxrazLEEJa2ZYhiPSSlyGEfCUtQxB5i16GAPx6/X/G0Qc/IRQohLB6/C5L2HpOh8/xByRPIXztslGeAAAAAElFTkSuQmCC"
 			/>
 			<path
-				class="cls-2-recep"
+				className="cls-2-recep"
 				d="M48.14,17.78c1.15-.79,2.93-.18,4,1.36l10,14.59c1.05,1.54,1,3.42-.18,4.21s-2.93.18-4-1.36L48,22C46.91,20.45,47,18.57,48.14,17.78Z"
 			/>
 			<path
-				class="cls-2-recep"
+				className="cls-2-recep"
 				d="M14.94,39.43c1.15-.79,2.94-.18,4,1.36l10,14.59c1,1.54,1,3.42-.18,4.21s-2.93.18-4-1.35l-10-14.6C13.71,42.1,13.8,40.22,14.94,39.43Z"
 			/>
 		</svg>

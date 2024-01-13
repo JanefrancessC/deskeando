@@ -6,6 +6,7 @@ import LaptopDeskGroup from "./DeskGroups/LaptopDeskGroup.js";
 import Sofa from "./Furniture/Sofa.js"
 import ReceptionDesk from "./Furniture/ReceptionDesk.js";
 import ConferenceTable from "./Furniture/ConferenceTable.js";
+import LDesk from "./SingleDesks/LDesk.js"
 import DeskLabel from "./DeskLabel.js";
 
 import {
@@ -18,7 +19,7 @@ import {
 } from "./PlanCoords.js";
 
 const FloorPlan = () => {
-	const [deskInformation, setDeskInformation] = useState(deskData);
+	const [deskInformation, setDeskInformation] = useState(deskData2);
 
 	return (
 		<svg
@@ -34,6 +35,10 @@ const FloorPlan = () => {
 			<ReceptionDesk xPoint={"-550"} yPoint={"-350"}/>
 			<Sofa xPoint={"-480"} yPoint={"-50"} />
 			<ConferenceTable xPoint={"435"} yPoint={"-110"}/>
+			<LDesk xPoint={"-320"} yPoint={"220"}/>
+			<LDesk xPoint={"-160"} yPoint={"220"}/>
+			<LDesk xPoint={"440"} yPoint={"-330"}/>
+			
 
 			{computerGroupCoords.map((item, index) => {
 				return (
