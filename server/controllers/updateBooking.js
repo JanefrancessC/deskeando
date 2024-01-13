@@ -1,25 +1,35 @@
 import db from "../db.js";
 
-const formatDateTime = (date) => {
-	return date.toLocaleString("en-UK", {
+export const formatDateTime = (isoDateString) => {
+	const date = new Date(isoDateString)
+
+	const formattedDate = new Intl.DateTimeFormat("en-UK", {
 		year: "numeric",
-		month: "2-digit",
+		month: "short",
 		day: "2-digit",
-		hour: "2-digit",
-		minute: "2-digit",
-		second: "2-digit",
-		timeZoneName: "short",
-	});
+		hour12: false,
+		timeZone: "Europe/London",
+	}).format(date);
+
+	return formattedDate;
 };
 
 // update booking by id
 export const updateBooking = async (req, res) => {
 	try {
 		const user = req.user;
+		const bookingId = req.params.id;
 		const { desk, date } = req.body;
 
+		const newDateStamp = Date.now();
+		const newDate = new Date(newDateStamp).toUTCString();
+
 		const currentDate = new Date();
-		const updatedDate = formatDateTime(currentDate);
+		const updatedDate = formatDateTime(newDate);
+
+		if (!bookingId) {
+			return res.status(400).json({ status: "Booking not found" });
+		}
 
 		// handle past dates
 		if (new Date(date) < currentDate) {
@@ -27,8 +37,8 @@ export const updateBooking = async (req, res) => {
 		}
 		// Get user booking details
 		const bookID = await db.query(
-			`SELECT b.*, u.* FROM bookings b JOIN users u ON b.user_id = u.user_id WHERE u.user_id = $1`,
-			[user.user_id]
+			`SELECT b.*, u.* FROM bookings b JOIN users u ON b.user_id = u.user_id WHERE u.user_id = $1 AND b.booking_id = $2`,
+			[user.user_id, bookingId]
 		);
 
 		if (bookID.rows.length === 0) {
@@ -38,7 +48,7 @@ export const updateBooking = async (req, res) => {
 		// Check if the selected date is already booked
 		const isDateBooked = bookID.rows.some((booking) => {
 			return (
-				booking.reservation_date.toLocaleDateString("en-UK") ===
+				new Date(booking.reservation_date).toLocaleDateString("en-UK") ===
 				new Date(date).toLocaleDateString("en-UK")
 			);
 		});
@@ -46,7 +56,24 @@ export const updateBooking = async (req, res) => {
 		if (isDateBooked) {
 			return res
 				.status(400)
-				.json({ error: "The selected date is already booked" });
+				.json({ error: "The selected date is unavailable" });
+		}
+
+		// Check if a desk is already assigned to the booking
+		const isDeskAssigned = bookID.rows.some(
+			(booking) => booking.desk_id !== null
+		);
+
+		if (isDeskAssigned) {
+			return res
+				.status(400)
+				.json({ error: "The selected desk is unavailable" });
+		}
+
+		if (bookID.rows.desk_id) {
+			return res
+				.status(400)
+				.json({ error: "The selected desk is unavailable" });
 		}
 
 		// check if desk exists

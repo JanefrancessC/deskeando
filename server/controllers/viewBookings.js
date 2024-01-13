@@ -1,4 +1,5 @@
 import db from "../db.js";
+import { formatDateTime } from "./updateBooking.js";
 
 // list a logged in user's bookings
 export const viewBookings = async (req, res) => {
