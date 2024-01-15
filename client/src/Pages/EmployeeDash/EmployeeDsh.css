@@ -35,3 +35,6 @@
 .react-datepicker__calendar-icon {
     margin-top: 7px;
 }
+.react-timerange-picker__wrapper {
+    border: none  !important;
+}

@@ -2,28 +2,9 @@ import { React, useEffect, useState } from "react";
 import TableHead from "../TableHead";
 import classNames from "classnames";
 
-const Table = ({ isSplitView }) => {
-	const [data, setData] = useState([]);
+const Table = ({ isSplitView, allBookings }) => {
 	let cardClass = "card border-0";
 	cardClass = isSplitView ? (cardClass += "splitView") : cardClass;
-
-	const fetchData = async (url, options) => {
-		return fetch(url, options)
-			.then((response) => response.json())
-			.then((data) => data);
-	};
-
-	useEffect(() => {
-		const token = JSON.parse(localStorage.getItem("data")).token;
-		const options = {
-			headers: { Authorization: `Bearer ${token}` },
-		};
-
-		fetchData("/api/bookings", options).then((data) => {
-			console.log(data)
-			setData(data);
-		});
-	}, []);
 
 	return (
 		<div
@@ -42,7 +23,7 @@ const Table = ({ isSplitView }) => {
 				<table class="table table-responsive">
 					<TableHead isSplitView={isSplitView} />
 					<tbody>
-						{data.map((el, index) => (
+						{allBookings.map((el, index) => (
 							<tr>
 								<td>{`${index + 1}`.padStart(2, 0)}</td>
 								<td>
