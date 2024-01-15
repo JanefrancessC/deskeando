@@ -17,7 +17,7 @@ const BookingDetails = ({ view, allBookings }) => {
 					<Table isSplitView={view.listView.splitView} allBookings={allBookings} />
 				</>
 			) : (
-				<Table isSplitView={view.listView.splitView} />
+				<Table isSplitView={view.listView.splitView} allBookings={allBookings}/>
 			)}
 		</div>
 	);

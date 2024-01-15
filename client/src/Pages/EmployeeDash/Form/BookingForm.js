@@ -8,6 +8,11 @@ import axios from "axios";
 const BookingForm = () => {
 	const { token, id } = JSON.parse(localStorage.getItem("data"));
 	const [desks, setDesks] = useState([]);
+	const [deskDetails, setDeskDetails] = useState({
+		deskType: "",
+		deskSize: "",
+	});
+	const deskSize = ["small", "medium", "large"];
 
 	const notifySuccess = (message) => toast.success(<div>{message}</div>);
 	const notifyError = (message) => toast.error(<div>{message}</div>);
@@ -18,7 +23,6 @@ const BookingForm = () => {
 	});
 
 	const postData = async () => {
-		console.log(formData);
 		return await fetch("/api/bookings", {
 			method: "POST",
 			headers: {
@@ -51,6 +55,20 @@ const BookingForm = () => {
 		}
 	};
 
+	const handleDeskChange = (e) => {
+		const selectedDesk = desks.find((el) => {
+			const textValue = e.target.options[e.target.selectedIndex].textContent;
+			return el.desk_name === textValue;
+		});
+		if (selectedDesk) {
+			console.log(selectedDesk)
+			setDeskDetails({
+				deskSize: selectedDesk.size,
+				deskType: selectedDesk.type,
+			});
+		}
+	};
+
 	useEffect(() => {
 		axios
 			.get("/api/desks")
@@ -74,25 +92,9 @@ const BookingForm = () => {
 				<DayTime onDateChange={handleFormData} />
 
 				<div class="form-group d-flex justify-content-between">
-					<div class="form-group" style={{ width: "45%" }}>
-						<label class="card-text mt-1" for="exampleInputEmail1">
-							Desk type
-						</label>
-						<select
-							class="form-select card-text my-2 mb-3"
-							aria-label="Default select example"
-						>
-							<option disabled value="">
-								Choose a desk type
-							</option>
-
-							<option value="1">Standing Desk</option>
-							<option value="2">Regular Desk</option>
-						</select>
-					</div>
 					<div class="form-group w-50">
 						<label class="card-text mt-1" for="exampleInputEmail1">
-							Desk Number
+							Desk Name
 						</label>
 
 						<select
@@ -100,7 +102,10 @@ const BookingForm = () => {
 							class="form-select card-text my-2 mb-3"
 							name="deskId"
 							aria-label="Default select example"
-							onChange={handleFormData}
+							onChange={(e) => {
+								handleDeskChange(e);
+								handleFormData(e);
+							}}
 						>
 							<option selected disabled value="">
 								Choose a desk name
@@ -112,44 +117,37 @@ const BookingForm = () => {
 							))}
 						</select>
 					</div>
+					<div class="form-group" style={{ width: "45%" }}>
+						<label class="card-text mt-1" for="exampleInputEmail1">
+							Desk type
+						</label>
+						<select
+							class="form-select card-text my-2 mb-3"
+							aria-label="Default select example"
+						>
+							<option disabled value="">
+								Choose a desk type
+							</option>
+							<option>{deskDetails.deskType}</option>
+						</select>
+					</div>
 				</div>
 
-				<div class="form-check form-check-inline my-2">
-					<input
-						class="form-check-input"
-						type="radio"
-						name="inlineRadioOptions"
-						id="inlineRadio1"
-						value="option1"
-					/>
-					<label class="form-check-label" for="inlineRadio1">
-						Small
-					</label>
-				</div>
-				<div class="form-check form-check-inline">
-					<input
-						class="form-check-input"
-						type="radio"
-						name="inlineRadioOptions"
-						id="inlineRadio2"
-						value="option2"
-					/>
-					<label class="form-check-label" for="inlineRadio2">
-						Medium
-					</label>
-				</div>
-				<div class="form-check form-check-inline m">
-					<input
-						class="form-check-input"
-						type="radio"
-						name="inlineRadioOptions"
-						id="inlineRadio3"
-						value="option3"
-					/>
-					<label class="form-check-label" for="inlineRadio3">
-						Large
-					</label>
-				</div>
+				{deskSize.map((el) => (
+					<div class="form-check form-check-inline my-2">
+						<input
+							class="form-check-input"
+							type="radio"
+							name="radios"
+							id={el}
+							value="option1"
+							checked={deskDetails.deskSize === el}
+						/>
+						<label class="form-check-label" for="inlineRadio1">
+							{el}
+						</label>
+					</div>
+				))}
 
 				<div class="form-group">
 					<label class="card-text mt-2" for="exampleInputEmail1">

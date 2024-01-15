@@ -34,13 +34,14 @@ const DayTime = ({onDateChange}) => {
 
 			<div className="form-group d-flex flex-column w-100">
 				<label class="mt-1" for="time">
-					Date
+					Time
 				</label>
 				<TimeRangePicker
 					id="time"
 					className="form-control my-2 mb-3 gap-2 w-100"
 					onChange={onChange}
 					value={value}
+					rangeDivider=""
 					required
 				/>
 			</div>
