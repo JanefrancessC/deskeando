@@ -58,18 +58,7 @@ export const viewBookings = async (req, res) => {
 				DeskName: booking.desk_name,
 				DeskSize: booking.size,
 				DeskType: booking.type,
-				ReservedDate: new Date(booking.reservation_date).toLocaleDateString(
-					"en-UK",
-					{
-						year: "numeric",
-						month: "short",
-						day: "numeric",
-						hour: "2-digit",
-						minute: "2-digit",
-						second: "2-digit",
-						timeZone: "UTC",
-					}
-				),
+				ReservedDate: formatDateTime(booking.reservation_date)
 			}));
 		}
 

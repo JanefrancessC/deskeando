@@ -1,111 +1,110 @@
-import db from "../db.js";
+import {
+	checkAvailabilityForUpdate,
+	getBookingById,
+	updateBookingQuery,
+	
+} from "./dataAccess.js";
+import { isPast } from "./validators.js";
 
 export const formatDateTime = (isoDateString) => {
-	const date = new Date(isoDateString)
-	const formattedDate = new Intl.DateTimeFormat("en-UK", {
+	const date = new Date(isoDateString);
+	const formattedDateTime = new Intl.DateTimeFormat("en-US", {
 		year: "numeric",
 		month: "short",
 		day: "2-digit",
+		hour: "numeric",
+		minute: "numeric",
+		second: "numeric",
 		hour12: false,
 		timeZone: "Europe/London",
 	}).format(date);
 
-	return formattedDate;
+	return formattedDateTime;
 };
 
-// update booking by id
+export const formatTime = (isoDateString) => {
+	const date = new Date(isoDateString);
+	const options = {
+		hour: "2-digit",
+		minute: "2-digit",
+		second: "2-digit",
+		timeZone: "Europe/London",
+	};
+
+	return new Intl.DateTimeFormat("en-GB", options).format(date);
+};
+
 export const updateBooking = async (req, res) => {
 	try {
 		const user = req.user;
+		const { desk, date, time } = req.body;
 		const bookingId = req.params.id;
-		const { desk, date } = req.body;
 
-		const newDateStamp = Date.now();
-		console.log(newDateStamp);
-		const newDate = new Date(newDateStamp).toUTCString();
+		const dateTimeString = `${date}T${time}:00.000Z`;
+		const updatedDate = new Date(dateTimeString);
 
-		const currentDate = new Date();
-		const updatedDate = formatDateTime(newDate);
+		// Check if the booking with the provided bookingId exists
+		const bookingExists = await getBookingById(bookingId);
 
-		if (!bookingId) {
-			return res.status(400).json({ status: "Booking not found" });
+		if (!bookingExists) {
+			return res.status(404).json({ error: "Booking not found" });
 		}
 
-		// handle past dates
-		if (new Date(date) < currentDate) {
-			return res.status(400).json({ error: "Cannot update a past date" });
-		}
-		// Get user booking details
-		const bookID = await db.query(
-			`SELECT b.*, u.* FROM bookings b JOIN users u ON b.user_id = u.user_id WHERE u.user_id = $1 AND b.booking_id = $2`,
-			[user.user_id, bookingId]
-		);
-
-		if (bookID.rows.length === 0) {
-			return res.status(404).json({ error: "No booking found" });
-		}
-
-		// Check if the selected date is already booked
-		const isDateBooked = bookID.rows.some((booking) => {
-			return (
-				new Date(booking.reservation_date).toLocaleDateString("en-UK") ===
-				new Date(date).toLocaleDateString("en-UK")
-			);
-		});
-
-		if (isDateBooked) {
+		if (isPast(updatedDate)) {
 			return res
 				.status(400)
-				.json({ error: "The selected date is unavailable" });
+				.json({ error: "Cannot modify a past date and time" });
 		}
 
-		// Check if a desk is already assigned to the booking
-		const isDeskAssigned = bookID.rows.some(
-			(booking) => booking.desk_id !== null
-		);
+		const existingBooking = await getBookingById(bookingId);
 
-		if (isDeskAssigned) {
+		if (!existingBooking || existingBooking.user_id !== user.user_id) {
+			return res.status(403).json({
+				error: "Permission denied",
+			});
+		}
+
+		if (
+			existingBooking &&
+			existingBooking.reservation_date.getTime() === updatedDate.getTime()
+		) {
 			return res
 				.status(400)
-				.json({ error: "The selected desk is unavailable" });
+				.json({ error: "The selected date and time are unavailable" });
 		}
 
-		if (bookID.rows.desk_id) {
-			return res
-				.status(400)
-				.json({ error: "The selected desk is unavailable" });
-		}
-
-		// check if desk exists
-		const validDesk = await db.query(
-			`SELECT desk_id FROM desks WHERE desk_name = $1`,
-			[desk]
+		const isDeskAvailable = await checkAvailabilityForUpdate(
+			desk,
+			date,
+			time,
+			bookingId
 		);
 
-		if (validDesk.rows.length === 0) {
-			return res.status(404).json({ error: "Not a valid desk" });
+		if (!isDeskAvailable.status) {
+			return res
+				.status(400)
+				.json({ error: `${desk} is not available on ${date} at ${time}` });
 		}
 
-		const newBooking = await db.query(
-			`UPDATE bookings SET desk_id = $1, reservation_date = $2, updated_at = $3 WHERE booking_id = $4 AND user_id =$5 RETURNING *`,
-			[
-				validDesk.rows[0].desk_id,
-				date,
-				updatedDate,
-				bookID.rows[0].booking_id,
-				user.user_id,
-			]
+		const updatedBookingResult = await updateBookingQuery(
+			isDeskAvailable.deskId,
+			updatedDate,
+			new Date(),
+			bookingId
 		);
 
 		res.status(200).json({
 			message: "Booking updated",
 			updatedBooking: {
-				...newBooking.rows[0],
-				reservation_date: new Date(newBooking.rows[0].reservation_date),
+				...updatedBookingResult,
+				created_at: formatDateTime(updatedBookingResult.created_at),
+				updated_at: formatDateTime(updatedBookingResult.updated_at),
+				reservation_date: formatDateTime(updatedBookingResult.reservation_date),
+				reservation_time: formatTime(updatedBookingResult.reservation_date),
 			},
 		});
 	} catch (error) {
 		console.error(error);
-		res.status(500).json({ error: error.message });
+		res.status(500).json({ error: "Server Error" });
 	}
 };

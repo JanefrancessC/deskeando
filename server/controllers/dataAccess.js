@@ -70,4 +70,38 @@ const saveBooking = async (data) => {
 	}
 };
 
+// updateBookingQueries.js
+
+export const checkAvailabilityForUpdate = async (deskName, bookDate, bookTime, userId) => {
+	const deskId = await getDeskId(deskName);
+	console.log(deskId);
+	try {
+		const result = await db.query(
+			"SELECT * FROM public.bookings WHERE desk_id = $1 AND date_trunc('minute', reservation_date) = $2::timestamp AND user_id != $3",
+			[deskId, `${bookDate}, ${bookTime}`, userId]
+		);
+		const rowLen = result.rows.length;
+		return { status: rowLen === 0, deskId };
+	} catch (err) {
+		console.log(err);
+	}
+};
+
+export const getBookingById = async (bookingId) => {
+  const query = `SELECT * FROM bookings WHERE booking_id = $1`;
+  const result = await db.query(query, [bookingId]);
+  return result.rows[0];
+};
+
+export const updateBookingQuery = async (deskId, reservationDate, updatedAt, bookingId) => {
+  const query = `
+    UPDATE bookings
+    SET desk_id = $1, reservation_date = $2, updated_at = $3
+    WHERE booking_id = $4
+    RETURNING *`;
+  const result = await db.query(query, [deskId, reservationDate, updatedAt, bookingId]);
+  return result.rows[0];
+};
+
+
 export { checkAvailability, saveBooking };

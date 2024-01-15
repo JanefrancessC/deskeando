@@ -46,6 +46,6 @@ export const validateBooking = async (booking, errors) => {
  * @param {Date} date - The date to be checked.
  * @returns {boolean} - True if the date is valid, false otherwise.
  */
-const isPast = (date) => {
+export const isPast = (date) => {
 	return isNaN(date) || date < new Date();
 };
