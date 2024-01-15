@@ -6,6 +6,7 @@ import db from "../db";
  * @returns {string|null} - The desk ID if found, otherwise null.
  */
 const getDeskId = async (deskName) => {
+	console.log("deskName", deskName)
 	try {
 		const result = await db.query(
 			"SELECT desk_id FROM public.desks WHERE desk_name = $1",
@@ -26,8 +27,7 @@ const getDeskId = async (deskName) => {
  *   @property {boolean} status - True if the desk is available, false if booked.
  *   @property {string} deskId - The ID of the desk being checked.
  */
-const checkAvailability = async (deskName, bookDate) => {
-	const deskId = await getDeskId(deskName);
+const checkAvailability = async (deskId, bookDate) => {
 	try {
 		const result = await db.query(
 			"SELECT * FROM public.bookings WHERE desk_id = $1 AND reservation_date = $2",

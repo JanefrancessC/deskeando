@@ -12,24 +12,28 @@ import { checkAvailability } from "./dataAccess";
  * @returns {Object|null} - An object containing validated booking information if successful, otherwise null.
  */
 export const validateBooking = async (booking, errors) => {
-	const { userId, desk, date } = booking;
+	const { userId, deskId, date } = booking;
 
 	if (!userId) {
 		errors.push(new ErrorMessage("User not found"));
-		return
+		return;
 	}
 
-	const formattedDate = new Date(`${date}T12:30:00.000Z`);
+	const formattedDate = new Date(date);
 
 	if (isPast(formattedDate)) {
 		errors.push(new ErrorMessage("Please enter a valid date"));
 		return;
 	}
 
-	const availability_status = await checkAvailability(desk, date);
+	const availability_status = await checkAvailability(deskId, date);
 
-	if (!availability_status.status)
-		errors.push(new ErrorMessage(`${desk} is not available on ${date}`));
+	if (!availability_status.status) {
+		const deskName = deskId.toString().padStart(2, 0);
+		errors.push(
+			new ErrorMessage(`DK-${deskName} is not available on ${date}`)
+		);
+	}
 
 	return {
 		userId,

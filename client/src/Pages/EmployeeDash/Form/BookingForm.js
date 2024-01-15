@@ -3,16 +3,17 @@ import "../EmployeeDsh.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import DayTime from "./DayTime";
-import axios from 'axios';
+import axios from "axios";
 
 const BookingForm = () => {
 	const { token, id } = JSON.parse(localStorage.getItem("data"));
 	const [desks, setDesks] = useState([]);
 
-	const notifySuccess = () => toast.success("Booking created successfully");
+	const notifySuccess = (message) => toast.success(<div>{message}</div>);
+	const notifyError = (message) => toast.error(<div>{message}</div>);
 	const [formData, setFormData] = useState({
 		userId: id,
-		desk: "",
+		deskId: -1,
 		date: new Date(),
 	});
 
@@ -33,12 +34,13 @@ const BookingForm = () => {
 		try {
 			postData()
 				.then((response) => response.json())
-				.then((data) => {
-					console.log(data);
-					notifySuccess();
+				.then(({ message, error }) => {
+					error && notifyError(error);
+					message && notifySuccess(message);
 				});
 		} catch (err) {
 			console.log(err);
+			notifyError();
 		}
 	};
 
@@ -49,12 +51,10 @@ const BookingForm = () => {
 		}
 	};
 
-	const getDesks = () => {};
-
 	useEffect(() => {
 		axios
-			.get("desks")
-			.then((response) => console.log(response))
+			.get("/api/desks")
+			.then((response) => setDesks(response.data))
 			.catch((err) => console.log(err));
 	}, []);
 
@@ -79,13 +79,13 @@ const BookingForm = () => {
 							Desk type
 						</label>
 						<select
-							required
 							class="form-select card-text my-2 mb-3"
 							aria-label="Default select example"
 						>
-							<option selected disabled value="">
+							<option disabled value="">
 								Choose a desk type
 							</option>
+
 							<option value="1">Standing Desk</option>
 							<option value="2">Regular Desk</option>
 						</select>
@@ -98,18 +98,18 @@ const BookingForm = () => {
 						<select
 							required
 							class="form-select card-text my-2 mb-3"
+							name="deskId"
 							aria-label="Default select example"
 							onChange={handleFormData}
 						>
 							<option selected disabled value="">
 								Choose a desk name
 							</option>
-							<option name="desk" value="DK-01">
-								DK-01
-							</option>
-							<option name="desk" value="DK-02">
-								DK-02
-							</option>
+							{desks.map(({ desk_id, desk_name }, index) => (
+								<option value={desk_id} key={index}>
+									{desk_name}
+								</option>
+							))}
 						</select>
 					</div>
 				</div>
@@ -121,7 +121,6 @@ const BookingForm = () => {
 						name="inlineRadioOptions"
 						id="inlineRadio1"
 						value="option1"
-						required
 					/>
 					<label class="form-check-label" for="inlineRadio1">
 						Small
