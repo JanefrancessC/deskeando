@@ -1,6 +1,6 @@
 export class ErrorMessage {
     // instantiates ErrorMessage
     constructor(message) {
-        this.message = message;
+        this.error = message;
     }
 }
