@@ -1,4 +1,4 @@
-import { React, useEffect, useState } from "react";
+import { React } from "react";
 import TableHead from "../TableHead";
 import classNames from "classnames";
 

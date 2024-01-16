@@ -1,11 +1,11 @@
-import { React, useState, useEffect} from "react";
+import { React, useState, useEffect } from "react";
 import "../EmployeeDsh.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import DayTime from "./DayTime";
 import axios from "axios";
 
-const BookingForm = () => {
+const BookingForm = ({ setReload }) => {
 	const { token, id } = JSON.parse(localStorage.getItem("data"));
 	const [desks, setDesks] = useState([]);
 	const [deskDetails, setDeskDetails] = useState({
@@ -40,8 +40,12 @@ const BookingForm = () => {
 			postData()
 				.then((response) => response.json())
 				.then(({ message, error }) => {
-					error && notifyError(error);
-					message && notifySuccess(message);
+					if (message) {
+						notifySuccess(message)
+						setReload(true)
+					}
+					error && notifyError(error)
+					
 				});
 		} catch (err) {
 			console.log(err);
@@ -62,7 +66,6 @@ const BookingForm = () => {
 			return el.desk_name === textValue;
 		});
 		if (selectedDesk) {
-			console.log(selectedDesk);
 			setDeskDetails({
 				deskSize: selectedDesk.size,
 				deskType: selectedDesk.type,
@@ -126,7 +129,9 @@ const BookingForm = () => {
 							class="form-select card-text my-2 mb-3"
 							aria-label="Default select example"
 						>
-							<option defaultChecked value="">Choose a desk type</option>
+							<option defaultChecked value="">
+								Choose a desk type
+							</option>
 							<option selected value={deskDetails.deskType}>
 								{deskDetails.deskType}
 							</option>
@@ -171,7 +176,7 @@ const BookingForm = () => {
 						type="reset"
 						className="btn rounded"
 						onClick={() => {
-							setDate(null)
+							setDate(null);
 						}}
 					>
 						Cancel

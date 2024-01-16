@@ -4,7 +4,7 @@ import Table from "./Table/Table";
 import FloorPlan from "../../Components/FloorPlan/FloorPlan";
 import "./EmployeeDsh.css";
 
-const BookingDetails = ({ view, allBookings }) => {
+const BookingDetails = ({ view, allBookings, setReload}) => {
 	return (
 		<div class="w-100 d-flex justify-content-around">
 			{view.floorPlan ? (
@@ -13,8 +13,8 @@ const BookingDetails = ({ view, allBookings }) => {
 				</div>
 			) : view.listView.splitView ? (
 				<>
-					<BookingForm />
-					<Table isSplitView={view.listView.splitView} allBookings={allBookings} />
+					<BookingForm setReload={setReload} />
+						<Table isSplitView={view.listView.splitView} allBookings={allBookings} />
 				</>
 			) : (
 				<Table isSplitView={view.listView.splitView} allBookings={allBookings}/>

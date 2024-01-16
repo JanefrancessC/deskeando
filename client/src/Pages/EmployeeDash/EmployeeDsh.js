@@ -8,6 +8,7 @@ import { switchView } from "./switchview";
 
 const EmployeeDsh = () => {
 	const [data, setData] = useState([]);
+	const [reload, setReload] = useState(false);
 	let token = localStorage.getItem("data");
 	const [view, setView] = useState({
 		floorPlan: false,
@@ -37,13 +38,14 @@ const EmployeeDsh = () => {
 		const options = {
 			headers: { Authorization: `Bearer ${token}` },
 		};
+		if (data.length === 0 || reload) {
+			fetchData("/api/bookings", options).then((data) => {
+				setData(data);
+			});
+			setReload(false)
+		}
+	}, [reload]);
 
-		fetchData("/api/bookings", options).then((data) => {
-			setData(data);
-		});
-	}, []);
-
-	
 	return (
 		<div className="vh-100">
 			{token ? (
@@ -52,7 +54,7 @@ const EmployeeDsh = () => {
 					topBar={
 						<Topbar userDetails={userDetails} handleClick={handleClick} />
 					}
-					bookingDetails={<BookingDetails view={view} allBookings={data} />}
+					bookingDetails={<BookingDetails view={view} allBookings={data} setReload={setReload} />}
 				/>
 			) : (
 				<Forbidden />
