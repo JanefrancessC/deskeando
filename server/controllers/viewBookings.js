@@ -1,5 +1,5 @@
 import db from "../db.js";
-import { formatDateTime } from "./updateBooking.js";
+import { formatDateTime, formatTime } from "./validators.js";
 
 // list a logged in user's bookings
 export const viewBookings = async (req, res) => {
@@ -58,7 +58,8 @@ export const viewBookings = async (req, res) => {
 				DeskName: booking.desk_name,
 				DeskSize: booking.size,
 				DeskType: booking.type,
-				ReservedDate: formatDateTime(booking.reservation_date)
+				ReservedDate: formatDateTime(booking.reservation_date),
+				ReservedTime: formatTime(booking.reservation_date)
 			}));
 		}
 
