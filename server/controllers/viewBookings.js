@@ -15,6 +15,12 @@ export const viewBookings = async (req, res) => {
 		);
 
 		const bookings = bookingResult.rows;
+		
+		if (bookings.length === 0) {
+			res.status(404).json({ message: "No booking found" })
+			return
+		}
+
 
 		// Check if user is admin
 		const userAdmin = await db.query(
