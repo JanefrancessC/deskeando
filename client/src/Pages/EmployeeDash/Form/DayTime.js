@@ -5,9 +5,8 @@ import "react-datepicker/dist/react-datepicker.css";
 import "@wojtekmaj/react-timerange-picker/dist/TimeRangePicker.css";
 import "react-clock/dist/Clock.css";
 
-const DayTime = ({onDateChange}) => {
-	const [date, setDate] = useState(null);
-	const [value, onChange] = useState(["10:00", "11:00"]);
+const DayTime = ({onDateChange, date, setDate}) => {
+	const [value, onChange] = useState([]);
 	return (
 		<>
 			<div className="form-group d-flex flex-column w-100">

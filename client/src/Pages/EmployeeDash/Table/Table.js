@@ -31,7 +31,7 @@ const Table = ({ isSplitView, allBookings }) => {
 										<>
 											<div>
 												<i className="bi bi-calendar me-2"></i>
-												<span>{el["Reserved Date"]}</span>
+												<span>{el["ReservedDate"]}</span>
 											</div>
 											<div>
 												<i class="bi bi-alarm me-2"></i>
@@ -48,11 +48,11 @@ const Table = ({ isSplitView, allBookings }) => {
 								<td className={classNames({ "time-hide": isSplitView })}>
 									{el["Time"]}
 								</td>
-								<td>{el["Desk Id"]}</td>
+								<td>{el["DeskId"]}</td>
 								<td className={classNames({ "type-hide": isSplitView })}>
-									{el["Desk Type"]}
+									{el["DeskType"]}
 								</td>
-								<td>{el["Desk size"]}</td>
+								<td>{el["DeskSize"]}</td>
 								<td>
 									<i class="bi bi-pencil-square mx-2"></i>
 									<i class="bi bi-trash mx-2"></i>

@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from "react";
+import { React, useState, useEffect} from "react";
 import "../EmployeeDsh.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -13,6 +13,7 @@ const BookingForm = () => {
 		deskSize: "",
 	});
 	const deskSize = ["small", "medium", "large"];
+	const [date, setDate] = useState(null);
 
 	const notifySuccess = (message) => toast.success(<div>{message}</div>);
 	const notifyError = (message) => toast.error(<div>{message}</div>);
@@ -61,7 +62,7 @@ const BookingForm = () => {
 			return el.desk_name === textValue;
 		});
 		if (selectedDesk) {
-			console.log(selectedDesk)
+			console.log(selectedDesk);
 			setDeskDetails({
 				deskSize: selectedDesk.size,
 				deskType: selectedDesk.type,
@@ -89,7 +90,7 @@ const BookingForm = () => {
 				style={{ backgroundColor: "#faf9ff" }}
 				onSubmit={handleSubmit}
 			>
-				<DayTime onDateChange={handleFormData} />
+				<DayTime onDateChange={handleFormData} date={date} setDate={setDate} />
 
 				<div class="form-group d-flex justify-content-between">
 					<div class="form-group w-50">
@@ -107,7 +108,7 @@ const BookingForm = () => {
 								handleFormData(e);
 							}}
 						>
-							<option selected disabled value="">
+							<option selected value="">
 								Choose a desk name
 							</option>
 							{desks.map(({ desk_id, desk_name }, index) => (
@@ -125,10 +126,10 @@ const BookingForm = () => {
 							class="form-select card-text my-2 mb-3"
 							aria-label="Default select example"
 						>
-							<option disabled value="">
-								Choose a desk type
+							<option defaultChecked value="">Choose a desk type</option>
+							<option selected value={deskDetails.deskType}>
+								{deskDetails.deskType}
 							</option>
-							<option>{deskDetails.deskType}</option>
 						</select>
 					</div>
 				</div>
@@ -140,7 +141,7 @@ const BookingForm = () => {
 							type="radio"
 							name="radios"
 							id={el}
-							value="option1"
+							value={el}
 							checked={deskDetails.deskSize === el}
 						/>
 						<label class="form-check-label" for="inlineRadio1">
@@ -165,7 +166,14 @@ const BookingForm = () => {
 					<button type="submit" id="s-btn" className="btn rounded">
 						Confirm Booking
 					</button>
-					<button id="c-btn" className="btn rounded">
+					<button
+						id="c-btn"
+						type="reset"
+						className="btn rounded"
+						onClick={() => {
+							setDate(null)
+						}}
+					>
 						Cancel
 					</button>
 
