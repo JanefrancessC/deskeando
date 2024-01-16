@@ -72,13 +72,12 @@ const saveBooking = async (data) => {
 
 // updateBookingQueries.js
 
-export const checkAvailabilityForUpdate = async (deskName, bookDate, bookTime, userId) => {
+export const checkAvailabilityForUpdate = async (deskName, bookDate, userId) => {
 	const deskId = await getDeskId(deskName);
-	console.log(deskId);
 	try {
 		const result = await db.query(
 			"SELECT * FROM public.bookings WHERE desk_id = $1 AND date_trunc('minute', reservation_date) = $2::timestamp AND user_id != $3",
-			[deskId, `${bookDate}, ${bookTime}`, userId]
+			[deskId, `${bookDate}`, userId]
 		);
 		const rowLen = result.rows.length;
 		return { status: rowLen === 0, deskId };

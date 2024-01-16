@@ -47,14 +47,13 @@ export const updateBooking = async (req, res) => {
 		const isDeskAvailable = await checkAvailabilityForUpdate(
 			desk,
 			date,
-			time,
 			bookingId
 		);
 
 		if (!isDeskAvailable.status) {
 			return res
 				.status(400)
-				.json({ error: `${desk} is not available on ${date} at ${time}` });
+				.json({ error: `${desk} is not available on ${date}` });
 		}
 
 		const updatedBookingResult = await updateBookingQuery(
