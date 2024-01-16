@@ -18,8 +18,7 @@ const DayTime = ({onDateChange, date, setDate}) => {
 					value={date}
 					onChange={(date) => {
 						setDate(date)
-						onDateChange(date)
-						
+						onDateChange(date)						
 					}}
 					dateFormat="dd/MM/yyyy"
 					className="form-control my-2 mb-3 d-flex justify-content-end gap-2 w-100"
@@ -28,6 +27,7 @@ const DayTime = ({onDateChange, date, setDate}) => {
 					icon="bi bi-calendar3"
 					minDate={new Date()}
 					required
+					showTimeSelect
 				/>
 			</div>
 

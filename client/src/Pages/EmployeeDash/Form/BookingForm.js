@@ -93,7 +93,7 @@ const BookingForm = ({ setReload }) => {
 				style={{ backgroundColor: "#faf9ff" }}
 				onSubmit={handleSubmit}
 			>
-				<DayTime onDateChange={handleFormData} date={date} setDate={setDate} />
+				<DayTime onDateChange={handleFormData} date={date} setDate={setDate}/>
 
 				<div class="form-group d-flex justify-content-between">
 					<div class="form-group w-50">
