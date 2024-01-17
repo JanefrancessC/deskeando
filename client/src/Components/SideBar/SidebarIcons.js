@@ -1,12 +1,16 @@
 import React from "react";
 import Home from "./HomeIcon";
 import Map from "./FloorplanIcon";
+import Bookings from "./BookingsIcon";
+import Desk from "./DeskIcon";
 
 const SidebarIcons = ({ handleClick }) => {
 	const navItems = [
 		{ name: "Home", component: <Home /> },
 		{ name: "Floor Plan", component: <Map /> },
 		{ name: "Book Desk", icon: "bi-calendar-date" },
+		{ name: "Bookings", component: <Bookings /> },
+		{ name: "Desk", component: <Desk /> },
 		{ name: "Settings", icon: "bi-gear" },
 	];
 

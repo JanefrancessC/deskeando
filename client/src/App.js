@@ -5,7 +5,7 @@ import EmployeeDsh from "./Pages/EmployeeDash/EmployeeDsh.js";
 import SignIn from "./Pages/SignIn/SignIn.js";
 import Signup from "./Pages/Signup/Signup";
 import NotFound from "./Pages/Error/NotFound.js";
-import FloorPlan from "./Components/FloorPlan/FloorPlan.js"
+import FloorPlan from "./Components/FloorPlan/FloorPlan.js";
 
 const App = () => (
 	<Routes>

@@ -54,13 +54,13 @@ INSERT INTO public.desks (desk_name, size, type) VALUES ('DK-09', 'large', 'regu
 INSERT INTO public.desks (desk_name, size, type) VALUES ('DK-10', 'medium', 'standing');
 
 --bookings
-INSERT INTO public.bookings (user_id, desk_id, reservation_date) VALUES (11, 1, '2023-12-15');
-INSERT INTO public.bookings (user_id, desk_id, reservation_date) VALUES (2, 2, '2023-12-16');
-INSERT INTO public.bookings (user_id, desk_id, reservation_date) VALUES (3, 3, '2023-12-17');
-INSERT INTO public.bookings (user_id, desk_id, reservation_date) VALUES (4, 4, '2023-12-18');
-INSERT INTO public.bookings (user_id, desk_id, reservation_date) VALUES (5, 5, '2023-12-19');
-INSERT INTO public.bookings (user_id, desk_id, reservation_date) VALUES (6, 6, '2023-12-20');
-INSERT INTO public.bookings (user_id, desk_id, reservation_date) VALUES (7, 7, '2023-12-21');
-INSERT INTO public.bookings (user_id, desk_id, reservation_date) VALUES (8, 8, '2023-12-22');
-INSERT INTO public.bookings (user_id, desk_id, reservation_date) VALUES (9, 9, '2023-12-23');
-INSERT INTO public.bookings (user_id, desk_id, reservation_date) VALUES (10, 10, '2023-12-24');
+INSERT INTO public.bookings (user_id, desk_id, reservation_date) VALUES (11, 1, '2024-02-15');
+INSERT INTO public.bookings (user_id, desk_id, reservation_date) VALUES (2, 2, '2024-02-16');
+INSERT INTO public.bookings (user_id, desk_id, reservation_date) VALUES (3, 3, '2024-02-17');
+INSERT INTO public.bookings (user_id, desk_id, reservation_date) VALUES (4, 4, '2024-02-18');
+INSERT INTO public.bookings (user_id, desk_id, reservation_date) VALUES (5, 5, '2024-02-19');
+INSERT INTO public.bookings (user_id, desk_id, reservation_date) VALUES (6, 6, '2024-03-20');
+INSERT INTO public.bookings (user_id, desk_id, reservation_date) VALUES (7, 7, '2024-05-21');
+INSERT INTO public.bookings (user_id, desk_id, reservation_date) VALUES (8, 8, '2024-05-22');
+INSERT INTO public.bookings (user_id, desk_id, reservation_date) VALUES (9, 9, '2024-03-23');
+INSERT INTO public.bookings (user_id, desk_id, reservation_date) VALUES (10, 10, '2023-03-24');
