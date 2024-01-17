@@ -24,7 +24,9 @@ const EmployeeDsh = () => {
 
 	const handleClick = (e) => {
 		e.preventDefault();
-		setView(switchView(e.currentTarget.id));
+		const id = e.currentTarget.id
+		if (id <=2 )
+			setView(switchView(e.currentTarget.id));
 	};
 
 	const fetchData = async (url, options) => {
