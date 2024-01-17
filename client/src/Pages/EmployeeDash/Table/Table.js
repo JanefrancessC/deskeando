@@ -23,7 +23,7 @@ const Table = ({ isSplitView, allBookings }) => {
 			</h5>
 			<div class="card-body">
 				<table class="table table-responsive">
-					{allBookings ? (
+					{allBookings.length !== 0 ? (
 						<>
 							<TableHead isSplitView={isSplitView} />
 							<TableBody isSplitView={isSplitView} allBookings={allBookings} />

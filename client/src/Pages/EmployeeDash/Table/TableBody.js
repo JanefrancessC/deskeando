@@ -2,6 +2,7 @@ import React from "react";
 import classNames from "classnames";
 
 const TableBody = ({ isSplitView, allBookings }) => {
+	console.log(allBookings)
 	return (
 		<tbody>
 			{allBookings.map((el, index) => (

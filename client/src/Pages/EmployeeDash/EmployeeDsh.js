@@ -42,8 +42,10 @@ const EmployeeDsh = () => {
 		};
 		if (data.length === 0 || reload) {
 			fetchData("/api/bookings", options).then((data) => {
-				setData(data);
+				if (data.message !== 'No booking found')
+					setData(data);
 			});
+
 			setReload(false)
 		}
 	}, [reload]);
