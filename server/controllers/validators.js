@@ -19,7 +19,7 @@ export const validateBooking = async (booking, errors) => {
 		return;
 	}
 
-	const formattedDate = new Date(date);
+	const formattedDate = formatDateTime(date);
 
 	if (isPast(formattedDate)) {
 		errors.push(new ErrorMessage("Please enter a valid date"));

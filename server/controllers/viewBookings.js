@@ -8,6 +8,7 @@ export const viewBookings = async (req, res) => {
 
 		// Check if user is admin
 		const isAdmin = await userAdmin(user.user_id);
+		console.log("isAdmin: ", isAdmin);
 
 		if (isAdmin) {
 			// Admin view
