@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from "react";
+import { React, useState, useEffect, useRef } from "react";
 import "../EmployeeDsh.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -20,8 +20,9 @@ const BookingForm = ({ setReload }) => {
 	const [formData, setFormData] = useState({
 		userId: id,
 		deskId: -1,
-		date: new Date(),
+		date: null,
 	});
+	const formRef = useRef();
 
 	const postData = async () => {
 		return await fetch("/api/bookings", {
@@ -36,20 +37,23 @@ const BookingForm = ({ setReload }) => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
+		console.log("Submit pressed");
 		try {
 			postData()
 				.then((response) => response.json())
 				.then(({ message, error }) => {
 					if (message) {
-						notifySuccess(message)
-						setReload(true)
+						notifySuccess(message);
+						setReload(true);
 					}
-					error && notifyError(error)
-					
+					error && notifyError(error);
 				});
 		} catch (err) {
 			console.log(err);
 			notifyError();
+		} finally {
+			formRef.current.reset();
+			setDate(null)
 		}
 	};
 
@@ -89,11 +93,12 @@ const BookingForm = ({ setReload }) => {
 				Booking Form
 			</h5>
 			<form
+				ref={formRef}
 				class="card-body gap-2 h-100 px-4 needs-validation"
 				style={{ backgroundColor: "#faf9ff" }}
 				onSubmit={handleSubmit}
 			>
-				<DayTime onDateChange={handleFormData} date={date} setDate={setDate}/>
+				<DayTime onDateChange={handleFormData} date={date} setDate={setDate} />
 
 				<div class="form-group d-flex justify-content-between">
 					<div class="form-group w-50">
