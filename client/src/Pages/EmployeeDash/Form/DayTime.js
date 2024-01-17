@@ -1,24 +1,22 @@
-import { React, useState } from "react";
+import {React, useState} from "react";
 import DatePicker from "react-datepicker";
-import TimeRangePicker from "@wojtekmaj/react-timerange-picker";
 import "react-datepicker/dist/react-datepicker.css";
-import "@wojtekmaj/react-timerange-picker/dist/TimeRangePicker.css";
-import "react-clock/dist/Clock.css";
+import setHours from "date-fns/setHours";
+import setMinutes from "date-fns/setMinutes";
 
-const DayTime = ({onDateChange, date, setDate}) => {
-	const [value, onChange] = useState([]);
+const DayTime = ({ onDateChange, date, setDate }) => {
 	return (
 		<>
 			<div className="form-group d-flex flex-column w-100">
 				<label class="mt-1" for="exampleInputPassword1">
 					Date
 				</label>
-				<DatePicker
+				<DatePicker	
 					selected={date}
 					value={date}
 					onChange={(date) => {
-						setDate(date)
-						onDateChange(date)						
+						setDate(date);
+						onDateChange(date);
 					}}
 					dateFormat="dd/MM/yyyy"
 					className="form-control my-2 mb-3 d-flex justify-content-end gap-2 w-100"
@@ -28,20 +26,8 @@ const DayTime = ({onDateChange, date, setDate}) => {
 					minDate={new Date()}
 					required
 					showTimeSelect
-				/>
-			</div>
-
-			<div className="form-group d-flex flex-column w-100">
-				<label class="mt-1" for="time">
-					Time
-				</label>
-				<TimeRangePicker
-					id="time"
-					className="form-control my-2 mb-3 gap-2 w-100"
-					onChange={onChange}
-					value={value}
-					rangeDivider=""
-					required
+					minTime={setHours(setMinutes(new Date(), 0), 9)}
+					maxTime={setHours(setMinutes(new Date(), 0), 17)}
 				/>
 			</div>
 		</>

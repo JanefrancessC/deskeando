@@ -25,6 +25,9 @@
  .splitView {
     width: 50%;
  }
+ .floorPlan-wrapper {
+    width: 55%;
+ }
  .card-tb {
     width: 80%;
  }

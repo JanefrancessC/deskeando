@@ -25,7 +25,7 @@ const Table = ({ isSplitView, allBookings }) => {
 					<tbody>
 						{allBookings.map((el, index) => (
 							<tr>
-								<td>{`${index + 1}`.padStart(2, 0)}</td>
+								<td>{index + 1}</td>
 								<td>
 									{isSplitView ? (
 										<>
@@ -41,17 +41,15 @@ const Table = ({ isSplitView, allBookings }) => {
 									) : (
 										<div>
 											<i className="bi bi-calendar me-2"></i>
-											<span>{el["Reserved Date"]}</span>
+											<span>{el["ReservedDate"]}</span>
 										</div>
 									)}
 								</td>
 								<td className={classNames({ "time-hide": isSplitView })}>
 									{el["Time"]}
 								</td>
-								<td>{el["DeskId"]}</td>
-								<td className={classNames({ "type-hide": isSplitView })}>
-									{el["DeskType"]}
-								</td>
+								<td>{"DK-" + `${el["DeskId"]}`.padStart(2, 0)}</td>
+								<td>{el["DeskType"]}</td>
 								<td>{el["DeskSize"]}</td>
 								<td>
 									<i class="bi bi-pencil-square mx-2"></i>

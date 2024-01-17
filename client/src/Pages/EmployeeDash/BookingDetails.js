@@ -6,9 +6,9 @@ import "./EmployeeDsh.css";
 
 const BookingDetails = ({ view, allBookings, setReload}) => {
 	return (
-		<div class="w-100 d-flex justify-content-around">
+		<div class="d-flex justify-content-around">
 			{view.floorPlan ? (
-				<div className="w-75">
+				<div className="floorPlan-wrapper">
 					<FloorPlan />
 				</div>
 			) : view.listView.splitView ? (

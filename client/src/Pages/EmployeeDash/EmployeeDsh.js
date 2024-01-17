@@ -11,9 +11,9 @@ const EmployeeDsh = () => {
 	const [reload, setReload] = useState(false);
 	let token = localStorage.getItem("data");
 	const [view, setView] = useState({
-		floorPlan: false,
+		floorPlan: true,
 		listView: {
-			splitView: true,
+			splitView: false,
 		},
 	});
 

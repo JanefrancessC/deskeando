@@ -11,10 +11,10 @@ const SideBar = ({ topBar, bookingDetails, handleClick }) => {
 
 	return (
 		<section>
-			<div className="container-fluid">
+			<div className="container-fluid vh-100">
 				<div className="row flex-nowrap w-100">
-					<div className="side-col text-white p-0">
-						<div className="d-flex flex-column h-75">
+					<div className="side-col vh-100 text-white p-0">
+						<div className="d-flex flex-column">
 							{/* <div className="align-self-center pt-4 px-1 m-0">
 								<img
 									src={logo}
