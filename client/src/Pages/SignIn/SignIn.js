@@ -41,17 +41,16 @@ const Login = () => {
 				const { token, id } = data.message;
 
 				// store token in local storage
-				localStorage.setItem("data", JSON.stringify({ "token": token, "id": id }));
+				localStorage.setItem("data", JSON.stringify({ token: token, id: id }));
 
 				// redirect on successful login
 				if (data && data.message.status === "admin")
 					navigate("/admin", { state: { key: data.message.name } });
 				else if (data && data.message.status === "employee")
 					navigate("/employee", { state: { key: data.message.name } });
-				else {
-					setLoginError(true);
-					setFormData({ email: "", password: "" });
-				}
+			} else {
+				setLoginError(true);
+				setFormData({ email: "", password: "" });
 			}
 		} catch (error) {
 			console.error(error);

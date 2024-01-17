@@ -19,7 +19,6 @@ const DeskLabel = ({ deskDetails, coords }) => {
 			className={deskDetails.status}
 			xmlns="http://www.w3.org/1999/xhtml"
 		>
-
 			<Popup
 				trigger={
 					<div id="foreign" className="info-div">
@@ -38,14 +37,16 @@ const DeskLabel = ({ deskDetails, coords }) => {
 							<h6 className="card-title floor-plan-title">Desk Information</h6>
 							<h6>Desk: {deskDetails.desk}</h6>
 							<h6>Status: {deskDetails.status}</h6>
-							<Button
-								className="popup-button"
-								onClick={() => {
-									navigate("/employee");
-								}}
-							>
-								Book this desk
-							</Button>
+							{deskDetails.status === "open" && (
+								<Button
+									className="popup-button"
+									onClick={() => {
+										navigate("/employee");
+									}}
+								>
+									Book this desk
+								</Button>
+							)}
 						</div>
 					</div>
 				</div>
