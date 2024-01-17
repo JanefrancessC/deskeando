@@ -6,14 +6,13 @@ import SignIn from "./Pages/SignIn/SignIn.js";
 import Signup from "./Pages/Signup/Signup";
 import NotFound from "./Pages/Error/NotFound.js";
 import FloorPlan from "./Components/FloorPlan/FloorPlan.js";
-import BookingDetailsAdmin from "./Pages/AdminDash/BookingDetailsAdmin.js";
 
 const App = () => (
 	<Routes>
 		<Route path="/" element={<Home />} />
 		<Route path="/signin" element={<SignIn />} />
 		<Route path="/signup" element={<Signup />} />
-		<Route path="/admin" element={<BookingDetailsAdmin />} />
+		<Route path="/admin" element={<Dashboard />} />
 		<Route path="/employee" element={<EmployeeDsh />} />
 		<Route path="/floorplan" element={<FloorPlan />} />
 		<Route path="*" element={<NotFound />} />
