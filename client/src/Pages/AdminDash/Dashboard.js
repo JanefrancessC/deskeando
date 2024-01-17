@@ -17,7 +17,7 @@ const Dashboard = () => {
 
 	let userDetails = {
 		userName: useLocation().state?.key || null,
-		role: "User",
+		role: "Admin",
 	};
 	const handleClick = (e) => {
 		e.preventDefault();
