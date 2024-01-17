@@ -1,22 +1,30 @@
-import { React, useState, useEffect } from "react";
+import { React, useState, useEffect, useRef } from "react";
 import "../EmployeeDsh.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import DayTime from "./DayTime";
+import axios from "axios";
 
-const BookingForm = () => {
+const BookingForm = ({ setReload }) => {
 	const { token, id } = JSON.parse(localStorage.getItem("data"));
 	const [desks, setDesks] = useState([]);
+	const [deskDetails, setDeskDetails] = useState({
+		deskType: "",
+		deskSize: "",
+	});
+	const deskSize = ["small", "medium", "large"];
+	const [date, setDate] = useState(null);
 
-	const notifySuccess = () => toast.success("Booking created successfully");
+	const notifySuccess = (message) => toast.success(<div>{message}</div>);
+	const notifyError = (message) => toast.error(<div>{message}</div>);
 	const [formData, setFormData] = useState({
 		userId: id,
-		desk: "",
+		deskId: -1,
 		date: null,
 	});
+	const formRef = useRef();
 
 	const postData = async () => {
-		console.log(formData);
 		return await fetch("/api/bookings", {
 			method: "POST",
 			headers: {
@@ -27,50 +35,98 @@ const BookingForm = () => {
 		});
 	};
 
-	const handleSubmit = () => {
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		console.log("Submit pressed");
 		try {
 			postData()
 				.then((response) => response.json())
-				.then((data) => {
-					console.log(data);
-					notifySuccess();
+				.then(({ message, error }) => {
+					if (message) {
+						notifySuccess(message);
+						setReload(true);
+					}
+					error && notifyError(error);
 				});
 		} catch (err) {
 			console.log(err);
+			notifyError();
+		} finally {
+			formRef.current.reset();
+			setDate(null)
 		}
 	};
 
 	const handleFormData = (e) => {
-		setFormData({ ...formData, [e.target.name]: e.target.value });
+		if (e.getMonth) setFormData({ ...formData, ["date"]: e });
+		else {
+			setFormData({ ...formData, [e.target.name]: e.target.value });
+		}
 	};
 
+	const handleDeskChange = (e) => {
+		const selectedDesk = desks.find((el) => {
+			const textValue = e.target.options[e.target.selectedIndex].textContent;
+			return el.desk_name === textValue;
+		});
+		if (selectedDesk) {
+			setDeskDetails({
+				deskSize: selectedDesk.size,
+				deskType: selectedDesk.type,
+			});
+		}
+	};
+
+	useEffect(() => {
+		axios
+			.get("/api/desks")
+			.then((response) => setDesks(response.data))
+			.catch((err) => console.log(err));
+	}, []);
+
 	return (
-		<div class="card ms-4 h-75 border-0" style={{ width: "37%" }}>
+		<div class="card ms-4 h-75" style={{ width: "37%" }}>
 			<h5
 				class="card-header"
 				style={{ backgroundColor: "#4D44B5", color: "#FCFCFF" }}
 			>
 				Booking Form
 			</h5>
-			<div
-				class="card-body gap-2 h-100 px-4"
+			<form
+				ref={formRef}
+				class="card-body gap-2 h-100 px-4 needs-validation"
 				style={{ backgroundColor: "#faf9ff" }}
+				onSubmit={handleSubmit}
 			>
-				<div class="form-group">
-					<label class="card-text mt-1" for="exampleInputEmail1">
-						Name
-					</label>
-					<input
-						type="text"
-						class="form-control card-text my-2 mb-3"
-						id="name"
-						placeholder="Enter your name"
-					/>
-				</div>
-				<DayTime />
+				<DayTime onDateChange={handleFormData} date={date} setDate={setDate} />
 
 				<div class="form-group d-flex justify-content-between">
-					<div style={{ width: "55%" }}>
+					<div class="form-group w-50">
+						<label class="card-text mt-1" for="exampleInputEmail1">
+							Desk Name
+						</label>
+
+						<select
+							required
+							class="form-select card-text my-2 mb-3"
+							name="deskId"
+							aria-label="Default select example"
+							onChange={(e) => {
+								handleDeskChange(e);
+								handleFormData(e);
+							}}
+						>
+							<option selected value="">
+								Choose a desk name
+							</option>
+							{desks.map(({ desk_id, desk_name }, index) => (
+								<option value={desk_id} key={index}>
+									{desk_name}
+								</option>
+							))}
+						</select>
+					</div>
+					<div class="form-group" style={{ width: "45%" }}>
 						<label class="card-text mt-1" for="exampleInputEmail1">
 							Desk type
 						</label>
@@ -78,68 +134,31 @@ const BookingForm = () => {
 							class="form-select card-text my-2 mb-3"
 							aria-label="Default select example"
 						>
-							<option selected>Choose a desk type</option>
-							<option value="1">Standing Desk</option>
-							<option value="2">Regular Desk</option>
+							<option defaultChecked value="">
+								Choose a desk type
+							</option>
+							<option selected value={deskDetails.deskType}>
+								{deskDetails.deskType}
+							</option>
 						</select>
 					</div>
-					<div>
-						<label class="card-text mt-1" for="exampleInputEmail1">
-							Desk Number
+				</div>
+
+				{deskSize.map((el) => (
+					<div class="form-check form-check-inline my-2">
+						<input
+							class="form-check-input"
+							type="radio"
+							name="radios"
+							id={el}
+							value={el}
+							checked={deskDetails.deskSize === el}
+						/>
+						<label class="form-check-label" for="inlineRadio1">
+							{el}
 						</label>
-
-						<select
-							class="form-select card-text my-2 mb-3"
-							aria-label="Default select example"
-							onChange={handleFormData}
-						>
-							<option selected>Choose a desk name</option>
-							<option name="desk" value="DK-01">
-								DK-01
-							</option>
-							<option name="desk" value="DK-02">
-								DK-02
-							</option>
-						</select>
 					</div>
-				</div>
-
-				<div class="form-check form-check-inline my-2">
-					<input
-						class="form-check-input"
-						type="radio"
-						name="inlineRadioOptions"
-						id="inlineRadio1"
-						value="option1"
-					/>
-					<label class="form-check-label" for="inlineRadio1">
-						Small
-					</label>
-				</div>
-				<div class="form-check form-check-inline">
-					<input
-						class="form-check-input"
-						type="radio"
-						name="inlineRadioOptions"
-						id="inlineRadio2"
-						value="option2"
-					/>
-					<label class="form-check-label" for="inlineRadio2">
-						Medium
-					</label>
-				</div>
-				<div class="form-check form-check-inline m">
-					<input
-						class="form-check-input"
-						type="radio"
-						name="inlineRadioOptions"
-						id="inlineRadio3"
-						value="option3"
-					/>
-					<label class="form-check-label" for="inlineRadio3">
-						Large
-					</label>
-				</div>
+				))}
 
 				<div class="form-group">
 					<label class="card-text mt-2" for="exampleInputEmail1">
@@ -153,22 +172,24 @@ const BookingForm = () => {
 					/>
 				</div>
 
-				<div class="btn-wrap pb-2 d-flex w-75 justify-content-start gap-5">
-					<button
-						type="submit"
-						id="s-btn"
-						className="btn rounded"
-						onClick={handleSubmit}
-					>
+				<div class="btn-wrap pb-2 d-flex w-100 justify-content-start gap-5">
+					<button type="submit" id="s-btn" className="btn rounded">
 						Confirm Booking
 					</button>
-					<button type="submit" id="c-btn" className="btn rounded">
+					<button
+						id="c-btn"
+						type="reset"
+						className="btn rounded"
+						onClick={() => {
+							setDate(null);
+						}}
+					>
 						Cancel
 					</button>
 
 					<ToastContainer position="bottom-center" />
 				</div>
-			</div>
+			</form>
 		</div>
 	);
 };

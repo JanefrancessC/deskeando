@@ -25,6 +25,9 @@
  .splitView {
     width: 50%;
  }
+ .floorPlan-wrapper {
+    width: 55%;
+ }
  .card-tb {
     width: 80%;
  }
@@ -34,4 +37,7 @@
 
 .react-datepicker__calendar-icon {
     margin-top: 7px;
+}
+.react-timerange-picker__wrapper {
+    border: none  !important;
 }
