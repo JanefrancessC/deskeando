@@ -15,6 +15,7 @@ const Desk = () => {
 					stroke="white"
 					stroke-width="1.8"
 					shape-rendering="crispEdges"
+					className="bi-map"
 				/>
 			</g>
 			<defs>
