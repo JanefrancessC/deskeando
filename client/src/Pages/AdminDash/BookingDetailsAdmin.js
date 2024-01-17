@@ -1,53 +1,68 @@
 import React, { useState, useEffect } from "react";
 
-const BookingDetailsAdmin = ({ bookingId }) => {
-	const [booking, setBooking] = useState(null);
+const BookingDetailsAdmin = () => {
+	const [bookings, setBookings] = useState([]);
 
 	useEffect(() => {
 		const fetchBooking = async () => {
+			const token = JSON.parse(localStorage.getItem("data")).token;
+			const options = {
+				headers: { Authorization: `Bearer ${token}` },
+			};
 			try {
-				const response = await fetch(`/api/booking/${bookingId}`);
+				const response = await fetch(`/api/bookings`, options);
 				const data = await response.json();
-				setBooking(data);
+				console.log(data);
+				setBookings(data);
 			} catch (error) {
 				console.error("Error fetching data:", error);
 			}
 		};
 
 		fetchBooking();
-	}, [bookingId]);
+	}, []);
 
 	return (
-		<div>
-			<h1>Booking Details</h1>
-			{booking ? (
-				<table>
-					<thead>
-						<tr>
-							<th>User ID</th>
-							<th>Booking ID</th>
-							<th>Desk ID</th>
-							<th>Desk Name</th>
-							<th>Desk Size</th>
-							<th>Desk Type</th>
-							<th>Reserved Date</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>{booking.UserId}</td>
-							<td>{booking.BookingId}</td>
-							<td>{booking.DeskId}</td>
-							<td>{booking.DeskName}</td>
-							<td>{booking.DeskSize}</td>
-							<td>{booking.DeskType}</td>
-							<td>{booking.ReservedDate}</td>
-						</tr>
-					</tbody>
-				</table>
-			) : (
-				<p>Loading...</p>
-			)}
+		<div class="card ms-4 h-75 border-0" style={{ width: "100%" }}>
+			<h5
+				class="card-header"
+				style={{ backgroundColor: "#4D44B5", color: "#FCFCFF" }}
+			>
+				Booking Form
+			</h5>
+
+			<table className="table table-hover">
+				<thead>
+					<tr>
+						<th scope="col">User Name </th>
+						<th scope="col">Reserved Date</th>
+						<th scope="col">Desk Name</th>
+						<th scope="col">Desk Type</th>
+						<th scope="col">Desk Size</th>
+						<th scope="col">Department</th>
+						<th scope="col">Email</th>
+						<th scope="col">Edit</th>
+					</tr>
+				</thead>
+				<tbody>
+					{bookings &&
+						bookings.map((booking, index) => (
+							<tr>
+								<td>{booking["username"]}</td>
+								<td>{booking["reservation_date"]}</td>
+								<td>{booking["desk_name"]}</td>
+								<td>{booking["type"]}</td>
+								<td>{booking["size"]}</td>
+								<td>{booking["department"]}</td>
+								<td>{booking["email"]}</td>
+								<td>
+									{/* <i class="bi bi-pencil-square mx-2"></i> */}
+									<i class="bi bi-trash mx-2"></i>
+								</td>
+							</tr>
+						))}
+				</tbody>
+			</table>
 		</div>
 	);
 };
