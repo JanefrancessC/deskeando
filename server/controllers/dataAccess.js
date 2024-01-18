@@ -8,7 +8,6 @@ import { formatDate, formatTime } from "./validators.js";
  * @returns {string|null} - The desk ID if found, otherwise null.
  */
 const getDeskId = async (deskName) => {
-	console.log("deskName", deskName);
 	try {
 		const result = await db.query(
 			"SELECT desk_id FROM public.desks WHERE desk_name = $1",
