@@ -137,4 +137,19 @@ export const getUserBookings = async (userId) => {
 	}));
 };
 
+// desks status
+export const getDeskStatus = async () => {
+	try {
+		const deskStatusResult = await db.query(`
+      SELECT d.desk_id, 
+             COALESCE(b.reservation_date IS NULL, false) AS is_available
+      FROM desks d
+      LEFT JOIN bookings b ON d.desk_id = b.desk_id
+    `);
+		return deskStatusResult.rows;
+	} catch (error) {
+		console.error({ error: "Unable to retrieve desk status" });
+	}
+};
+
 export { checkAvailability, saveBooking };
