@@ -19,9 +19,6 @@ export const viewBookings = async (req, res) => {
 			
 		}
 
-		if (bookingDetails.length === 0) {
-			res.status(404).json({ message: "No bookings found" })
-		}
 		res.json(bookingDetails);
 	} catch (error) {
 		console.error(error);

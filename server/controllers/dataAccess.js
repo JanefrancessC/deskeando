@@ -137,14 +137,17 @@ export const getUserBookings = async (userId) => {
 };
 
 // desks status
-export const getDeskStatus = async () => {
+export const getDeskStatus = async (date) => {
 	try {
-		const deskStatusResult = await db.query(`
-      SELECT d.desk_id, 
-             COALESCE(b.reservation_date IS NULL, false) AS is_available
-      FROM desks d
-      LEFT JOIN bookings b ON d.desk_id = b.desk_id
-    `);
+		const deskStatusResult = await db.query(
+			`
+			SELECT d.*,
+			CASE WHEN b.booking_id IS NULL THEN 'Available' ELSE 'Booked' END AS status
+			FROM desks d
+			LEFT JOIN bookings b ON d.desk_id = b.desk_id AND b.reservation_date = $1
+			`,
+			[date]
+		);
 		return deskStatusResult.rows;
 	} catch (error) {
 		console.error({ error: "Unable to retrieve desk status" });
