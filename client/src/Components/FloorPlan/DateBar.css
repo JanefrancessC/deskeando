@@ -1,0 +1,33 @@
+.container {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.date-bar-form {
+    display: flex;
+    justify-content: center;
+    flex-flow: wrap;
+}
+
+.date-bar-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 80%;
+    justify-content: center;
+}
+
+.date-bar-input {
+    margin: 0px 10px 0px 10px;
+}
+
+.date-bar-label {
+    font-size: 15px;
+    padding-right: 10px;
+}
+
+.date-bar-button {
+    height: 35px;
+    margin-left: 10px;
+}
