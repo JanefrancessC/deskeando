@@ -142,7 +142,7 @@ export const getDeskStatus = async (date) => {
 		const deskStatusResult = await db.query(
 			`
 			SELECT d.*,
-			CASE WHEN b.booking_id IS NULL THEN 'Available' ELSE 'Booked' END AS status
+			CASE WHEN b.booking_id IS NULL THEN 'Open' ELSE 'Closed' END AS status
 			FROM desks d
 			LEFT JOIN bookings b ON d.desk_id = b.desk_id AND b.reservation_date = $1
 			`,
