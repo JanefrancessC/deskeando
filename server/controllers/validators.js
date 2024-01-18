@@ -53,3 +53,44 @@ export const validateBooking = async (booking, errors) => {
 const isPast = (date) => {
 	return isNaN(date) || date < new Date();
 };
+
+// format date and time
+export const formatDateTime = (isoDateString) => {
+	const date = new Date(isoDateString);
+	const formattedDateTime = new Intl.DateTimeFormat("en-GB", {
+		year: "numeric",
+		month: "short",
+		day: "2-digit",
+		hour: "numeric",
+		minute: "numeric",
+		second: "numeric",
+		hour12: false,
+		timeZone: "Europe/London",
+	}).format(date);
+
+	return formattedDateTime;
+};
+
+export const formatTime = (isoDateString) => {
+	const date = new Date(isoDateString);
+	const options = {
+		hour: "2-digit",
+		minute: "2-digit",
+		second: "2-digit",
+		timeZone: "Europe/London",
+	};
+
+	return new Intl.DateTimeFormat("en-GB", options).format(date);
+};
+
+export const formatDate = (isoDateString) => {
+	const date = new Date(isoDateString);
+	const formattedDate = new Intl.DateTimeFormat("en-GB", {
+		year: "numeric",
+		month: "short",
+		day: "2-digit",
+		timeZone: "Europe/London",
+	}).format(date);
+
+	return formattedDate;
+	}

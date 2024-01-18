@@ -1,4 +1,6 @@
 import db from "../db";
+import { formatDate, formatTime } from "./validators.js";
+
 /**
  * Retrieves the desk ID associated with a given desk name from the database.
  *
@@ -6,7 +8,7 @@ import db from "../db";
  * @returns {string|null} - The desk ID if found, otherwise null.
  */
 const getDeskId = async (deskName) => {
-	console.log("deskName", deskName)
+	console.log("deskName", deskName);
 	try {
 		const result = await db.query(
 			"SELECT desk_id FROM public.desks WHERE desk_name = $1",
@@ -70,21 +72,69 @@ const saveBooking = async (data) => {
 	}
 };
 
-// desks status
-
-export const getDeskStatus = async () => {
+// Check if user is admin
+export const userAdmin = async (userId) => {
 	try {
-		const deskStatusResult = await db.query(`
-      SELECT d.desk_id, 
-             COALESCE(b.reservation_date IS NULL, false) AS is_available
-      FROM desks d
-      LEFT JOIN bookings b ON d.desk_id = b.desk_id
-    `);
+		const adminResult = await db.query(
+			`SELECT is_admin FROM users WHERE user_id = $1`,
+			[userId]
+		);
 
-		return deskStatusResult.rows;
+		return adminResult.rows[0].is_admin;
 	} catch (error) {
-		console.error({ error: "Unable to retrieve desk status" });
+		console.error(error);
 	}
+};
+
+// Get admin bookings
+export const getAdminBookings = async () => {
+	try {
+		const adminBookingResult = await db.query(`SELECT
+				b.booking_id,
+				b.user_id,
+				b.desk_id,
+				b.reservation_date,
+				d.*, 
+				u.user_id,
+				CONCAT(u.first_name, ' ', u.last_name) AS username,
+				u.email,
+				dp.name AS department
+				FROM desks d
+				LEFT JOIN bookings b ON b.desk_id = d.desk_id 
+				INNER JOIN users u ON b.user_id = u.user_id
+				INNER JOIN department dp on dp.department_id = u.dept_id
+				`);
+
+		return adminBookingResult.rows.map((booking) => ({
+			...booking,
+			reservationDate: formatDate(booking.reservation_date),
+			reservationTime: formatTime(booking.reservation_date),
+		}));
+	} catch (error) {
+		console.error(error);
+	}
+};
+
+// Get user bookings
+export const getUserBookings = async (userId) => {
+	const userBookingResult = await db.query(
+		`SELECT b.*, d.*, u.* FROM bookings b 
+			JOIN desks d ON b.desk_id = d.desk_id 
+			JOIN users u ON b.user_id = u.user_id  
+			WHERE u.user_id = $1`,
+		[userId]
+	);
+
+	return userBookingResult.rows.map((booking) => ({
+		userId: booking.user_id,
+		bookingId: booking.booking_id,
+		deskId: booking.desk_id,
+		deskName: booking.desk_name,
+		deskSize: booking.size,
+		deskType: booking.type,
+		reservationDate: formatDate(booking.reservation_date),
+		reservationTime: formatTime(booking.reservation_date),
+	}));
 };
 
 export { checkAvailability, saveBooking };
