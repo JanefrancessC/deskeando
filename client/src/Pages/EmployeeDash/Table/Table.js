@@ -16,13 +16,13 @@ const Table = ({ isSplitView, allBookings }) => {
 			})}
 		>
 			<h5
-				class="card-header"
+				className="card-header"
 				style={{ backgroundColor: "#4D44B5", color: "#FCFCFF" }}
 			>
 				Booking Details
 			</h5>
-			<div class="card-body">
-				<table class="table table-responsive">
+			<div className="card-body">
+				<table className="table table-responsive">
 					{allBookings.length !== 0 ? (
 						<>
 							<TableHead isSplitView={isSplitView} />

@@ -24,9 +24,8 @@ const EmployeeDsh = () => {
 
 	const handleClick = (e) => {
 		e.preventDefault();
-		const id = e.currentTarget.id
-		if (id <=2 )
-			setView(switchView(e.currentTarget.id));
+		const id = e.currentTarget.id;
+		if (id <= 2) setView(switchView(e.currentTarget.id));
 	};
 
 	const fetchData = async (url, options) => {
@@ -41,12 +40,9 @@ const EmployeeDsh = () => {
 			headers: { Authorization: `Bearer ${token}` },
 		};
 		if (data.length === 0 || reload) {
-			fetchData("/api/bookings", options).then((data) => {
-				if (data.message !== 'No booking found')
-					setData(data);
-			});
+			fetchData("/api/bookings", options).then((data) => setData(data));
 
-			setReload(false)
+			setReload(false);
 		}
 	}, [reload]);
 
@@ -58,7 +54,13 @@ const EmployeeDsh = () => {
 					topBar={
 						<Topbar userDetails={userDetails} handleClick={handleClick} />
 					}
-					bookingDetails={<BookingDetails view={view} allBookings={data} setReload={setReload} />}
+					bookingDetails={
+						<BookingDetails
+							view={view}
+							allBookings={data}
+							setReload={setReload}
+						/>
+					}
 				/>
 			) : (
 				<Forbidden />

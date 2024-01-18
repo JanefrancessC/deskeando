@@ -17,7 +17,7 @@ const Bookings = () => {
 			<path
 				d="M16 29L21 35L27.75 30.75L34.5 26.5"
 				stroke="white"
-				stroke-width="1.8"
+				strokeWidth="1.8"
 				className="bi-map"
 			/>
 		</svg>

@@ -37,7 +37,6 @@ const BookingForm = ({ setReload }) => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		console.log("Submit pressed");
 		try {
 			postData()
 				.then((response) => response.json())
@@ -85,30 +84,30 @@ const BookingForm = ({ setReload }) => {
 	}, []);
 
 	return (
-		<div class="card ms-4 h-75" style={{ width: "37%" }}>
+		<div className="card ms-4 h-75" style={{ width: "37%" }}>
 			<h5
-				class="card-header"
+				className="card-header"
 				style={{ backgroundColor: "#4D44B5", color: "#FCFCFF" }}
 			>
 				Booking Form
 			</h5>
 			<form
 				ref={formRef}
-				class="card-body gap-2 h-100 px-4 needs-validation"
+				className="card-body gap-2 h-100 px-4 needs-validation"
 				style={{ backgroundColor: "#faf9ff" }}
 				onSubmit={handleSubmit}
 			>
 				<DayTime onDateChange={handleFormData} date={date} setDate={setDate} />
 
-				<div class="form-group d-flex justify-content-between">
-					<div class="form-group w-50">
-						<label class="card-text mt-1" for="exampleInputEmail1">
+				<div className="form-group d-flex justify-content-between">
+					<div className="form-group w-50">
+						<label className="card-text mt-1" htmlFor="exampleInputEmail1">
 							Desk Name
 						</label>
 
 						<select
 							required
-							class="form-select card-text my-2 mb-3"
+							className="form-select card-text my-2 mb-3"
 							name="deskId"
 							aria-label="Default select example"
 							onChange={(e) => {
@@ -126,12 +125,12 @@ const BookingForm = ({ setReload }) => {
 							))}
 						</select>
 					</div>
-					<div class="form-group" style={{ width: "45%" }}>
-						<label class="card-text mt-1" for="exampleInputEmail1">
+					<div className="form-group" style={{ width: "45%" }}>
+						<label className="card-text mt-1" htmlFor="exampleInputEmail1">
 							Desk type
 						</label>
 						<select
-							class="form-select card-text my-2 mb-3"
+							className="form-select card-text my-2 mb-3"
 							aria-label="Default select example"
 						>
 							<option defaultChecked value="">
@@ -145,34 +144,34 @@ const BookingForm = ({ setReload }) => {
 				</div>
 
 				{deskSize.map((el) => (
-					<div class="form-check form-check-inline my-2">
+					<div className="form-check form-check-inline my-2">
 						<input
-							class="form-check-input"
+							className="form-check-input"
 							type="radio"
 							name="radios"
 							id={el}
 							value={el}
 							checked={deskDetails.deskSize === el}
 						/>
-						<label class="form-check-label" for="inlineRadio1">
+						<label className="form-check-label" htmlFor="inlineRadio1">
 							{el}
 						</label>
 					</div>
 				))}
 
-				<div class="form-group">
-					<label class="card-text mt-2" for="exampleInputEmail1">
+				<div className="form-group">
+					<label className="card-text mt-2" htmlFor="exampleInputEmail1">
 						Comment
 					</label>
 					<input
 						type="text"
-						class="form-control card-text my-2 mb-4"
+						className="form-control card-text my-2 mb-4"
 						id="name"
 						placeholder="Need extra mouse"
 					/>
 				</div>
 
-				<div class="btn-wrap pb-2 d-flex w-100 justify-content-start gap-5">
+				<div className="btn-wrap pb-2 d-flex w-100 justify-content-start gap-5">
 					<button type="submit" id="s-btn" className="btn rounded">
 						Confirm Booking
 					</button>

@@ -84,7 +84,7 @@ const Login = () => {
 									className={`w-100 requires-validation ${
 										!isValid && "was - validated"
 									}`}
-									novalidate
+									noValidate
 								>
 								<div className="d-flex gap-2">
 									<h6 className="fw-bold">New User?</h6>

@@ -34,15 +34,15 @@ const Footer = () => (
 							<div className="contact">Follow Us</div>
 							<div className="col item social py-2 me-2 mt-2">
 								<a href="#">
-									<i class="bi bi-facebook h2 icon-white"></i>
+									<i className="bi bi-facebook h2 icon-white"></i>
 								</a>
 								&nbsp; &nbsp;&nbsp; &nbsp;
 								<a href="#">
-									<i class="bi h2 bi-twitter-x icon-white"></i>
+									<i className="bi h2 bi-twitter-x icon-white"></i>
 								</a>
 								&nbsp; &nbsp;&nbsp; &nbsp;
 								<a href="#">
-									<i class="bi h2 bi-linkedin icon-white"></i>
+									<i className="bi h2 bi-linkedin icon-white"></i>
 								</a>
 								&nbsp; &nbsp;&nbsp; &nbsp;
 								<a href="#">

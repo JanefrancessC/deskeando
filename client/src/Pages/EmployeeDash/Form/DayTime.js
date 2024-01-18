@@ -8,7 +8,7 @@ const DayTime = ({ onDateChange, date, setDate }) => {
 	return (
 		<>
 			<div className="form-group d-flex flex-column w-100">
-				<label class="mt-1" for="exampleInputPassword1">
+				<label className="mt-1" htmlFor="exampleInputPassword1">
 					Date
 				</label>
 				<DatePicker	

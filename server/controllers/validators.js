@@ -64,7 +64,7 @@ export const formatDateTime = (isoDateString) => {
 		hour: "numeric",
 		minute: "numeric",
 		second: "numeric",
-		hour12: false,
+		hour12: true,
 		timeZone: "Europe/London",
 	}).format(date);
 
@@ -89,6 +89,7 @@ export const formatDate = (isoDateString) => {
 		year: "numeric",
 		month: "short",
 		day: "2-digit",
+		hour12: true,
 		timeZone: "Europe/London",
 	}).format(date);
 
