@@ -8,6 +8,7 @@ const DeskForm = ({ setReload }) => {
 	const { token, id } = JSON.parse(localStorage.getItem("data"));
 	const [desks, setDesks] = useState([]);
 	const [deskDetails, setDeskDetails] = useState({
+		deskName: "",
 		deskType: "",
 		deskSize: "",
 	});
@@ -67,12 +68,6 @@ const DeskForm = ({ setReload }) => {
 			const textValue = e.target.options[e.target.selectedIndex].textContent;
 			return el.desk_name === textValue;
 		});
-		if (selectedDesk) {
-			setDeskDetails({
-				deskSize: selectedDesk.size,
-				deskType: selectedDesk.type,
-			});
-		}
 	};
 
 	useEffect(() => {
@@ -96,8 +91,6 @@ const DeskForm = ({ setReload }) => {
 				style={{ backgroundColor: "#faf9ff" }}
 				onSubmit={handleSubmit}
 			>
-				{/* <DayTime onDateChange={handleFormData} date={date} setDate={setDate} /> */}
-
 				<div class="form-group d-flex justify-content-between">
 					<div class="form-group w-50">
 						<label class="card-text mt-1" for="exampleInputEmail1">
@@ -174,14 +167,7 @@ const DeskForm = ({ setReload }) => {
 					<button type="submit" id="s-btn" className="btn rounded">
 						Add a Desk
 					</button>
-					<button
-						id="c-btn"
-						type="reset"
-						className="btn rounded"
-						onClick={() => {
-							setDate(null);
-						}}
-					>
+					<button id="c-btn" type="reset" className="btn rounded">
 						Cancel
 					</button>
 
