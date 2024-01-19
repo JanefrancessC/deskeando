@@ -14,13 +14,9 @@ import {
 	smallLaptopDeskCoords,
 	smallDeskCoords,
 	statusCoords,
-	deskData,
-	deskData2,
 } from "./PlanCoords.js";
 
-const Map = () => {
-	const [deskInformation, setDeskInformation] = useState(deskData2);
-
+const Map = ({ desks }) => {
 	return (
 		<svg
 			className="deskplan-container"
@@ -61,7 +57,7 @@ const Map = () => {
 				);
 			})}
 
-			{deskInformation?.map((item, index) => {
+			{desks?.map((item, index) => {
 				return (
 					<DeskLabel
 						deskDetails={item}
