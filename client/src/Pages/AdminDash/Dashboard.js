@@ -65,6 +65,13 @@ const Dashboard = () => {
 			) : (
 				<Forbidden />
 			)}
+			{
+				// <DeskDetailsAdmin
+				// 	view={view}
+				// 	allBookings={data}
+				// 	setReload={setReload}
+				// />
+			}
 		</div>
 	);
 };
