@@ -7,8 +7,7 @@ import { formatDate, formatTime } from "./validators.js";
  * @param {string} deskName - The name of the desk for which to retrieve the ID.
  * @returns {string|null} - The desk ID if found, otherwise null.
  */
-const getDeskId = async (deskName) => {
-	console.log("deskName", deskName);
+export const getDeskId = async (deskName) => {
 	try {
 		const result = await db.query(
 			"SELECT desk_id FROM public.desks WHERE desk_name = $1",
@@ -149,5 +148,16 @@ export const insertDesk = async (data) => {
 		console.error(error);
 	}
 };
+
+// Admin deleteDesk
+
+export const deleteDesk = async(deskName) => {
+	try {
+		const deskInfo = await db.query(`DELETE FROM public.desks WHERE desk_name = $1 returning *`, [deskName]);
+		return deskInfo.rows;
+	} catch (error) {
+		console.error(error);
+	}
+}
 
 export { checkAvailability, saveBooking };

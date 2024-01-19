@@ -9,7 +9,7 @@ export const createDesk = async (req, res) => {
 
 		// check for admin permissions
 		if (!isAdmin) {
-			return res.status(401).json({ error: "Access denied" });
+			return res.status(401).json({ error: "Permission Denied" });
 		}
 
 		// check all desk details
@@ -35,3 +35,4 @@ export const createDesk = async (req, res) => {
 		res.status(500).json({ error: "Server error" });
 	}
 };
+

@@ -8,6 +8,7 @@ import { getDepartments } from "./controllers/getDepartments.js";
 import {getDesks } from "./controllers/getDesks.js"
 import { cancelBooking } from "./controllers/cancelBooking.js";
 import { createDesk } from "./controllers/createDesk.js";
+import { deleteDeskByAdmin } from "./controllers/deleteDeskByAdmin.js";
 
 
 const router = Router();
@@ -25,5 +26,6 @@ router.get("/bookings", auth, viewBookings);
 router.get("/departments", getDepartments);
 router.get("/desks", getDesks);
 router.delete("/bookings/:bookingId", auth, cancelBooking);
+router.delete("/desks/:deskName", auth, deleteDeskByAdmin);
 
 export default router;
