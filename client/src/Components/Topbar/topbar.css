@@ -198,7 +198,12 @@
 }
 
 /* SCREEN LESS THAN 991PX */
+
 @media (max-width: 991px) {
+	.text-logo {
+		display: flex;
+		justify-content: right;
+	}
 	.links {
 		display: grid;
 		justify-content: center;
@@ -206,13 +211,11 @@
 		background-color: white;
 		list-style-type: none;
 		text-decoration: none;
-		gap: 2px;
+		gap: 7px;
 		font-weight: 500;
 		font-size: 1.2rem;
-	}
-	.links a {
-		text-decoration: none;
 		color: #4d44b5;
+		padding: 14px;
 	}
 	.searchIcon {
 		width: 17px;
@@ -231,10 +234,9 @@
 	}
 	.thelogo-and-the-text {
 		display: flex;
-		justify-content: center;
-		gap: 1rem;
-		/* width: 100%; */
-		padding: 15px;
+		justify-content: end;
+		padding-right: 20px;
+		padding-top: 10px;
 	}
 
 	.container-fluid {
