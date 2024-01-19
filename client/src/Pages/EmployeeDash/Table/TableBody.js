@@ -1,6 +1,5 @@
 import React from "react";
 import classNames from "classnames";
-// import { format } from "morgan";
 
 const TableBody = ({ isSplitView, allBookings }) => {
 	const formatReservationTime = (timeString) => {
