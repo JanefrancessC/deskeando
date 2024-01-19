@@ -21,6 +21,20 @@ function switchView(index) {
 					splitView: true,
 				},
 			};
+		case "3":
+			return {
+				floorPlan: false,
+				listView: {
+					splitView: false,
+				},
+			};
+		case "4":
+			return {
+				floorPlan: false,
+				listView: {
+					splitView: true,
+				},
+			};
 	}
 }
 export { switchView };
