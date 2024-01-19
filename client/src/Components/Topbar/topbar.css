@@ -1,4 +1,4 @@
-.dropdown-toggle::after {
+/* .dropdown-toggle::after {
 	display: inline-block;
 	width: 0;
 	height: 0;
@@ -9,7 +9,7 @@
 	border-right: 0.5em solid transparent;
 	border-bottom: 0;
 	border-left: 0.5em solid transparent;
-}
+} */
 
 .triangle-down {
 	border-left: 5px solid transparent;
@@ -28,15 +28,7 @@
 .form-control.dropdown-toggle:focus {
 	outline: none;
 }
-.nav-link {
-	border: 2px solid #4d44b5;
-	border-radius: 30px;
-	width: 100px;
-	height: 37px;
-	padding-top: 5px;
-}
 
-#book-link,
 #bookings-link {
 	border: 2px solid #009b1b;
 	color: white;
@@ -44,20 +36,17 @@
 }
 
 /* CALENDAR MAP BOOK */
-.navbar-expand-lg .navbar-nav {
+/* .navbar-expand-lg {
 	flex-direction: row;
 	gap: 22px;
-	/* margin-top: 15px; */
-}
+	margin-top: 15px;
+} */
 
 /* BELL GEAR USER ROLE BLUE-DOT */
-.end-of-page {
-	display: flex;
-	gap: 2rem;
-}
 
 .bell {
 	width: 28px;
+	margin-top: 4px;
 }
 
 .user-info {
@@ -105,9 +94,53 @@
 	position: absolute;
 	border: none;
 } */
+
+/* #navbar {
+	display: flex;
+} */
+
+/* the serach button */
+
+/* .form-inline {
+	display: flex;
+} */
+
+.input-control-form {
+	display: flex;
+	border-radius: 20px;
+	border-color: #a098ae;
+	justify-content: flex-start;
+}
+.searchIcon {
+	margin-top: 3px;
+	margin-right: -1.8rem;
+	z-index: 1;
+}
+
+.has-search .form-control {
+	padding-left: 2.375rem;
+}
+
+.has-search .form-control-feedback {
+	position: absolute;
+	/* z-index: 2; */
+	/* display: block; */
+
+	/* height: 2.375rem; */
+	/* line-height: 2.375rem; */
+	/* text-align: center; */
+	pointer-events: none;
+	color: #aaa;
+}
+.form-control {
+	width: 79%;
+}
+.bell_user__role {
+	display: flex;
+	gap: 2.5rem;
+}
 .dropdown-menu-buttons {
-	margin-top: 0.5rem;
-	margin-left: -14px;
+	margin-top: 0.1rem;
 	justify-items: center;
 	width: 5rem;
 	border: 4px;
@@ -116,29 +149,217 @@
 	background-color: #d9d9d9;
 }
 
-.navbar {
-	background-color: #ffffff;
-}
+/* SCREEN MORE THAN 991 */
 
-/* Media query to hide the entire page when screen width is less than 991px */
-@media (max-width: 750px) {
-	#navbar {
-		display: none;
-		flex-wrap: nowrap;
-		justify-content: flex-start;
+@media (min-width: 991px) {
+	.fa-sign-out {
+		color: red;
+		background-color: #009b1b;
 	}
-}
+	.hamburger-content {
+		display: none;
+	}
+	.dropdown-menu-buttons {
+		margin-top: 0.5rem;
+		margin-left: -14px;
+		justify-items: center;
+		width: 5rem;
+		border: 4px;
+		border-radius: 8px;
+		color: #303972;
+		background-color: #d9d9d9;
+	}
 
-@media (max-width: 991px) {
+	.thelogo-and-the-text {
+		display: none;
+	}
+
 	#navbar {
-		display: grid;
-		justify-content: end;
-		margin: 1rem;
-		gap: 14px;
+		display: flex;
+		padding: 1.5rem;
+
+		/* padding: 2.25rem; */
+	}
+
+	.second-section {
+		display: none;
+	}
+	.dropdown-menu-buttons {
+		margin-bottom: 5rem;
 	}
 	.end-of-page {
 		display: flex;
-		gap: 2rem;
-		justify-content: end;
+		gap: 1.5rem;
+		justify-content: right;
+	}
+	.user-info-big-screen {
+		display: none;
+	}
+}
+
+/* SCREEN LESS THAN 991PX */
+@media (max-width: 991px) {
+	.links {
+		display: grid;
+		justify-content: center;
+		justify-items: center;
+		background-color: white;
+		list-style-type: none;
+		text-decoration: none;
+		gap: 2px;
+		font-weight: 500;
+		font-size: 1.2rem;
+	}
+	.links a {
+		text-decoration: none;
+		color: #4d44b5;
+	}
+	.searchIcon {
+		width: 17px;
+	}
+	.hamburger-content {
+		height: 30%;
+		width: 80%;
+		justify-content: center;
+		display: grid;
+		position: absolute;
+		z-index: 1000;
+		margin-top: 63px;
+		left: 47%;
+		transform: translate(-50%, -30%);
+		background-color: white;
+	}
+	.thelogo-and-the-text {
+		display: flex;
+		justify-content: center;
+		gap: 1rem;
+		/* width: 100%; */
+		padding: 15px;
+	}
+
+	.container-fluid {
+		margin-top: 7px;
+		padding-right: 0;
+	}
+
+	.user-info-and-hamburger {
+		display: flex;
+		gap: 1rem;
+	}
+	.dropdown-button {
+		display: flex;
+		justify-content: center;
+		border: none;
+		text-decoration: none;
+	}
+	.dropdown-menu-buttons {
+		min-width: 15rem;
+		background-color: white;
+	}
+
+	.second-section {
+		display: flex;
+		justify-content: center;
+	}
+	.bell {
+		display: none;
+	}
+	.user-info {
+		display: none;
+	}
+	.user-info {
+		margin-left: 14px;
+	}
+	.the-icon-user-background {
+		display: none;
+	}
+	.end-of-page {
+		display: grid;
+		gap: 0.7rem;
+		margin-top: 0.8rem;
+		margin-right: -20px;
+	}
+
+	.bi-house::before {
+		color: rgb(77, 68, 181);
+	}
+	.bi-person::before {
+		color: rgb(77, 68, 181);
+	}
+	.bi-calendar-date::before {
+		color: #4d44b5;
+	}
+
+	.bell_user__role {
+		display: grid;
+		justify-items: center;
+		margin-top: 1rem;
+		margin-bottom: -2.5rem;
+		gap: 1rem;
+	}
+
+	.user-role {
+		margin-left: 5px;
+	}
+	/* .dropdown-button {
+		margin-left: 17px;
+	} */
+	.home-user-calendar {
+		margin-left: 3px;
+	}
+	#navbarSupportedContent {
+		justify-content: flex-end;
+	}
+
+	.first_section {
+		display: flex;
+		padding-left: 16px;
+	}
+	/* .navbar-toggler-topbar {
+		justify-self: flex-start;
+	} */
+
+	/* .input-control-form {
+		justify-content: flex-end;
+	} */
+}
+
+/* LESS THAN */
+@media (max-width: 576px) {
+	.home-user-calendar {
+		margin-left: 10px;
+	}
+	.first_section {
+		padding-left: 0px;
+	}
+	.navbar {
+		padding: 7px;
+		gap: 0px;
+		margin-bottom: 10px;
+	}
+	.input-control-form {
+		width: 9rem;
+		height: 30px;
+	}
+	/* .navbar-toggler-topbar {
+		justify-self: flex-start;
+		width: 3.3rem;
+	} */
+	/* .user-info {
+		margin-left: 14px;
+		display: none;
+	} */
+	.end-of-page {
+		margin-left: -1rem;
+	}
+	/* .navbar-nav-navbar {
+		position: ;
+		z-index: 1000;
+	} */
+	.input-control-form {
+		justify-content: flex-end;
+	}
+	.bell {
+		display: none;
 	}
 }
