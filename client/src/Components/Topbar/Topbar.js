@@ -2,13 +2,16 @@ import React, { useState, useEffect, useRef } from "react";
 import "./topbar.css";
 import iconuser from "./icon-user.svg";
 import bell from "./bell.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import searchIcon from "./searchIcon.svg";
-import thelogo from "./the-logo.svg";
-import textlogo from "./text-logo.svg";
 
-function Topbar({ userDetails, handleClick }) {
+import textlogo from "./text-logo.svg";
+import { switchView } from "../../Pages/EmployeeDash/switchview";
+
+function Topbar({ userDetails, handleClick, setView }) {
 	const [showDropdown, setShowDropdown] = useState(false);
+	const navItems = ["Home", "Floor Plan", "Book Desk", "Bookings"];
+	const navigate = useNavigate();
 
 	const dropdownRef = useRef(null);
 
@@ -26,7 +29,6 @@ function Topbar({ userDetails, handleClick }) {
 		<article>
 			<section className="thelogo-and-the-text">
 				<img className="text-logo" src={textlogo} alt="text-logo" />
-				<img className="the-logo" src={thelogo} alt="the-logo" />
 			</section>
 			<nav id="navbar" className="navbar  navbar-white bg-white">
 				<section className="first_section">
@@ -93,26 +95,50 @@ function Topbar({ userDetails, handleClick }) {
 			<div className="collapse" id="navbarToggleExternalContent">
 				<div class="hamburger-content text-hamburger-content  p-4">
 					<ul className="links">
-						<li>
-							<Link to="/">Home</Link>
+						{navItems.map((item, index) => {
+							return (
+								<li
+									className=""
+									id={index}
+									onClick={(e) => {
+										setView(switchView(e.currentTarget.id));
+									}}
+								>
+									{item}
+								</li>
+							);
+						})}
+						{/* <li
+							onClick={() => {
+								navigate("/employee");
+							}}
+						>
+							Home
+							<Link to="/BookingDetails">Home</Link>
 						</li>
-						<li>
+						<li
+							onClick={(e) => {
+								setView(switchView("0"));
+
+								navigate("/Floorplan");
+							}}
+						>
+							Floor Plans
 							<Link to="/Floorplan">Floor Plan</Link>
 						</li>
 						<li>
 							<Link to="/BookingDetails">Book Desk</Link>
-						</li>
-						{showDropdown && (
-							<Link className="dropdown-button" to="/">
-								<button
-									id="dropdown-button-mobile"
-									className="dropdown-menu-buttons links"
-									onClick={() => localStorage.clear()}
-								>
-									Sign out
-								</button>
-							</Link>
-						)}
+						</li> */}
+
+						<Link className="dropdown-button" to="/">
+							<button
+								id="dropdown-button-mobile"
+								className="dropdown-menu-buttons links"
+								onClick={() => localStorage.clear()}
+							>
+								Sign out
+							</button>
+						</Link>
 					</ul>
 				</div>
 			</div>
