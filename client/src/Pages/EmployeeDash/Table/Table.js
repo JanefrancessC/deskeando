@@ -21,8 +21,8 @@ const Table = ({ isSplitView, allBookings }) => {
 			>
 				Booking Details
 			</h5>
-			<div className="card-body">
-				<table className="table table-responsive">
+			<div class="card-body" style={{ height: "400px", overflow: "auto" }}>
+				<table class="table table-responsive">
 					{allBookings.length !== 0 ? (
 						<>
 							<TableHead isSplitView={isSplitView} />

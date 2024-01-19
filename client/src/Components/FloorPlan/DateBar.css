@@ -1,38 +1,36 @@
 .date-bar-container {
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-    align-content: center;
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	flex-flow: wrap;
+	padding: 20px 0px 20px 0px;
 }
 
 .date-bar-form {
-    display: flex;
-    justify-content: center;
-    flex-flow: wrap;
-}
-
-
-.date-bar-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 100%;
-    justify-content: center;
-    flex-flow: wrap;
-}
-
-.date-bar-input {
-    margin: 0px 10px 0px 10px;
-    height: 30px;
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	flex-wrap: wrap;
 }
 
 .date-bar-label {
-    width: 160px;
-    font-size: 14px;
-    padding-right: 10px;
+	width: 160px;
+	font-size: 14px;
+	padding: 5px 10px 0px 0px;
 }
 
 .date-bar-button {
-    height: 30px;
-    margin-left: 10px; 
+	height: 30px;
+	margin-left: 10px;
+}
+
+.datepicker {
+    text-align: center;
+}
+
+@media screen and (max-width: 900px) {
+	.date-bar-form {
+		gap: 10px;
+	}
+
 }

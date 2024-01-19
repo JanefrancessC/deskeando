@@ -9,25 +9,24 @@ const DateBar = ({ handleDateChange }) => {
 	return (
 		<div className="date-bar-container">
 			<form className="date-bar-form">
-				<div className=" date-bar-container">
-					<label className="form-label date-bar-label mb-0">
-						Check Desk Availability
-					</label>
-					<ReactDatePicker
-						dateFormat={"yyyy-MM-dd"}
-						minDate={new Date()}
-						selected={startDate}
-						onChange={(date) => setStartDate(date)}
-						placeholderText="Select a weekday"
-					/>
-					<button
-						type="button"
-						className="btn btn-primary date-bar-button btn-sm"
-						onClick={() => handleDateChange(startDate)}
-					>
-						Select
-					</button>
-				</div>
+				<label className="form-label date-bar-label mb-0">
+					Check Desk Availability
+				</label>
+				<ReactDatePicker
+					className="datepicker"
+					dateFormat={"yyyy-MM-dd"}
+					minDate={new Date()}
+					selected={startDate}
+					onChange={(date) => setStartDate(date)}
+					placeholderText="Select a weekday"
+				/>
+				<button
+					type="button"
+					className="btn btn-primary date-bar-button btn-sm"
+					onClick={() => handleDateChange(startDate)}
+				>
+					Select
+				</button>
 			</form>
 		</div>
 	);
