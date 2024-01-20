@@ -21,8 +21,7 @@ export const viewBookings = async (req, res) => {
 			res.status(404).json({ message: "No booking found" })
 			return
 		}
-
->>>>>>> 8728698 (Added Datebar and endpoint.)
+		>>>>>>> 8728698 (Added Datebar and endpoint.)
 	try {
 		const user = req.user;
 		let bookingDetails;
