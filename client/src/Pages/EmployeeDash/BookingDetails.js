@@ -14,7 +14,7 @@ const BookingDetails = ({ view, allBookings, setReload, setView}) => {
 			) : view.listView.splitView ? (
 				<>
 					<BookingForm setReload={setReload} />
-						<Table isSplitView={view.listView.splitView} allBookings={allBookings} />
+						<Table isSplitView={view.listView.splitView} allBookings={allBookings} setReload={setReload} />
 				</>
 			) : (
 				<Table isSplitView={view.listView.splitView} allBookings={allBookings}/>
