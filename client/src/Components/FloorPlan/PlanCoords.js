@@ -52,8 +52,8 @@ const statusCoords = [
 const deskData = [
 	{ desk: "DK-01", status: "open" },
 	{ desk: "DK-02", status: "open" },
-	{ desk: "DK-03", status: "closed" },
-	{ desk: "DK-04", status: "closed" },
+	{ desk: "DK-03", status: "open" },
+	{ desk: "DK-04", status: "open" },
 
 	{ desk: "DK-05", status: "open" },
 	{ desk: "DK-06", status: "open" },
@@ -61,7 +61,7 @@ const deskData = [
 	{ desk: "DK-08", status: "open" },
 
 	{ desk: "DK-09", status: "open" },
-	{ desk: "DK-10", status: "closed" },
+	{ desk: "DK-10", status: "open" },
 	{ desk: "DK-11", status: "open" },
 	{ desk: "DK-12", status: "open" },
 
@@ -71,36 +71,11 @@ const deskData = [
 	{ desk: "DK-16", status: "open" },
 
 	{ desk: "DK-17", status: "open" },
-	{ desk: "DK-18", status: "closed" },
-	{ desk: "DK-19", status: "closed" },
+	{ desk: "DK-18", status: "open" },
+	{ desk: "DK-19", status: "open" },
 	{ desk: "DK-20", status: "open" },
 ];
-const deskData2 = [
-	{ desk: "DK-01", status: "closed" },
-	{ desk: "DK-02", status: "open" },
-	{ desk: "DK-03", status: "closed" },
-	{ desk: "DK-04", status: "closed" },
 
-	{ desk: "DK-05", status: "open" },
-	{ desk: "DK-06", status: "open" },
-	{ desk: "DK-07", status: "open" },
-	{ desk: "DK-08", status: "open" },
-
-	{ desk: "DK-09", status: "open" },
-	{ desk: "DK-10", status: "closed" },
-	{ desk: "DK-11", status: "open" },
-	{ desk: "DK-12", status: "open" },
-
-	{ desk: "DK-13", status: "closed" },
-	{ desk: "DK-14", status: "closed" },
-	{ desk: "DK-15", status: "closed" },
-	{ desk: "DK-16", status: "closed" },
-
-	{ desk: "DK-17", status: "closed" },
-	{ desk: "DK-18", status: "closed" },
-	{ desk: "DK-19", status: "closed" },
-	{ desk: "DK-20", status: "open" },
-];
 
 export {
 	computerGroupCoords,
@@ -108,5 +83,4 @@ export {
 	smallDeskCoords,
 	statusCoords,
 	deskData,
-	deskData2
 };
