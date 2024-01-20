@@ -30,9 +30,7 @@ export const validateBooking = async (booking, errors) => {
 
 	if (!availability_status.status) {
 		const deskName = deskId.toString().padStart(2, 0);
-		errors.push(
-			new ErrorMessage(`DK-${deskName} is not available on ${date}`)
-		);
+		errors.push(new ErrorMessage(`DK-${deskName} is not available on ${date}`));
 	}
 
 	return {
@@ -50,7 +48,7 @@ export const validateBooking = async (booking, errors) => {
  * @param {Date} date - The date to be checked.
  * @returns {boolean} - True if the date is valid, false otherwise.
  */
-const isPast = (date) => {
+export const isPast = (date) => {
 	return isNaN(date) || date < new Date();
 };
 
@@ -94,4 +92,4 @@ export const formatDate = (isoDateString) => {
 	}).format(date);
 
 	return formattedDate;
-	}
+};
