@@ -7,14 +7,13 @@ import { formatDate, formatTime } from "./validators.js";
  * @param {string} deskName - The name of the desk for which to retrieve the ID.
  * @returns {string|null} - The desk ID if found, otherwise null.
  */
-const getDeskId = async (deskName) => {
-	console.log("deskName", deskName);
+export const getDeskId = async (deskName) => {
 	try {
 		const result = await db.query(
 			"SELECT desk_id FROM public.desks WHERE desk_name = $1",
 			[deskName]
 		);
-		return result.rows[0]?.desk_id || -1;
+		return result.rows[0]?.desk_id || null;
 	} catch (err) {
 		console.log(err);
 	}
@@ -71,21 +70,6 @@ const saveBooking = async (data) => {
 		console.log(err);
 	}
 };
-
-// Check if user is admin
-export const userAdmin = async (userId) => {
-	try {
-		const adminResult = await db.query(
-			`SELECT is_admin FROM users WHERE user_id = $1`,
-			[userId]
-		);
-
-		return adminResult.rows[0].is_admin;
-	} catch (error) {
-		console.error(error);
-	}
-};
-
 // Get admin bookings
 export const getAdminBookings = async () => {
 	try {
@@ -136,5 +120,44 @@ export const getUserBookings = async (userId) => {
 		reservationTime: formatTime(booking.reservation_date),
 	}));
 };
+
+// Check if user is admin
+export const userAdmin = async (userId) => {
+	try {
+		const adminResult = await db.query(
+			`SELECT is_admin FROM users WHERE user_id = $1`,
+			[userId]
+		);
+
+		return adminResult.rows[0].is_admin;
+	} catch (error) {
+		console.error(error);
+	}
+};
+
+// Admin creates a new desk
+export const insertDesk = async (data) => {
+	try {
+		const newDeskInfo = await db.query(
+			`INSERT INTO public.desks (desk_name, size, type) VALUES ($1, $2, $3) RETURNING *`,
+			[data.deskName, data.size, data.type]
+		);
+
+		return newDeskInfo.rows;
+	} catch (error) {
+		console.error(error);
+	}
+};
+
+// Admin deleteDesk
+
+export const deleteDesk = async(deskName) => {
+	try {
+		const deskInfo = await db.query(`DELETE FROM public.desks WHERE desk_name = $1 returning *`, [deskName]);
+		return deskInfo.rows;
+	} catch (error) {
+		console.error(error);
+	}
+}
 
 export { checkAvailability, saveBooking };
