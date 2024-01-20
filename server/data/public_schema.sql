@@ -41,9 +41,9 @@ CREATE TABLE IF NOT EXISTS public.bookings
     booking_id int UNIQUE GENERATED ALWAYS AS IDENTITY,
     user_id int NOT NULL,
     desk_id int NOT NULL,
-    created_at date NOT NULL DEFAULT NOW(),
-    reservation_date date NOT NULL,
-    updated_at date,
+    created_at timestamp NOT NULL DEFAULT NOW(),
+    reservation_date timestamp NOT NULL,
+    updated_at timestamp,
     CONSTRAINT booking_user_fkey FOREIGN KEY(user_id) REFERENCES public.users(user_id),
     CONSTRAINT booking_desk_fkey FOREIGN KEY(desk_id) REFERENCES public.desks(desk_id)
 )
