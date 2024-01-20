@@ -56,6 +56,7 @@ const EmployeeDsh = () => {
 					}
 					bookingDetails={
 						<BookingDetails
+							setView={setView}
 							view={view}
 							allBookings={data}
 							setReload={setReload}

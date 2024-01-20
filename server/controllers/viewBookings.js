@@ -5,7 +5,6 @@ export const viewBookings = async (req, res) => {
 	try {
 		const user = req.user;
 		let bookingDetails;
-
 		// Check if user is admin
 		const isAdmin = await userAdmin(user.user_id);
 

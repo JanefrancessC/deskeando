@@ -16,7 +16,7 @@ import {
 	statusCoords,
 } from "./PlanCoords.js";
 
-const Map = ({ desks }) => {
+const Map = ({ desks, setView }) => {
 	return (
 		<svg
 			className="deskplan-container"
@@ -63,9 +63,30 @@ const Map = ({ desks }) => {
 						deskDetails={item}
 						coords={statusCoords[index]}
 						key={index}
+						setView={setView}
 					/>
 				);
 			})}
+
+			<defs>
+				<rect
+					className="keyRect"
+					id="keyRect"
+					x="0"
+					y="0"
+					height="30"
+					width="60"
+					rx="15"
+				/>
+			</defs>
+			<use x="10" y="200" href="#keyRect" fill="#009b1b" />
+			<use x="10" y="250" href="#keyRect" fill="#ed5d34" />
+			<text x="80" y="222" id="openText" fontWeight="" fontSize="25">
+				Open - Available.
+			</text>
+			<text x="80" y="272" id="closedText" fontWeight="" fontSize="25">
+				Closed - Already Reserved.
+			</text>
 		</svg>
 	);
 };
