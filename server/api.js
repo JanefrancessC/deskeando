@@ -7,8 +7,9 @@ import { viewBookings } from "./controllers/viewBookings.js";
 import { getDepartments } from "./controllers/getDepartments.js";
 import {getDesks } from "./controllers/getDesks.js"
 import { cancelBooking } from "./controllers/cancelBooking.js";
+import { createDesk } from "./controllers/createDesk.js";
+import { deleteDeskByAdmin } from "./controllers/deleteDeskByAdmin.js";
 import { bookingsByDate } from "./controllers/bookingsByDate.js";
-
 
 const router = Router();
 
@@ -20,10 +21,12 @@ router.get("/", (_, res) => {
 router.post("/signup", signup);
 router.post("/login", login);
 router.post("/bookings", auth, createBooking);
+router.post("/desk", auth, createDesk);
 router.get("/bookings", auth, viewBookings);
 router.get("/departments", getDepartments);
 router.get("/desks", getDesks);
 router.delete("/bookings/:bookingId", auth, cancelBooking);
+router.delete("/desks/:deskName", auth, deleteDeskByAdmin);
 router.post("/bookingsByDate", auth, bookingsByDate);
 
 export default router;
