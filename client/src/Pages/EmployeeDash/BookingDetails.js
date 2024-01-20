@@ -4,12 +4,12 @@ import Table from "./Table/Table";
 import FloorPlan from "../../Components/FloorPlan/FloorPlan";
 import "./EmployeeDsh.css";
 
-const BookingDetails = ({ view, allBookings, setReload}) => {
+const BookingDetails = ({ view, allBookings, setReload, setView}) => {
 	return (
 		<div className="d-flex justify-content-around">
 			{view.floorPlan ? (
 				<div className="floorPlan-wrapper">
-					<FloorPlan />
+					<FloorPlan  setView={setView}/>
 				</div>
 			) : view.listView.splitView ? (
 				<>

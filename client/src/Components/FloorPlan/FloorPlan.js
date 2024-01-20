@@ -4,7 +4,7 @@ import DateBar from "./DateBar.js";
 import { deskData } from "./PlanCoords.js";
 let today = new Date().toISOString().slice(0, 10);
 
-const FloorPlan = () => {
+const FloorPlan = ({setView}) => {
 	const [day, setDay] = useState({ userDate: today });
 	const [desks, setDesks] = useState([]);
 
@@ -41,7 +41,7 @@ const FloorPlan = () => {
 	return (
 		<div>
 			<DateBar handleDateChange={handleDateChange} />
-			<Map desks={desks} />
+			<Map desks={desks} setView={setView} />
 		</div>
 	);
 };

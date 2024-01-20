@@ -5,8 +5,9 @@ import Button from "react-bootstrap/Button";
 // react-popup
 import Popup from "reactjs-popup";
 import { useNavigate } from "react-router-dom";
+import { switchView } from "../../Pages/EmployeeDash/switchview";
 
-const DeskLabel = ({ deskDetails, coords }) => {
+const DeskLabel = ({ deskDetails, coords, setView }) => {
 	const contentStyle = { background: "#FFFFFF" };
 	const navigate = useNavigate();
 
@@ -41,7 +42,7 @@ const DeskLabel = ({ deskDetails, coords }) => {
 								<Button
 									className="popup-button"
 									onClick={() => {
-										navigate("/employee");
+										setView(switchView("2"))
 									}}
 								>
 									Book this desk
