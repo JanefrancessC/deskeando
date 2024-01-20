@@ -5,7 +5,6 @@ export const viewBookings = async (req, res) => {
 	try {
 		const user = req.user;
 		let bookingDetails;
-
 <<<<<<< HEAD
 =======
 		const bookingResult = await db.query(
