@@ -62,6 +62,7 @@ const EmployeeDsh = () => {
 							setReload={setReload}
 						/>
 					}
+					userDetails={userDetails}
 				/>
 			) : (
 				<Forbidden />

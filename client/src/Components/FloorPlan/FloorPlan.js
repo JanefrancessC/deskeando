@@ -35,7 +35,8 @@ const FloorPlan = ({setView}) => {
 	}, [day]);
 
 	const handleDateChange = (date) => {
-		setDay({ userDate: date });
+		let parsedDate= new Date(date).toISOString().slice(0, 10);
+		setDay({ userDate: parsedDate });
 	};
 
 	return (

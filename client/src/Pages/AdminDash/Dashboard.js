@@ -32,6 +32,7 @@ const Dashboard = () => {
 						<Topbar userDetails={userDetails} handleClick={handleClick} />
 					}
 					bookingDetails={<BookingDetailsAdmin view={view} />}
+					userDetails={userDetails}
 				/>
 			) : (
 				<Forbidden />
