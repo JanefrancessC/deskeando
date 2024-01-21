@@ -6,7 +6,6 @@ const TableBody = ({ isSplitView, allBookings, setReload }) => {
 
 	return (
 		<tbody>
-			{console.log(allBookings)}
 			{allBookings.map((el, index) => {
 				const reservationTime = formatReservationTime(el["reservationTime"]);
 				return (
