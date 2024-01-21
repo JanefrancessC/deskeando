@@ -16,7 +16,7 @@ import {
 	statusCoords,
 } from "./PlanCoords.js";
 
-const Map = ({ desks, setView }) => {
+const Map = ({ desks, setView, handlePopulate, day}) => {
 	return (
 		<svg
 			className="deskplan-container"
@@ -64,6 +64,8 @@ const Map = ({ desks, setView }) => {
 						coords={statusCoords[index]}
 						key={index}
 						setView={setView}
+						handlePopulate={handlePopulate}
+						day={day}
 					/>
 				);
 			})}

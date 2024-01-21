@@ -7,7 +7,7 @@ import Popup from "reactjs-popup";
 import { useNavigate } from "react-router-dom";
 import { switchView } from "../../Pages/EmployeeDash/switchview";
 
-const DeskLabel = ({ deskDetails, coords, setView }) => {
+const DeskLabel = ({ deskDetails, coords, setView, handlePopulate, day }) => {
 	const contentStyle = { background: "#FFFFFF" };
 	const navigate = useNavigate();
 
@@ -42,7 +42,8 @@ const DeskLabel = ({ deskDetails, coords, setView }) => {
 								<Button
 									className="popup-button"
 									onClick={() => {
-										setView(switchView("2"))
+										handlePopulate({ ...deskDetails, date: day.userDate });
+										setView(switchView("2"));
 									}}
 								>
 									Book this desk
