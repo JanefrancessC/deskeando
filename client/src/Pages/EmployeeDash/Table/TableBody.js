@@ -1,16 +1,8 @@
 import React from "react";
 import classNames from "classnames";
-
-const TableBody = ({ isSplitView, allBookings }) => {
-	const formatReservationTime = (timeString) => {
-		const time = new Date(`1970-01-01T${timeString}`);
-		let hours = time.getHours();
-		const minutes = time.getMinutes();
-		const x = hours < 12 ? "am" : "pm";
-		hours = ((hours + 11) % 12) + 1;
-
-		return `${hours}:${minutes < 10 ? `0${minutes}` : minutes} ${x}`;
-	};
+import { deleteBooking } from "../../../lib/requests";
+import { formatReservationTime } from "../../../lib/helperFunctions";
+const TableBody = ({ isSplitView, allBookings, setReload }) => {
 
 	return (
 		<tbody>
@@ -46,7 +38,13 @@ const TableBody = ({ isSplitView, allBookings }) => {
 						<td>{el["deskSize"]}</td>
 						<td>
 							<i className="bi bi-pencil-square mx-2"></i>
-							<i className="bi bi-trash mx-2"></i>
+							<i
+								className="bi bi-trash mx-2"
+								id={el["bookingId"]}
+								onClick={(e) => {
+									deleteBooking(e, "/api/bookings", setReload);
+								}}
+							></i>
 						</td>
 					</tr>
 				);
