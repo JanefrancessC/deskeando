@@ -10,6 +10,7 @@ import { cancelBooking } from "./controllers/cancelBooking.js";
 import { createDesk } from "./controllers/createDesk.js";
 import { deleteDeskByAdmin } from "./controllers/deleteDeskByAdmin.js";
 import { bookingsByDate } from "./controllers/bookingsByDate.js";
+import { updateBooking } from "./controllers/updateBooking.js";
 
 const router = Router();
 
@@ -28,5 +29,6 @@ router.get("/desks", getDesks);
 router.delete("/bookings/:bookingId", auth, cancelBooking);
 router.delete("/desks/:deskName", auth, deleteDeskByAdmin);
 router.post("/bookingsByDate", auth, bookingsByDate);
+router.put("/bookings/:bookingId", auth, updateBooking)
 
 export default router;

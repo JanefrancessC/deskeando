@@ -160,4 +160,29 @@ export const deleteDesk = async(deskName) => {
 	}
 }
 
+// update booking query
+export const getUpdateBookings = async (
+	deskId,
+	reservationDate,
+	updatedAt,
+	bookingId
+) => {
+	try {
+		const query = `
+    UPDATE bookings
+    SET desk_id = $1, reservation_date = $2, updated_at = $3
+    WHERE booking_id = $4
+    RETURNING *`;
+		const result = await db.query(query, [
+			deskId,
+			reservationDate,
+			updatedAt,
+			bookingId,
+		]);
+		return result.rows[0];
+	} catch (error) {
+		console.error(error);
+	}
+};
+
 export { checkAvailability, saveBooking };
