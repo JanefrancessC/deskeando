@@ -1,8 +1,12 @@
 import { React, useState, useEffect } from "react";
 import classNames from "classnames";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const DeskTable = ({ isSplitView, allDesks }) => {
 	const [desks, setDesks] = useState([]);
+	const notifySuccess = (message) => toast.success(<div>{message}</div>);
+	const notifyError = (message) => toast.error(<div>{message}</div>);
 
 	useEffect(() => {
 		const fetchDesks = async () => {
@@ -22,6 +26,10 @@ const DeskTable = ({ isSplitView, allDesks }) => {
 		fetchDesks();
 	}, []);
 
+	useEffect(() => {
+		setDesks(allDesks);
+	}, [allDesks]);
+
 	const handleDelete = async (desk_name) => {
 		const token = JSON.parse(localStorage.getItem("data")).token;
 		const options = {
@@ -35,14 +43,17 @@ const DeskTable = ({ isSplitView, allDesks }) => {
 			const response = await fetch(`/api/desks/${desk_name}`, options);
 			if (response.ok) {
 				// Update the state by removing the deleted booking
+				notifySuccess("Successfully deleted a desk.");
 				setDesks((prevDesks) =>
 					prevDesks.filter((desk) => desk.desk_name !== desk_name)
 				);
 			} else {
-				console.error("Failed to delete booking");
+				console.error("Failed to delete desk");
+				notifyError("Failed to delete, please check desk bookings");
 			}
 		} catch (error) {
-			console.error("Error deleting booking:", error);
+			console.error("Error deleting desk:", error);
+			notifyError("Error deleting a desk");
 		}
 	};
 
@@ -74,7 +85,7 @@ const DeskTable = ({ isSplitView, allDesks }) => {
 					</thead>
 					<tbody>
 						{desks &&
-							allDesks.map((desk, index) => (
+							desks.map((desk, index) => (
 								<tr key={index}>
 									<td>{desk["desk_name"]}</td>
 									<td>{desk["type"]}</td>
