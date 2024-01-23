@@ -5,7 +5,7 @@ const DeskTable = ({ isSplitView, allDesks }) => {
 	const [desks, setDesks] = useState([]);
 
 	useEffect(() => {
-		const fetchDesk = async () => {
+		const fetchDesks = async () => {
 			const token = JSON.parse(localStorage.getItem("data")).token;
 			const options = {
 				headers: { Authorization: `Bearer ${token}` },
@@ -19,8 +19,32 @@ const DeskTable = ({ isSplitView, allDesks }) => {
 			}
 		};
 
-		fetchDesk();
+		fetchDesks();
 	}, []);
+
+	const handleDelete = async (desk_name) => {
+		const token = JSON.parse(localStorage.getItem("data")).token;
+		const options = {
+			method: "DELETE",
+			headers: {
+				Authorization: `Bearer ${token}`,
+				"Content-Type": "application/json",
+			},
+		};
+		try {
+			const response = await fetch(`/api/desks/${desk_name}`, options);
+			if (response.ok) {
+				// Update the state by removing the deleted booking
+				setDesks((prevDesks) =>
+					prevDesks.filter((desk) => desk.desk_name !== desk_name)
+				);
+			} else {
+				console.error("Failed to delete booking");
+			}
+		} catch (error) {
+			console.error("Error deleting booking:", error);
+		}
+	};
 
 	let cardClass = "card border-0";
 	cardClass = isSplitView ? (cardClass += "splitView") : cardClass;
@@ -50,14 +74,18 @@ const DeskTable = ({ isSplitView, allDesks }) => {
 					</thead>
 					<tbody>
 						{desks &&
-							desks.map((desk, index) => (
-								<tr>
+							allDesks.map((desk, index) => (
+								<tr key={index}>
 									<td>{desk["desk_name"]}</td>
 									<td>{desk["type"]}</td>
 									<td>{desk["size"]}</td>
 									<td>
+										<button
+											className="btn bi-trash mx-2"
+											onClick={() => handleDelete(desk["desk_name"])}
+										></button>
 										{/* <i class="bi bi-pencil-square mx-2"></i> */}
-										<i class="bi bi-trash mx-2"></i>
+										{/* <i class="bi bi-trash mx-2"></i> */}
 									</td>
 								</tr>
 							))}

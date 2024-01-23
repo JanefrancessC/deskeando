@@ -36,7 +36,7 @@ const BookingDetailsAdmin = () => {
 			if (response.ok) {
 				// Update the state by removing the deleted booking
 				setBookings((prevBookings) =>
-					prevBookings.filter((booking) => booking_id !== booking_id)
+					prevBookings.filter((booking) => booking.booking_id !== booking_id)
 				);
 			} else {
 				console.error("Failed to delete booking");

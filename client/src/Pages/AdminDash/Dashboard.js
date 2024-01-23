@@ -56,7 +56,7 @@ const Dashboard = () => {
 					bookingDetails={
 						<DeskDetailsAdmin
 							view={view}
-							allBookings={data}
+							allDesks={data}
 							setReload={setReload}
 						/>
 					}
@@ -65,13 +65,6 @@ const Dashboard = () => {
 			) : (
 				<Forbidden />
 			)}
-			{
-				// <DeskDetailsAdmin
-				// 	view={view}
-				// 	allBookings={data}
-				// 	setReload={setReload}
-				// />
-			}
 		</div>
 	);
 };
