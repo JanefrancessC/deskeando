@@ -13,7 +13,6 @@ const DeskTable = ({ isSplitView, allDesks }) => {
 			try {
 				const response = await fetch(`/api/desks`, options);
 				const data = await response.json();
-				console.log(data);
 				setDesks(data);
 			} catch (error) {
 				console.error("Error fetching data:", error);

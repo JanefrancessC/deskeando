@@ -36,7 +36,6 @@ const DeskForm = ({ setReload }) => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		console.log("Submit pressed");
 		try {
 			postData()
 				.then((response) => response.json())

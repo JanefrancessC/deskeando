@@ -60,17 +60,11 @@ const Dashboard = () => {
 							setReload={setReload}
 						/>
 					}
+					userDetails={userDetails}
 				/>
 			) : (
 				<Forbidden />
 			)}
-			{
-				// <DeskDetailsAdmin
-				// 	view={view}
-				// 	allBookings={data}
-				// 	setReload={setReload}
-				// />
-			}
 		</div>
 	);
 };
