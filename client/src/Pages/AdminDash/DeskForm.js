@@ -67,7 +67,7 @@ const DeskForm = ({ setReload }) => {
 				className="card-header"
 				style={{ backgroundColor: "#4D44B5", color: "#FCFCFF" }}
 			>
-				Desk Booking Form
+				Create Desk
 			</h5>
 			<form
 				ref={formRef}
