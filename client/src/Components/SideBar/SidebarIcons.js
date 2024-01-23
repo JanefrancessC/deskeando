@@ -40,7 +40,10 @@ const SidebarIcons = ({ handleClick, userDetails }) => {
 			style={{ marginTop: "6rem" }}
 		>
 			{userDetails.role === "User"
-				? navItems.slice(0, 3).concat(navItems[5]).map((item, index) => listItem(item, index))
+				? navItems
+						.slice(0, 3)
+						.concat(navItems[5])
+						.map((item, index) => listItem(item, index))
 				: userDetails.role === "Admin"
 					? navItems.map((item, index) => listItem(item, index))
 					: null}

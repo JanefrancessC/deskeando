@@ -12,7 +12,6 @@ const BookingDetailsAdmin = () => {
 			try {
 				const response = await fetch(`/api/bookings`, options);
 				const data = await response.json();
-				console.log(data);
 				setBookings(data);
 			} catch (error) {
 				console.error("Error fetching data:", error);
