@@ -104,8 +104,8 @@ const DeskForm = ({ setReload }) => {
 							}
 						>
 							<option value="">--Please Select--</option>
-							<option value="Standing">Standing</option>
-							<option value="Regular">Regular</option>
+							<option value="standing">Standing</option>
+							<option value="regular">Regular</option>
 						</select>
 					</div>
 				</div>
@@ -122,9 +122,9 @@ const DeskForm = ({ setReload }) => {
 						}
 					>
 						<option value="">--Please Select--</option>
-						<option value="Small">Small</option>
-						<option value="Medium">Medium</option>
-						<option value="Large">Large</option>
+						<option value="small">Small</option>
+						<option value="medium">Medium</option>
+						<option value="large">Large</option>
 					</select>
 				</div>
 				<div className="form-group">
