@@ -58,6 +58,7 @@ const Dashboard = () => {
 							view={view}
 							allBookings={data}
 							setReload={setReload}
+							setView={setView}
 						/>
 					}
 					userDetails={userDetails}

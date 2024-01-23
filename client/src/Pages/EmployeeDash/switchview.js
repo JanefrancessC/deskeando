@@ -27,6 +27,7 @@ function switchView(index) {
 				listView: {
 					splitView: false,
 				},
+				bookings: true
 			};
 		case "4":
 			return {
@@ -34,6 +35,7 @@ function switchView(index) {
 				listView: {
 					splitView: true,
 				},
+				desks: true
 			};
 	}
 }
