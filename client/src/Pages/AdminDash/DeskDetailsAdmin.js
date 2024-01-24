@@ -6,13 +6,18 @@ import BookingForm from "../EmployeeDash/Form/BookingForm.js";
 import Table from "../EmployeeDash/Table/Table.js";
 import BookingDetailsAdmin from "./BookingDetailsAdmin";
 
-const DeskDetailsAdmin = ({ view, allDesks, setReload, setView }) => {
-	
+const DeskDetailsAdmin = ({
+	view,
+	allDesks,
+	setReload,
+	setView,
+}) => {
+
 	return (
 		<div class="d-flex justify-content-around">
 			{view.floorPlan ? (
 				<div className="floorPlan-wrapper">
-					<FloorPlan setView={setView} />
+					<FloorPlan setView={setView}/>
 				</div>
 			) : view?.listView.splitView ? (
 				<>

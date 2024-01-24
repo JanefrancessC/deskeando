@@ -22,7 +22,10 @@ const BookingDetailsAdmin = () => {
 	}, []);
 
 	return (
-		<div className=" d-flex justify-content-center">
+		<div
+			className=" d-flex justify-content-center"
+			style={{ height: "500px", overflow: "auto" }}
+		>
 			<div class="card ms-4 h-75 border-0 " style={{ width: "95%" }}>
 				<h5
 					class="card-header"
