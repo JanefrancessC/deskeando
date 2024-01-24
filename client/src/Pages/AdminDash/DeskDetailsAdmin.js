@@ -11,13 +11,21 @@ const DeskDetailsAdmin = ({ view, allDesks, setReload }) => {
 				<div className="floorPlan-wrapper">
 					<FloorPlan />
 				</div>
-			) : view?.listView.splitView ? (
+			) : view.listView.splitView ? (
 				<>
-					<DeskForm setReload={setReload} />
-					<DeskTable
-						isSplitView={view.listView.splitView}
-						allDesks={allDesks}
-					/>
+					<div className="container row ">
+						<div className="col-md-6">
+							<DeskForm setReload={setReload} />
+						</div>
+						&nbsp;&nbsp;
+						<div className="col-md-6">
+							<DeskTable
+								isSplitView={view.listView.splitView}
+								allDesks={allDesks}
+								setReload={setReload}
+							/>
+						</div>
+					</div>
 				</>
 			) : (
 				<BookingDetailsAdmin />
