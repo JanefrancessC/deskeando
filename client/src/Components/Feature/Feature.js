@@ -84,7 +84,7 @@ function Feature() {
 							className="smiling-img"
 							src={smiling}
 							alt="Sample"
-							width="600"
+							width="700"
 						/>
 					</div>
 				</div>
