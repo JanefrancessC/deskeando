@@ -1,6 +1,7 @@
 import { React, useState, useEffect } from "react";
 import classNames from "classnames";
 
+
 const DeskTable = ({ isSplitView, allDesks }) => {
 	const [desks, setDesks] = useState([]);
 
@@ -30,6 +31,7 @@ const DeskTable = ({ isSplitView, allDesks }) => {
 			className={classNames("card border-0", {
 				splitView: isSplitView,
 				"card-tb": !isSplitView,
+				id: "desk-details-table"
 			})}
 		>
 			<h5
@@ -39,7 +41,7 @@ const DeskTable = ({ isSplitView, allDesks }) => {
 				Desk Details
 			</h5>
 			<div class="card-body">
-				<table className="table table-hover">
+				<table className="table table-responsive">
 					<thead>
 						<tr>
 							<th scope="col">Desk Name</th>

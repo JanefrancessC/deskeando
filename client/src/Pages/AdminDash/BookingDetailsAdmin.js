@@ -22,8 +22,11 @@ const BookingDetailsAdmin = () => {
 	}, []);
 
 	return (
-		<div className=" d-flex justify-content-center">
-			<div class="card ms-4 h-75 border-0 " style={{ width: "95%" }}>
+		<div className="container d-flex justify-content-center">
+			<div
+				class="card ms-4 h-75 border-0 "
+				style={{ width: "95%", overflow: "auto"}}
+			>
 				<h5
 					class="card-header"
 					style={{ backgroundColor: "#4D44B5", color: "#FCFCFF" }}
@@ -31,7 +34,7 @@ const BookingDetailsAdmin = () => {
 					All Booking Details
 				</h5>
 
-				<table className="table table-hover">
+				<table className="table table-responsive">
 					<thead>
 						<tr>
 							<th scope="col">User Name </th>

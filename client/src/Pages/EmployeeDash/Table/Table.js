@@ -10,7 +10,7 @@ const Table = ({ isSplitView, allBookings, setReload }) => {
 
 	return (
 		<div
-			className={classNames("card border-0", {
+			className={classNames("card border-0 booking-details-form", {
 				splitView: isSplitView,
 				"card-tb": !isSplitView,
 			})}

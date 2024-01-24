@@ -83,7 +83,7 @@ const DeskForm = ({ setReload }) => {
 	}, []);
 
 	return (
-		<div class="card ms-4 h-75" style={{ width: "37%" }}>
+		<div class="card ms-4 h-75" >
 			<h5
 				class="card-header"
 				style={{ backgroundColor: "#4D44B5", color: "#FCFCFF" }}

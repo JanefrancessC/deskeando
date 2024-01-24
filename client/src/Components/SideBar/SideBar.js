@@ -13,7 +13,7 @@ const SideBar = ({ topBar, bookingDetails, handleClick, userDetails }) => {
 		<section>
 			<div className="container-fluid vh-100">
 				<div className="row flex-nowrap w-100">
-					<div className="side-col vh-100 text-white p-0">
+					<div className="side-col vh-100 text-white p-0 side-bar-display">
 						<div className="d-flex flex-column">
 							{/* <div className="align-self-center pt-4 px-1 m-0">
 								<img
@@ -26,7 +26,10 @@ const SideBar = ({ topBar, bookingDetails, handleClick, userDetails }) => {
 								/>
 							</div> */}
 
-							<SidebarIcons handleClick={handleClick} userDetails={userDetails}/>
+							<SidebarIcons
+								handleClick={handleClick}
+								userDetails={userDetails}
+							/>
 						</div>
 					</div>
 					<div className="col align-content-center">

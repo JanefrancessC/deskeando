@@ -1,0 +1,34 @@
+.splitView {
+	width: 50%;
+}
+
+.card-tb {
+	width: 80%;
+}
+
+.floorPlan-wrapper {
+	width: 55%;
+}
+
+/* .card-border-0 {
+
+} */
+
+@media screen and (max-width: 992px) {
+	.desk-form-card {
+		width: 75%;
+		font-size: 14px;
+	}
+	#desk-details-table {
+		width: 75%;
+		font-size: 14px;
+	}
+}
+
+@media screen and (max-width: 605px) {
+	.desk-form-card,
+	.desk-details-form {
+		width: 90%;
+		font-size: 12px;
+	}
+}
