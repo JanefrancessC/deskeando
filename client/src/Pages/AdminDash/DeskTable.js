@@ -76,7 +76,7 @@ const DeskTable = ({ isSplitView, allDesks }) => {
 			>
 				Desk Details
 			</h5>
-			<div class="card-body" style={{ height: "600px", overflow: "auto" }}>
+			<div class="card-body" style={{ height: "700px", overflow: "auto" }}>
 				<table className="table table-hover">
 					<thead>
 						<tr>

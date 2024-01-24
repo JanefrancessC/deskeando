@@ -17,7 +17,6 @@ const DeskDetailsAdmin = ({ view, allDesks, setReload }) => {
 						<div className="col-md-6">
 							<DeskForm setReload={setReload} />
 						</div>
-						&nbsp;&nbsp;
 						<div className="col-md-6">
 							<DeskTable
 								isSplitView={view.listView.splitView}
