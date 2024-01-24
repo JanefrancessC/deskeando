@@ -62,10 +62,13 @@ const DeskTable = ({ isSplitView, allDesks }) => {
 
 	return (
 		<div
-			className={classNames("card border-0 d-flex justify-content-center", {
-				splitView: isSplitView,
-				"card-tb": !isSplitView,
-			})}
+			className={classNames(
+				"card border-0 d-flex justify-content-center w-100",
+				{
+					splitView: isSplitView,
+					"card-tb": !isSplitView,
+				}
+			)}
 		>
 			<h5
 				class="card-header"
