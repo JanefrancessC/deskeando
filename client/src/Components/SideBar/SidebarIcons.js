@@ -45,7 +45,9 @@ const SidebarIcons = ({ handleClick, userDetails }) => {
 						.concat(navItems[5])
 						.map((item, index) => listItem(item, index))
 				: userDetails.role === "Admin"
-					? navItems.map((item, index) => listItem(item, index))
+					? [navItems[3], navItems[1], navItems[4], navItems[5]].map((item, index) =>
+							listItem(item, index)
+						)
 					: null}
 		</ul>
 	);
