@@ -62,7 +62,7 @@ const DeskForm = ({ setReload }) => {
 	}, []);
 
 	return (
-		<div class="card ms-4 h-75" >
+		<div class="card ms-4" >
 
 			<h5
 				className="card-header"
