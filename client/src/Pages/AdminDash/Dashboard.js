@@ -56,8 +56,9 @@ const Dashboard = () => {
 					bookingDetails={
 						<DeskDetailsAdmin
 							view={view}
-							allBookings={data}
+							allDesks={data}
 							setReload={setReload}
+							setView={setView}
 						/>
 					}
 					userDetails={userDetails}
