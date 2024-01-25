@@ -50,14 +50,15 @@
 
 @media screen and (max-width: 992px) {
 	.booking-form-card {
-		width: 75%;
+		width: 65%;
 		font-size: 14px;
 	}
 
 	.booking-details-form {
-		width: 75%;
+		width: 65%;
 		margin-left: 25px;
 		font-size: 14px;
+		
 	}
 }
 

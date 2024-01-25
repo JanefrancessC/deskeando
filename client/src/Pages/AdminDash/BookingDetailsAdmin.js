@@ -24,8 +24,8 @@ const BookingDetailsAdmin = () => {
 	return (
 		<div className="d-flex justify-content-center">
 			<div
-				class="card ms-4 h-75 border-0 "
-				style={{ width: "95%", overflow: "auto"}}
+				class="card ms-4 border-0"
+				style={{ height: "700px", overflow: "auto"}}
 			>
 				<h5
 					class="card-header"

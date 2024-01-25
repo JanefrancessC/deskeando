@@ -6,7 +6,7 @@ import "./EmployeeDsh.css";
 
 const BookingDetails = ({ view, allBookings, setReload, setView }) => {
 	return (
-		<div className="d-flex flex-column gap-2 flex-lg-row justify-content-centre justify-content-md-around align-items-center align-items-lg-start">
+		<div className="d-flex flex-column gap-2 flex-lg-row justify-content-centre justify-content-md-around align-items-center align-items-lg-start booking-details-container">
 			{view.floorPlan ? (
 				<div className="floorPlan-wrapper">
 					<FloorPlan setView={setView} />
