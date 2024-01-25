@@ -14,7 +14,7 @@ const DeskDetailsAdmin = ({
 }) => {
 
 	return (
-		<div class="d-flex justify-content-around">
+		<div className="d-flex justify-content-around ">
 			{view.floorPlan ? (
 				<div className="floorPlan-wrapper">
 					<FloorPlan setView={setView}/>

@@ -3,6 +3,7 @@ import classNames from "classnames";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+
 const DeskTable = ({ isSplitView, allDesks }) => {
 	const [desks, setDesks] = useState([]);
 	const notifySuccess = (message) => toast.success(<div>{message}</div>);
@@ -62,13 +63,11 @@ const DeskTable = ({ isSplitView, allDesks }) => {
 
 	return (
 		<div
-			className={classNames(
-				"card border-0 d-flex justify-content-center w-100",
-				{
-					splitView: isSplitView,
-					"card-tb": !isSplitView,
-				}
-			)}
+
+			className={classNames("card border-0 justify-content-center w-100", {
+				splitView: isSplitView,
+				"card-tb": !isSplitView,
+			})}
 		>
 			<h5
 				class="card-header"
@@ -76,7 +75,8 @@ const DeskTable = ({ isSplitView, allDesks }) => {
 			>
 				Desk Details
 			</h5>
-			<div class="card-body" style={{ height: "600px", overflow: "auto" }}>
+
+			<div class="card-body" style={{ overflow: "auto" }}>
 				<table className="table table-hover">
 					<thead>
 						<tr>

@@ -1,43 +1,71 @@
 .btn-wrap {
-    height: 7%;
+	height: 7%;
 }
-#s-btn, #c-btn {
-    border: 2px solid #4D44B5;
-    color: #4D44B5;
-}
-
-#s-btn:hover, #c-btn:hover {
-    background-color: #c1bbeb;
-    border: none;
-    color: #4D44B5;
-    font-weight: bold;
+#s-btn,
+#c-btn {
+	border: 2px solid #4d44b5;
+	color: #4d44b5;
 }
 
-.bi-alarm, .bi-calendar{
-    color: #f9c91f;
-
+#s-btn:hover,
+#c-btn:hover {
+	background-color: #c1bbeb;
+	border: none;
+	color: #4d44b5;
+	font-weight: bold;
 }
 
-.bi-pencil-square:hover, .bi-trash:hover {
-    color:  #ed5d34;
- }
+.bi-alarm,
+.bi-calendar {
+	color: #f9c91f;
+}
 
- .splitView {
-    width: 50%;
- }
- .floorPlan-wrapper {
-    width: 55%;
- }
- .card-tb {
-    width: 80%;
- }
- .time-hide, .type-hide, .size-hide {
-    display: none;
- }
+.bi-pencil-square:hover,
+.bi-trash:hover {
+	color: #ed5d34;
+}
+
+.splitView {
+	width: 50%;
+}
+.floorPlan-wrapper {
+	width: 55%;
+}
+.card-tb {
+	width: 80%;
+}
+.time-hide,
+.type-hide,
+.size-hide {
+	display: none;
+}
 
 .react-datepicker__calendar-icon {
-    margin-top: 7px;
+	margin-top: 7px;
 }
 .react-timerange-picker__wrapper {
-    border: none  !important;
+	border: none !important;
+}
+
+
+@media screen and (max-width: 992px) {
+	.booking-form-card {
+		width: 65%;
+		font-size: 14px;
+	}
+
+	.booking-details-form {
+		width: 65%;
+		margin-left: 25px;
+		font-size: 14px;
+		
+	}
+}
+
+@media screen and (max-width: 605px) {
+	.booking-form-card,
+	.booking-details-form {
+		width: 90%;
+        font-size: 12px;
+	}
 }

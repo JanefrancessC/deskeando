@@ -62,7 +62,8 @@ const DeskForm = ({ setReload }) => {
 	}, []);
 
 	return (
-		<div className="card ms-4">
+		<div class="card ms-4 h-75" >
+
 			<h5
 				className="card-header"
 				style={{ backgroundColor: "#4D44B5", color: "#FCFCFF" }}
