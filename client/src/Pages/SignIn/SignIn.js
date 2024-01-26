@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./SignIn.css";
 import Header from "../../Components/NavBar/Header.js";
-
 const Login = () => {
 	const navigate = useNavigate();
 
