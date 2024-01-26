@@ -84,7 +84,7 @@ const BookingForm = ({ setReload }) => {
 	}, []);
 
 	return (
-		<div className="card ms-4 h-75 booking-form-card" >
+		<div className="card h-75 booking-form-card" >
 			<h5
 				className="card-header"
 				style={{ backgroundColor: "#4D44B5", color: "#FCFCFF" }}

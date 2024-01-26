@@ -1,0 +1,8 @@
+@media only screen and (max-width: 767px) {
+	.desk-form {
+		width: 100%;
+	}
+	.desk-table {
+		margin-top: 2rem;
+	}
+}

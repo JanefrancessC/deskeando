@@ -64,7 +64,7 @@ const DeskTable = ({ isSplitView, allDesks }) => {
 	return (
 		<div
 
-			className={classNames("card border-0 justify-content-center w-100", {
+			className={classNames("card border-0 ms-4 justify-content-center w-100", {
 				splitView: isSplitView,
 				"card-tb": !isSplitView,
 			})}
@@ -76,7 +76,7 @@ const DeskTable = ({ isSplitView, allDesks }) => {
 				Desk Details
 			</h5>
 
-			<div class="card-body" style={{ overflow: "auto" }}>
+			<div class="card-body desk-card" style={{ height: "500px", overflow: "auto"}}>
 				<table className="table table-hover">
 					<thead>
 						<tr>

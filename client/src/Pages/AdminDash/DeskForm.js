@@ -2,10 +2,10 @@ import React, { useState, useEffect, useRef } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
+import "./DeskForm.css";
 
 const DeskForm = ({ setReload }) => {
 	const { token, id } = JSON.parse(localStorage.getItem("data"));
-	const [desks, setDesks] = useState([]);
 	const [deskDetails, setDeskDetails] = useState({
 		deskName: "",
 		type: "",
@@ -50,7 +50,6 @@ const DeskForm = ({ setReload }) => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		console.log("Submit pressed");
 		postData();
 	};
 
@@ -62,7 +61,7 @@ const DeskForm = ({ setReload }) => {
 	}, []);
 
 	return (
-		<div class="card ms-4 h-75" >
+		<div class="card ms-4 desk-form" >
 
 			<h5
 				className="card-header"
