@@ -1,4 +1,17 @@
-.deskplan-container {
-	margin: -4.7rem;
-	margin-top: auto;
+
+/* SCREEN LESS THAN 991PX */
+
+@media (max-width: 991px) {
+	.deskplan-container {
+		margin: -7.7rem;
+		margin-top: 2rem;
+	}
+}
+
+/* LESS THAN 576 */
+@media (max-width: 576px) {
+	.deskplan-container {
+		margin: -4.7rem;
+		margin-top: 2rem;
+	}
 }

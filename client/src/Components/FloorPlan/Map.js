@@ -8,6 +8,7 @@ import ReceptionDesk from "./Furniture/ReceptionDesk.js";
 import ConferenceTable from "./Furniture/ConferenceTable.js";
 import LDesk from "./SingleDesks/LDesk.js";
 import DeskLabel from "./DeskLabel.js";
+import "./FloorPlanStyle.css";
 
 import {
 	computerGroupCoords,
