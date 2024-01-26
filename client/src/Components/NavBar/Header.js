@@ -8,7 +8,7 @@ function Header() {
 
 	return (
 		<div>
-			<nav className="navbar navbar-expand-lg fixed-top">
+			<nav className="navbar navbar-expand-lg fixed-top py-4 navbar-custom">
 				<div className="container">
 					<img
 						src={logo}

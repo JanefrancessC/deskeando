@@ -1,4 +1,4 @@
-.navbar {
+.navbar-custom {
 	background: rgb(248, 247, 248);
 	margin-bottom: 2rem;
 }
@@ -17,7 +17,7 @@
 	cursor: pointer;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 990px) {
 	.btn-signup {
 		color: #4d44b5;
 		background: white;
