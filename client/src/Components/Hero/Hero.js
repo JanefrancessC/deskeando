@@ -1,8 +1,10 @@
 import React from "react";
 import "./Hero.css";
 import hero from "../../images/hero-img.jpg";
+import { useNavigate } from "react-router-dom";
 
 function Hero() {
+	const navigate = useNavigate()
 	return (
 		<section className="background d-flex align-item-center">
 			<div className="container px-4 py-5">
@@ -19,12 +21,13 @@ function Hero() {
 							<button
 								type="button"
 								className="button button-hero rounded px-4 py-2"
+								onClick={() => navigate("/signup")}
 							>
 								Book A Meeting
 							</button>
 						</div>
 					</div>
-					<div class="col-xl-6">
+					<div className="col-xl-6">
 						<div className="  row img-fluid back-img">
 							<img
 								className="hero-img"

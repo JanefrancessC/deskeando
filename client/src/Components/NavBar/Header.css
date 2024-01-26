@@ -1,45 +1,21 @@
-.navbar {
-    background-color: white;
-    padding: 20px;
+.btn-signup {
+	background: #4d44b5;
+	color: white;
 }
 
-.btn-nav {
-    background-color: #4D44B5;
-    color: white;
-    margin-left: 30px;
+.btn-signup:hover {
+	background-color: rgba(193, 187, 235, 1);
 }
 
-.btn-nav:hover {
-    background-color: rgba(193, 187, 235, 1);
+.nav-link {
+	color: #4d44b5;
+	font-weight: 500;
+	font-size: 1.2rem;
+}
+.nav-link:hover {
+	color: #ed5d34;
 }
 
 .logo {
-    padding-left: 50px;
-    padding-right: 70px;
-    cursor: pointer;
-}
-.nav-item-left {
-    color: #4D44B5;
-    font-weight: 500;
-    font-size: 1.2rem;
-    height: 60px;
-    text-decoration: none;
-}
-.nav-item-left:hover {
-    color: #ED5D34;
-}
-.btn-pinks {
-    padding-left: 90px;
-}
-.navbar-toggler {
-    border: none;
-    padding: 10px 6px;
-    outline: none;
-}
-
-.navbar-toggler span {
-    display: block;
-    width: 20px;
-    height: 1px;
-    background: #868383;
+	cursor: pointer;
 }
