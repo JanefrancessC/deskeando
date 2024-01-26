@@ -65,18 +65,18 @@
 	}
 }
 
-<<<<<<< HEAD
-.side-bar-display {
+<<<<<<< HEAD .side-bar-display {
 	height: auto;
 }
 
 @media only screen and (max-width: 576px) {
 	.side-bar-display {
 		visibility: hidden;
-=======
+	}
+}
+
 @media only screen and (max-width: 991px) {
 	.side-col {
 		display: none;
->>>>>>> 1f97845 (hamburger menu4)
 	}
 }
