@@ -52,7 +52,11 @@ const EmployeeDsh = () => {
 				<SideBar
 					handleClick={handleClick}
 					topBar={
-						<Topbar userDetails={userDetails} handleClick={handleClick} />
+						<Topbar
+							setView={setView}
+							userDetails={userDetails}
+							handleClick={handleClick}
+						/>
 					}
 					bookingDetails={
 						<BookingDetails

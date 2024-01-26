@@ -15,12 +15,12 @@
 }
 
 .sign_in_btn {
-	color: #fcfcff; 
+	color: #fcfcff;
 	background-color: #4d44b5;
 }
 
 .sign_in_btn:hover {
-	color: #fcfcff; 
+	color: #fcfcff;
 	background-color: #6c63d3;
 }
 
@@ -29,6 +29,6 @@
 }
 
 .sign-up-link {
-	color: #4743E0;
-    cursor: pointer;
+	color: #4743e0;
+	cursor: pointer;
 }
