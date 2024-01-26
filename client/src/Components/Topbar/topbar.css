@@ -1,4 +1,4 @@
-/* .dropdown-toggle::after {
+.dropdown-toggle::after {
 	display: inline-block;
 	width: 0;
 	height: 0;
@@ -28,36 +28,11 @@
 .form-control.dropdown-toggle:focus {
 	outline: none;
 }
-.nav-link {
-	border: 2px solid #4d44b5;
-	border-radius: 30px;
-	width: 100px;
-	height: 37px;
-	padding-top: 5px;
-}
-
-#book-link,
-#bookings-link {
-	border: 2px solid #009b1b;
-	color: white;
-	background-color: #009b1b;
-}
-
-/* CALENDAR MAP BOOK */
-.navbar-expand-lg .navbar-nav {
-	flex-direction: row;
-	gap: 22px;
-	/* margin-top: 15px; */
-}
 
 /* BELL GEAR USER ROLE BLUE-DOT */
 .end-of-page {
 	display: flex;
 	gap: 2rem;
-}
-
-.bell {
-	width: 28px;
 }
 
 .user-info {
@@ -68,10 +43,6 @@
 	color: #a098ae;
 }
 
-/* .blue-dot {
-	width: 51px;
-	margin-right: 2rem;
-} */
 .icon-user {
 	display: block;
 	margin-left: auto;
@@ -89,23 +60,7 @@
 	cursor: pointer;
 } 
 
-.dropdown-menu {
-	display: block;
-	position: absolute;
-	border: 1px solid red; /* Add a border for testing */
-	/* Add other necessary styles */
-}
-
-/* ALL THE BAR */
-.bg-light {
-	height: 8rem;
-}
-/* .dropdown-menu {
-	display: grid;
-	position: absolute;
-	border: none;
-} */
-/* .dropdown-menu-buttons {
+.dropdown-menu-buttons {
 	margin-top: 0.5rem;
 	margin-left: -14px;
 	justify-items: center;
@@ -116,35 +71,19 @@
 	background-color: #d9d9d9;
 }
 
-.navbar {
-	background-color: #ffffff;
+.drop-down {
+	display: none !important;
+	z-index: 999;
+	
 }
 
-/* Media query to hide the entire page when screen width is less than 991px */
-/* @media (max-width: 750px) {
-	#navbar {
-		display: none;
-		flex-wrap: nowrap;
-		justify-content: flex-start;
-	}
+.drop-down-link {
+	color: #4743e0;
+	font-size: medium;
 }
 
 @media (max-width: 991px) {
-	#navbar {
-		display: grid;
-		justify-content: end;
-		margin: 1rem;
-		gap: 14px;
-	}
-	.end-of-page {
-		display: flex;
-		gap: 2rem;
-		justify-content: end;
-	}
-}  */
-
-@media (max-width: 991px) {
-	.navbar-nav {
+	.drop-down {
 		display: block !important;
 	}
 
@@ -158,9 +97,13 @@
 	
 }
 
-
 @media (max-width: 575px) {
 	.end-of-page {
-		width: 75% !important;
+		width: 77% !important;
+		font-size: small;
+	}
+	.topbar {
+		width: 103% !important;
+		
 	}
 }

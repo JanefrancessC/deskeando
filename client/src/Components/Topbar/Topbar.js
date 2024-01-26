@@ -1,39 +1,28 @@
-import React, { useState, useEffect, useRef } from "react";
+import { React, useState } from "react";
 import "./topbar.css";
 import iconuser from "./icon-user.svg";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 function Topbar({ userDetails, handleClick }) {
+	// Hooks
 	const [showDropdown, setShowDropdown] = useState(false);
+	const navigate = useNavigate();
 
-	const dropdownRef = useRef(null);
-
+	const items = ["Home", "Floor Plan", "Book desk"];
 	const toggleDropdown = () => {
 		setShowDropdown(!showDropdown);
 	};
 
-	const handleClickOutside = (event) => {
-		if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-			setShowDropdown(false);
-		}
-	};
-
-	const navigate = useNavigate();
 	return (
 		<div className="">
-			<nav className="navbar px-2 navbar-expand-lg ">
-				<div className="end-of-page d-flex w-100 justify-content-end">
-					
+			<nav className="navbar topbar px-2 navbar-expand-lg w-100 ">
+				<div className="end-of-page d-flex w-100 justify-content-end ">
 					<span className="user-info">
-						<strong className="user-name">Chidimma</strong> <br />
+						<strong className="user-name">{userDetails.userName}</strong> <br />
 						<span className="user-role">{userDetails.role}</span>
 					</span>
-					<div
-						className="the-icon-user-background"
-						ref={handleClickOutside}
-						
-					>
+					<div className="the-icon-user-background">
 						<div onClick={toggleDropdown}>
 							<img className="icon-user" src={iconuser} alt="The Blue Dot" />
 						</div>
@@ -63,27 +52,35 @@ function Topbar({ userDetails, handleClick }) {
 					<span className="navbar-toggler-icon"></span>
 				</button>
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
-					<ul class="navbar-nav mr-auto mt-2 mt-lg-0 border border-primary" style={{display: "none"}}>
-						<li class="nav-item active">
-							<a class="nav-link" href="#">
-								Home
-							</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#">
-								Floor Plan
-							</a>
-						</li>
+					<ul
+						class="navbar-nav drop-down mr-auto mt-2 mt-lg-0 d-flex justify-content-center w-100 bg-white rounded"
+						style={{ position: "absolute" }}
+					>
+						{items.map((el, index) => (
+							<li className="nav-item active text-center ">
+								<a
+									className="nav-link drop-down-link"
+									data-bs-toggle="collapse"
+									data-bs-target=".navbar-collapse.show"
+									onClick={handleClick}
+									id={index}
+								>
+									{el}
+								</a>
+							</li>
+						))}
 
-						<li class="nav-item">
-							<a class="nav-link" href="#">
-								Book
-							</a>
-						</li>
-
-						<li class="nav-item">
-							<a class="nav-link" href="#">
-								Link
+						<li className="nav-item active text-center">
+							<a
+								className="nav-link drop-down-link"
+								data-bs-toggle="collapse"
+								data-bs-target=".navbar-collapse.show"
+								onClick={() => {
+									localStorage.clear();
+									navigate("/");
+								}}
+							>
+								Sign out
 							</a>
 						</li>
 					</ul>
@@ -93,6 +90,3 @@ function Topbar({ userDetails, handleClick }) {
 	);
 }
 export default Topbar;
-
-
-
