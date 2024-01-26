@@ -27,7 +27,6 @@
 }
 
 .contact {
-    font-size: 1.4rem;
     color: rgba(249, 201, 31, 1);
 
 }
@@ -35,4 +34,8 @@
     padding-left: spacer * .9;
     padding-right: spacer * .9;
 
+}
+
+.social {
+    width: 80%;
 }

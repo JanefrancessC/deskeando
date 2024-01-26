@@ -143,7 +143,7 @@ function SignUp() {
 			setSignUpError(true);
 			return;
 		}
-		
+
 		trySignUp("/api/signup", { ...formData });
 		setIsValid(true);
 		setSignUpError(false);
@@ -164,175 +164,176 @@ function SignUp() {
 	};
 
 	return (
-		<section className="vh-100">
-			<div className="container h-75" id="container-py-5">
-				<div className="row d-flex justify-content-center align-items-center">
-					<div className="col-12 col-md-8 col-lg-6 col-xl-5">
-						<div className="card shadow-2-strong">
-							<div className="card-body p-5 text-center">
-								<h1 className="display-6 fw-bold p-2">Deskeando</h1>
-								<h3 className="form-group d-flex flex-row p-1 ">Sign Up</h3>
-								&nbsp;
-								<h6 className="fw-bold already-registered gap-2">
-									Already registered?{" "}
-									<Link to="/signin" className="sign">
-										Sign In
-									</Link>
-								</h6>
-								<form
-									onSubmit={handleSubmit}
-									className={`w-100 requires-validation ${
-										!isValid && "was-validated"
-									}`}
-									noValidate
-								>
-									<div className="form-group">
-										<label htmlFor="firstName"></label>
-										<input
-											id="firstName"
-											className={`form-control w-100 form-control-lg ${
-												!isValid && formData.firstName.trim() === ""
-													? "is-invalid"
-													: ""
-											}`}
-											type="text"
-											name="firstName"
-											placeholder="First Name"
-											value={formData.firstName}
-											onChange={(e) => handleInputChange(e)}
-											maxLength="100"
-											required
-										/>
-										<div className="invalid-feedback text-start">
-											Please enter your first name.
+			<section className="h-50 mb-5">
+				<div className="container h-75" id="container-py-5">
+					<div className="row d-flex justify-content-center align-items-center">
+						<div className="col-12 col-md-8 col-lg-6 col-xl-5">
+							<div className="card shadow-2-strong">
+								<div className="card-body p-5 text-center">
+									<h1 className="display-6 fw-bold p-2">Deskeando</h1>
+									<h3 className="form-group d-flex flex-row p-1 ">Sign Up</h3>
+									&nbsp;
+									<h6 className="fw-bold already-registered gap-2">
+										Already registered?{" "}
+										<Link to="/signin" className="sign">
+											Sign In
+										</Link>
+									</h6>
+									<form
+										onSubmit={handleSubmit}
+										className={`w-100 requires-validation ${
+											!isValid && "was-validated"
+										}`}
+										noValidate
+									>
+										<div className="form-group">
+											<label htmlFor="firstName"></label>
+											<input
+												id="firstName"
+												className={`form-control w-100 form-control-lg ${
+													!isValid && formData.firstName.trim() === ""
+														? "is-invalid"
+														: ""
+												}`}
+												type="text"
+												name="firstName"
+												placeholder="First Name"
+												value={formData.firstName}
+												onChange={(e) => handleInputChange(e)}
+												maxLength="100"
+												required
+											/>
+											<div className="invalid-feedback text-start">
+												Please enter your first name.
+											</div>
 										</div>
-									</div>
 
-									<div className="form-group">
-										<label htmlFor="lastName"></label>
-										<input
-											id="lastName"
-											className={`form-control w-100 form-control-lg ${
-												!isValid && formData.lastName.trim() === ""
-													? "is-invalid"
-													: ""
-											}`}
-											type="text"
-											name="lastName"
-											placeholder="Last Name"
-											value={formData.lastName}
-											onChange={(e) => handleInputChange(e)}
-											maxLength="100"
-											required
-										/>
-										<div className="invalid-feedback text-start">
-											Please enter your last name.
+										<div className="form-group">
+											<label htmlFor="lastName"></label>
+											<input
+												id="lastName"
+												className={`form-control w-100 form-control-lg ${
+													!isValid && formData.lastName.trim() === ""
+														? "is-invalid"
+														: ""
+												}`}
+												type="text"
+												name="lastName"
+												placeholder="Last Name"
+												value={formData.lastName}
+												onChange={(e) => handleInputChange(e)}
+												maxLength="100"
+												required
+											/>
+											<div className="invalid-feedback text-start">
+												Please enter your last name.
+											</div>
 										</div>
-									</div>
 
-									<div className="form-group">
-										<label htmlFor="department"></label>
-										<select
-											id="department"
-											className={`form-control w-100 form-control-lg ${
-												!isValid && formData.department.trim() === ""
-													? "is-invalid"
-													: ""
-											}`}
-											name="department"
-											value={formData.department}
-											onChange={(e) => handleInputChange(e)}
-											required
-										>
-											<option value="" disabled>
-												Department
-											</option>
-											{departments.map((department) => (
-												<option key={department.id} value={department.name}>
-													{department.name}
+										<div className="form-group">
+											<label htmlFor="department"></label>
+											<select
+												id="department"
+												className={`form-control w-100 form-control-lg ${
+													!isValid && formData.department.trim() === ""
+														? "is-invalid"
+														: ""
+												}`}
+												name="department"
+												value={formData.department}
+												onChange={(e) => handleInputChange(e)}
+												required
+											>
+												<option value="" disabled>
+													Department
 												</option>
-											))}
-										</select>
-										<div className="invalid-feedback text-start">
-											Please select your department.
+												{departments.map((department) => (
+													<option key={department.id} value={department.name}>
+														{department.name}
+													</option>
+												))}
+											</select>
+											<div className="invalid-feedback text-start">
+												Please select your department.
+											</div>
 										</div>
-									</div>
 
-									<div className="form-group">
-										<label htmlFor="email"></label>
-										<input
-											id="email"
-											className={`form-control w-100 form-control-lg `}
-											type="email"
-											name="email"
-											placeholder="Your Email"
-											value={formData.email.toLowerCase()}
-											onChange={(e) => handleInputChange(e)}
-											maxLength="500"
-											required
-										/>
-										<div
-											id="validationEmail"
-											className="invalid-feedback text-start"
-										>
-											Please enter a valid email address.
+										<div className="form-group">
+											<label htmlFor="email"></label>
+											<input
+												id="email"
+												className={`form-control w-100 form-control-lg `}
+												type="email"
+												name="email"
+												placeholder="Your Email"
+												value={formData.email.toLowerCase()}
+												onChange={(e) => handleInputChange(e)}
+												maxLength="500"
+												required
+											/>
+											<div
+												id="validationEmail"
+												className="invalid-feedback text-start"
+											>
+												Please enter a valid email address.
+											</div>
 										</div>
-									</div>
 
-									<div className="form-group">
-										<label htmlFor="password"></label>
-										<input
-											id="password"
-											className={`form-control w-100 form-control-lg ${
-												!isValid && formData.password.trim() === ""
-													? "is-invalid"
-													: ""
-											}`}
-											type="password"
-											name="password"
-											placeholder="Password"
-											value={formData.password}
-											onChange={(e) => handleInputChange(e)}
-											maxLength="200"
-											required
-										/>
-										<div className="invalid-feedback text-start">
-											Please enter your password.
+										<div className="form-group">
+											<label htmlFor="password"></label>
+											<input
+												id="password"
+												className={`form-control w-100 form-control-lg ${
+													!isValid && formData.password.trim() === ""
+														? "is-invalid"
+														: ""
+												}`}
+												type="password"
+												name="password"
+												placeholder="Password"
+												value={formData.password}
+												onChange={(e) => handleInputChange(e)}
+												maxLength="200"
+												required
+											/>
+											<div className="invalid-feedback text-start">
+												Please enter your password.
+											</div>
 										</div>
-									</div>
 
-									<div className="row d-flex justify-content-center p-3">
-										<button
-											type="submit"
-											className="btn sign_in_btn btn-lg w-100 ms-0 my-4"
-										>
-											Sign Up
-										</button>
-									</div>
+										<div className="row d-flex justify-content-center p-3">
+											<button
+												type="submit"
+												className="btn sign_in_btn btn-lg w-100 ms-0 my-4"
+											>
+												Sign Up
+											</button>
+										</div>
 
-									{signUpError && (
-										<h6 className="text-danger mb-2" role="alert">
-											{errorMessage}
-										</h6>
-									)}
-								</form>
-								<div className="text-center">
-									<div>
-										By clicking Continue with or Sign up, you agree to
-										<br />
-										<b> Deskeando</b>
-										<span className="font-weight-bold d-flex justify-content-center">
-											Terms of Service and Privacy Policy
-										</span>
-										&nbsp; &nbsp;
+										{signUpError && (
+											<h6 className="text-danger mb-2" role="alert">
+												{errorMessage}
+											</h6>
+										)}
+									</form>
+									<div className="text-center">
+										<div>
+											By clicking Continue with or Sign up, you agree to
+											<br />
+											<b> Deskeando</b>
+											<span className="font-weight-bold d-flex justify-content-center">
+												Terms of Service and Privacy Policy
+											</span>
+											&nbsp; &nbsp;
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</section>
+			</section>
+		
 	);
 }
 
