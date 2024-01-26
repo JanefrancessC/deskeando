@@ -6,7 +6,6 @@ import "./DeskForm.css";
 
 const DeskForm = ({ setReload }) => {
 	const { token, id } = JSON.parse(localStorage.getItem("data"));
-	const [desks, setDesks] = useState([]);
 	const [deskDetails, setDeskDetails] = useState({
 		deskName: "",
 		type: "",
@@ -51,7 +50,6 @@ const DeskForm = ({ setReload }) => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		console.log("Submit pressed");
 		postData();
 	};
 
@@ -63,7 +61,7 @@ const DeskForm = ({ setReload }) => {
 	}, []);
 
 	return (
-		<div class="card ms-4 h-75 desk-form" >
+		<div class="card ms-4 desk-form" >
 
 			<h5
 				className="card-header"
