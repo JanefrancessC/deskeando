@@ -1,33 +1,35 @@
-.navbar {
-    background-color: white;
-    padding: 20px;
+.navbar-custom {
+	background: rgb(248, 247, 248);
+	margin-bottom: 2rem;
 }
 
-.btn-nav {
-    background-color: #4D44B5;
-    color: white;
-    margin-left: 30px;
+.btn-signup {
+	background: #4d44b5;
+	color: white;
 }
 
-.btn-nav:hover {
-    background-color: rgba(193, 187, 235, 1);
+.btn-signup:hover {
+	background-color: rgba(193, 187, 235, 1);
+	color: cornflowerblue;
 }
 
 .logo {
-    padding-left: 50px;
-    padding-right: 70px;
-    cursor: pointer;
+	cursor: pointer;
 }
-.nav-item-left {
-    color: #4D44B5;
-    font-weight: 500;
-    font-size: 1.2rem;
-    height: 60px;
-    text-decoration: none;
+
+@media (max-width: 990px) {
+	.btn-signup {
+		color: #4d44b5;
+		background: white;
+	}
+
+    .contain {
+        align-items: center;
+    }
+
+    .btn-signup:hover {
+	color: #ed5d34;
+    background: #fff;
 }
-.nav-item-left:hover {
-    color: #ED5D34;
-}
-.btn-pinks {
-    padding-left: 90px;
+
 }

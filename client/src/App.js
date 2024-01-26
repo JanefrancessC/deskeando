@@ -6,6 +6,7 @@ import SignIn from "./Pages/SignIn/SignIn.js";
 import Signup from "./Pages/Signup/Signup";
 import NotFound from "./Pages/Error/NotFound.js";
 import FloorPlan from "./Components/FloorPlan/FloorPlan.js";
+import "./App.css"
 
 const App = () => (
 	<Routes>
