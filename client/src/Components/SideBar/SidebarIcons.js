@@ -36,7 +36,7 @@ const SidebarIcons = ({ handleClick, userDetails }) => {
 
 	return (
 		<ul
-			className="navbar-nav nav-bar-sd  flex-column align-self-center  h-50 gap-4"
+			className="navbar-nav nav-bar-sd d-flex flex-column align-self-center w-100 h-50 gap-4"
 			style={{ marginTop: "6rem" }}
 		>
 			{userDetails.role === "User"
