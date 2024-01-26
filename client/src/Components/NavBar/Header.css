@@ -1,3 +1,8 @@
+.navbar {
+	background: rgb(248, 247, 248);
+	margin-bottom: 2rem;
+}
+
 .btn-signup {
 	background: #4d44b5;
 	color: white;
@@ -5,17 +10,26 @@
 
 .btn-signup:hover {
 	background-color: rgba(193, 187, 235, 1);
-}
-
-.nav-link {
-	color: #4d44b5;
-	font-weight: 500;
-	font-size: 1.2rem;
-}
-.nav-link:hover {
-	color: #ed5d34;
+	color: cornflowerblue;
 }
 
 .logo {
 	cursor: pointer;
+}
+
+@media (max-width: 768px) {
+	.btn-signup {
+		color: #4d44b5;
+		background: white;
+	}
+
+    .contain {
+        align-items: center;
+    }
+
+    .btn-signup:hover {
+	color: #ed5d34;
+    background: #fff;
+}
+
 }

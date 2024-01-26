@@ -40,7 +40,6 @@ function Header() {
 								width={65}
 								className="offcanvas-title"
 								id="offcanvasNavbarLabel"
-								onClick={() => navigate("/")}
 							/>
 							<button
 								type="button"
@@ -49,34 +48,17 @@ function Header() {
 								aria-label="Close"
 							></button>
 						</div>
-						{/* Sidebar Body */}
-						<div className="offcanvas-body d-flex flex-column flex-lg-row p-4">
-							<ul className="nav flex-column flex-lg-row justify-content-center align-items-center fs-5 flex-grow-1 pe-3">
-								<li className="nav-item">
-									<a
-										className="nav-link border-0 active px-0 navbar-hover"
-										aria-current="page"
-										href="/"
-									>
-										Home
-									</a>
-								</li>
-								<li className="nav-item">
-									<a className="nav-link border-0 px-0" href="/about">
-										About
-									</a>
-								</li>
-							</ul>
-							<div className="d-flex flex-column flex-lg-row justify-content-center align-items-center gap-3 mt-3">
+						<div className="offcanvas-body d-flex flex-column flex-lg-row justify-content-lg-end contain">
+							<div className="d-flex flex-column flex-lg-row justify-content-center gap-4">
 								<a
 									href="/signup"
-									className="text-decoration-none text-white btn-signup px-3 py-1"
+									className="text-decoration-none btn-signup rounded px-4 py-2 ms-2"
 								>
 									Signup
 								</a>
 								<a
 									href="/signin"
-									className="text-decoration-none text-white btn-signup px-3 py-1"
+									className="text-decoration-none btn-signup rounded px-4 py-2 ms-2"
 								>
 									SignIn
 								</a>
@@ -90,4 +72,3 @@ function Header() {
 }
 
 export default Header;
-

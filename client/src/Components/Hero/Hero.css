@@ -13,6 +13,15 @@
 .button:hover {
     background-color: rgba(193, 187, 235, 1);
 }
+#container-py-5 {
+    padding-top: 8rem;
+}
 
+@media (max-width: 768px) {
+    .book-desk {
+        width: 15rem;
+        margin-bottom: 2rem;
+    }
+}
 
 

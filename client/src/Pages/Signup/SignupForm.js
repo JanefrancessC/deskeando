@@ -165,7 +165,7 @@ function SignUp() {
 
 	return (
 		<section className="vh-100">
-			<div className="container py-5 h-75">
+			<div className="container h-75" id="container-py-5">
 				<div className="row d-flex justify-content-center align-items-center">
 					<div className="col-12 col-md-8 col-lg-6 col-xl-5">
 						<div className="card shadow-2-strong">
