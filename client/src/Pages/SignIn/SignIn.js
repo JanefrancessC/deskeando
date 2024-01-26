@@ -86,15 +86,15 @@ const Login = () => {
 									}`}
 									noValidate
 								>
-								<div className="d-flex gap-2">
-									<h6 className="fw-bold">New User?</h6>
-									<h6
-										className="sign-up-link fw-bold"
-										onClick={() => navigate("/signup")}
-									>
-										Sign Up.
-									</h6>
-								</div>
+									<div className="d-flex gap-2">
+										<h6 className="fw-bold">New User?</h6>
+										<h6
+											className="sign-up-link fw-bold"
+											onClick={() => navigate("/signup")}
+										>
+											Sign Up.
+										</h6>
+									</div>
 									<div className="form-group">
 										<div className="d-flex flex-row py-2">
 											<input

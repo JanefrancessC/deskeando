@@ -7,7 +7,7 @@ function Header() {
 	const navigate = useNavigate();
 	return (
 		<div className="">
-			<nav className="navbar px-2 navbar-expand-lg ">
+			<nav className="navbar px-2 navbar-expand-lg bg-body-tertiary">
 				<div className="container-fluid	">
 					<img
 						src={logo}
