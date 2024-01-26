@@ -61,7 +61,6 @@ const BookingDetailsAdmin = () => {
 
 				<table
 					className="table table-hover"
-					style={{ height: "600px", overflow: "auto" }}
 				>
 					<thead>
 						<tr>

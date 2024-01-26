@@ -47,8 +47,7 @@
 	border: none !important;
 }
 
-
-@media screen and (max-width: 992px) {
+@media only screen and (max-width: 992px) {
 	.booking-form-card {
 		width: 65%;
 		font-size: 14px;
@@ -56,9 +55,7 @@
 
 	.booking-details-form {
 		width: 65%;
-		margin-left: 25px;
 		font-size: 14px;
-		
 	}
 }
 
@@ -66,6 +63,6 @@
 	.booking-form-card,
 	.booking-details-form {
 		width: 90%;
-        font-size: 12px;
+		font-size: 12px;
 	}
 }
