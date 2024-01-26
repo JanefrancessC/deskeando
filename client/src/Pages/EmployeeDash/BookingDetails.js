@@ -24,6 +24,7 @@ const BookingDetails = ({ view, allBookings, setReload, setView }) => {
 				<Table
 					isSplitView={view.listView.splitView}
 					allBookings={allBookings}
+					setReload={setReload}
 				/>
 			)}
 		</div>
