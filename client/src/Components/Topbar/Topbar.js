@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./topbar.css";
 import iconuser from "./icon-user.svg";
-import bell from "./bell.svg";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Topbar({ userDetails, handleClick }) {
-	const [showDropdown, setShowDropdown] = useState(false)
+	const [showDropdown, setShowDropdown] = useState(false);
 
 	const dropdownRef = useRef(null);
 
@@ -19,34 +19,80 @@ function Topbar({ userDetails, handleClick }) {
 		}
 	};
 
+	const navigate = useNavigate();
 	return (
-		<nav id="navbar" className="navbar navbar-expand-lg  justify-content-end">
-			
-
-			<div className="end-of-page">
-				<img className="bell" src={bell} alt="The Bell" />
-				{/* <img className="gear" src={gear} alt="The Gear" /> */}
-				<span className="user-info">
-					<strong className="user-name">{userDetails.userName}</strong> <br />
-					<span className="user-role">{userDetails.role}</span>
-				</span>
-				<div className="the-icon-user-background" ref={handleClickOutside}>
-					<div onClick={toggleDropdown}>
-						<img className="icon-user" src={iconuser} alt="The Blue Dot" />
+		<div className="">
+			<nav className="navbar px-2 navbar-expand-lg ">
+				<div className="end-of-page d-flex w-100 justify-content-end">
+					
+					<span className="user-info">
+						<strong className="user-name">Chidimma</strong> <br />
+						<span className="user-role">{userDetails.role}</span>
+					</span>
+					<div
+						className="the-icon-user-background"
+						ref={handleClickOutside}
+						
+					>
+						<div onClick={toggleDropdown}>
+							<img className="icon-user" src={iconuser} alt="The Blue Dot" />
+						</div>
+						{showDropdown && (
+							<Link className="dropdown-button" to="/">
+								<button
+									className="dropdown-menu-buttons"
+									onClick={() => localStorage.clear()}
+								>
+									Sign out
+								</button>
+							</Link>
+						)}
 					</div>
-					{showDropdown && (
-						<Link className="dropdown-button" to="/">
-							<button
-								className="dropdown-menu-buttons"
-								onClick={() => localStorage.clear()}
-							>
-								Sign out
-							</button>
-						</Link>
-					)}
 				</div>
-			</div>
-		</nav>
+
+				<a className="navbar-brand" />
+				<button
+					className="navbar-toggler"
+					type="button"
+					data-bs-toggle="collapse"
+					data-bs-target="#navbarSupportedContent"
+					aria-controls="navbarSupportedContent"
+					aria-expanded="false"
+					aria-label="Toggle navigation"
+				>
+					<span className="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav mr-auto mt-2 mt-lg-0 border border-primary" style={{display: "none"}}>
+						<li class="nav-item active">
+							<a class="nav-link" href="#">
+								Home
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#">
+								Floor Plan
+							</a>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link" href="#">
+								Book
+							</a>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link" href="#">
+								Link
+							</a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+		</div>
 	);
 }
 export default Topbar;
+
+
+
