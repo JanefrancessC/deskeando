@@ -1,6 +1,6 @@
 import React from "react";
 import BookingForm from "./Form/BookingForm";
-import Table from "./Table/Table";
+import Table from "./Table/Table.js";
 import FloorPlan from "../../Components/FloorPlan/FloorPlan";
 import "./EmployeeDsh.css";
 

@@ -185,8 +185,6 @@ const BookingForm = ({ setReload }) => {
 					>
 						Cancel
 					</button>
-
-					<ToastContainer position="bottom-center" />
 				</div>
 			</form>
 		</div>

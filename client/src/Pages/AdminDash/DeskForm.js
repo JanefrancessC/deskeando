@@ -145,7 +145,6 @@ const DeskForm = ({ setReload }) => {
 					<button type="reset" id="c-btn" className="btn rounded">
 						Cancel
 					</button>
-					<ToastContainer position="bottom-center" />
 				</div>
 			</form>
 		</div>

@@ -5,6 +5,7 @@ import SideBar from "../../Components/SideBar/SideBar";
 import Topbar from "../../Components/Topbar/Topbar";
 import BookingDetails from "./BookingDetails";
 import { switchView } from "./switchview";
+import { ToastContainer } from "react-toastify";
 
 const EmployeeDsh = () => {
 	const [data, setData] = useState([]);
@@ -71,6 +72,7 @@ const EmployeeDsh = () => {
 			) : (
 				<Forbidden />
 			)}
+			<ToastContainer position="bottom-center" />
 		</div>
 	);
 };
