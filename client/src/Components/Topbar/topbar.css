@@ -171,10 +171,10 @@
 	}
 
 	.thelogo-and-the-text {
-		/* display: none; */
-		justify-content: start;
+		display: none;
+		/* justify-content: start;
 		padding-top: 15px;
-		padding-left: 10px;
+		padding-left: 10px; */
 	}
 
 	#navbar {

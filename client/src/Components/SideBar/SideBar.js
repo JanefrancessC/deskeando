@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./SideBar.css";
-import logo from "../../images/SVG/logo-dark-bg-01.svg";
+import logo from "../../images/SVG/darkBG-icon-01.svg";
 import { useNavigate } from "react-router-dom";
 import SidebarIcons from "./SidebarIcons";
 
@@ -15,16 +15,17 @@ const SideBar = ({ topBar, bookingDetails, handleClick, userDetails }) => {
 				<div className="row flex-nowrap w-100">
 					<div className="side-col vh-100 text-white p-0 side-bar-display">
 						<div className="d-flex flex-column">
-							{/* <div className="align-self-center pt-4 px-1 m-0">
+							<div className="align-self-center pt-4 px-1 m-0">
 								<img
 									src={logo}
-									className="logo"
+									className="the-D-logo"
 									alt="Logo"
-									height="35"d
+									height="35"
+									d
 									weight="65"
 									onClick={() => navigate("/")}
 								/>
-							</div> */}
+							</div>
 
 							<SidebarIcons
 								handleClick={handleClick}

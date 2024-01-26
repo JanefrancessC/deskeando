@@ -36,7 +36,7 @@ const SidebarIcons = ({ handleClick, userDetails }) => {
 
 	return (
 		<ul
-			className="navbar-nav nav-bar-sd d-flex flex-column align-self-center w-100 h-50 gap-4 pt-4"
+			className="navbar-nav nav-bar-sd  flex-column align-self-center  h-50 gap-4"
 			style={{ marginTop: "6rem" }}
 		>
 			{userDetails.role === "User"
@@ -45,8 +45,8 @@ const SidebarIcons = ({ handleClick, userDetails }) => {
 						.concat(navItems[5])
 						.map((item, index) => listItem(item, index))
 				: userDetails.role === "Admin"
-					? [navItems[3], navItems[1], navItems[4], navItems[5]].map((item, index) =>
-							listItem(item, index)
+					? [navItems[3], navItems[1], navItems[4], navItems[5]].map(
+							(item, index) => listItem(item, index)
 						)
 					: null}
 		</ul>
