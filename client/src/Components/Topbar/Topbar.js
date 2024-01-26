@@ -4,13 +4,13 @@ import iconuser from "./icon-user.svg";
 import bell from "./bell.svg";
 import { Link, useNavigate } from "react-router-dom";
 import searchIcon from "./searchIcon.svg";
-
+import thelogo from "./the-logo.svg";
 import textlogo from "./text-logo.svg";
 import { switchView } from "../../Pages/EmployeeDash/switchview";
 
 function Topbar({ userDetails, handleClick, setView }) {
 	const [showDropdown, setShowDropdown] = useState(false);
-	const navItems = ["Home", "Floor Plan", "Book Desk", "Bookings"];
+	const navItems = ["Home", "Floor Plan", "Book Desk"];
 	const navigate = useNavigate();
 
 	const dropdownRef = useRef(null);
@@ -29,6 +29,7 @@ function Topbar({ userDetails, handleClick, setView }) {
 		<article>
 			<section className="thelogo-and-the-text">
 				<img className="text-logo" src={textlogo} alt="text-logo" />
+				<img className="the-logo" src={thelogo} alt="the-logo" />
 			</section>
 			<nav id="navbar" className="navbar  navbar-white bg-white">
 				<section className="first_section">
@@ -75,9 +76,9 @@ function Topbar({ userDetails, handleClick, setView }) {
 							<br />
 							<span className="user-role">{userDetails.role}</span>
 						</span>
-						<div class="container-fluid">
+						<div className="container-fluid">
 							<button
-								class="navbar-toggler navbar-toggler-topbar"
+								className="navbar-toggler navbar-toggler-topbar"
 								type="button"
 								data-bs-toggle="collapse"
 								data-bs-target="#navbarToggleExternalContent"
@@ -86,14 +87,14 @@ function Topbar({ userDetails, handleClick, setView }) {
 								aria-label="Toggle navigation"
 								onClick={toggleDropdown}
 							>
-								<span class="navbar-toggler-icon"></span>
+								<span className="navbar-toggler-icon"></span>
 							</button>
 						</div>
 					</article>
 				</section>
 			</nav>
 			<div className="collapse" id="navbarToggleExternalContent">
-				<div class="hamburger-content text-hamburger-content  p-4">
+				<div className="hamburger-content text-hamburger-content  p-4">
 					<ul className="links">
 						{navItems.map((item, index) => {
 							return (
@@ -108,27 +109,6 @@ function Topbar({ userDetails, handleClick, setView }) {
 								</li>
 							);
 						})}
-						{/* <li
-							onClick={() => {
-								navigate("/employee");
-							}}
-						>
-							Home
-							<Link to="/BookingDetails">Home</Link>
-						</li>
-						<li
-							onClick={(e) => {
-								setView(switchView("0"));
-
-								navigate("/Floorplan");
-							}}
-						>
-							Floor Plans
-							<Link to="/Floorplan">Floor Plan</Link>
-						</li>
-						<li>
-							<Link to="/BookingDetails">Book Desk</Link>
-						</li> */}
 
 						<Link className="dropdown-button" to="/">
 							<button
