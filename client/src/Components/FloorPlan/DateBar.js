@@ -22,7 +22,7 @@ const DateBar = ({ handleDateChange }) => {
 				/>
 				<button
 					type="button"
-					className="btn btn-primary date-bar-button btn-sm"
+					className="btn date-bar-button btn-sm"
 					onClick={() => handleDateChange(startDate)}
 				>
 					Select
