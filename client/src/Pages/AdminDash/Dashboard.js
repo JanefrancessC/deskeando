@@ -4,7 +4,7 @@ import Forbidden from "../Error/Forbidden";
 import SideBar from "../../Components/SideBar/SideBar";
 import Topbar from "../../Components/Topbar/Topbar";
 import { switchView } from "../../Pages/EmployeeDash/switchview";
-import BookingDetailsAdmin from "./BookingDetailsAdmin";
+import { ToastContainer } from "react-toastify";
 import DeskDetailsAdmin from "./DeskDetailsAdmin";
 
 const Dashboard = () => {
@@ -58,6 +58,7 @@ const Dashboard = () => {
 							view={view}
 							allDesks={data}
 							setReload={setReload}
+							reload={reload}
 							setView={setView}
 						/>
 					}
@@ -66,6 +67,7 @@ const Dashboard = () => {
 			) : (
 				<Forbidden />
 			)}
+			<ToastContainer position="bottom-center"/>
 		</div>
 	);
 };

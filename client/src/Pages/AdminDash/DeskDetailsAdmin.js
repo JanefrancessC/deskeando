@@ -10,6 +10,7 @@ const DeskDetailsAdmin = ({
 	allDesks,
 	setReload,
 	setView,
+	reload
 }) => {
 
 	return (
@@ -34,7 +35,7 @@ const DeskDetailsAdmin = ({
 					</div>
 				</>
 			) : (
-				<BookingDetailsAdmin />
+						<BookingDetailsAdmin reload={reload } setReload={setReload} />
 			)}
 		</div>
 	);

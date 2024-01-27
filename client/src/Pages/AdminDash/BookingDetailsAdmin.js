@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { deleteBooking } from "../../lib/requests";
 
-const BookingDetailsAdmin = () => {
+const BookingDetailsAdmin = ({reload, setReload}) => {
 	const [bookings, setBookings] = useState([]);
 
 	useEffect(() => {
@@ -20,31 +21,7 @@ const BookingDetailsAdmin = () => {
 		};
 
 		fetchBooking();
-	}, []);
-
-	const handleDelete = async (booking_id) => {
-		const token = JSON.parse(localStorage.getItem("data")).token;
-		const options = {
-			method: "DELETE",
-			headers: {
-				Authorization: `Bearer ${token}`,
-				"Content-Type": "application/json",
-			},
-		};
-		try {
-			const response = await fetch(`/api/bookings/${booking_id}`, options);
-			if (response.ok) {
-				// Update the state by removing the deleted booking
-				setBookings((prevBookings) =>
-					prevBookings.filter((booking) => booking.booking_id !== booking_id)
-				);
-			} else {
-				console.error("Failed to delete booking");
-			}
-		} catch (error) {
-			console.error("Error deleting booking:", error);
-		}
-	};
+	}, [reload]);
 
 	return (
 		<div className=" d-flex justify-content-center">
@@ -59,9 +36,7 @@ const BookingDetailsAdmin = () => {
 					All Booking Details
 				</h5>
 
-				<table
-					className="table table-hover"
-				>
+				<table className="table table-hover">
 					<thead>
 						<tr>
 							<th scope="col">User Name </th>
@@ -87,11 +62,10 @@ const BookingDetailsAdmin = () => {
 									<td>{booking["email"]}</td>
 									<td>
 										<button
+											id={booking.booking_id}
 											className="btn bi-trash mx-2"
-											onClick={() => handleDelete(booking["booking_id"])}
+											onClick={(e) => deleteBooking(e, "/api/bookings", setReload)}
 										></button>
-										{/* <i class="bi bi-pencil-square mx-2"></i> */}
-										{/* <i class="bi bi-trash mx-2"></i> */}
 									</td>
 								</tr>
 							))}

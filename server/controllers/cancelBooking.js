@@ -1,6 +1,7 @@
 import db from "../db.js";
 
 export const cancelBooking = async (req, res) => {
+	console.log(req.user)
 	try {
 		const user = req.user;
 		const bookingIdToDelete = parseInt(req.params.bookingId);
@@ -15,9 +16,8 @@ export const cancelBooking = async (req, res) => {
 		}
 
 		const bookingDetails = await db
-			.query(`SELECT * FROM bookings WHERE booking_id = $1 AND user_id = $2`, [
+			.query(`SELECT * FROM bookings WHERE booking_id = $1`, [
 				bookingIdToDelete,
-				user.user_id,
 			])
 			.catch((error) => {
 				console.error(error);
@@ -25,7 +25,6 @@ export const cancelBooking = async (req, res) => {
 			});
 
 		const booking = bookingDetails.rows[0];
-
 		if (!booking) {
 			res.status(404).json({ message: "Booking not found" });
 			return;
