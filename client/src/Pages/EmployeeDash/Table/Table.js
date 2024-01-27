@@ -4,7 +4,7 @@ import classNames from "classnames";
 import NoBookings from "./NoBookings";
 import TableBody from "./TableBody";
 
-const Table = ({ isSplitView, allBookings, setReload }) => {
+const Table = ({ isSplitView, allBookings, setReload, allDesks }) => {
 	let cardClass = "card border-0";
 	cardClass = isSplitView ? (cardClass += "splitView") : cardClass;
 
@@ -26,7 +26,7 @@ const Table = ({ isSplitView, allBookings, setReload }) => {
 					{allBookings.length !== 0 ? (
 						<>
 							<TableHead isSplitView={isSplitView} />
-							<TableBody isSplitView={isSplitView} allBookings={allBookings} setReload={setReload} />
+							<TableBody isSplitView={isSplitView} allBookings={allBookings} setReload={setReload} allDesks={allDesks} />
 						</>
 					) : (
 						<NoBookings />

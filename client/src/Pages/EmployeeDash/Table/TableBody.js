@@ -1,8 +1,15 @@
-import React from "react";
+import { React, useEffect } from "react";
 import classNames from "classnames";
 import { deleteBooking } from "../../../lib/requests";
 import { formatReservationTime } from "../../../lib/helperFunctions";
-const TableBody = ({ isSplitView, allBookings, setReload }) => {
+const TableBody = ({ isSplitView, allBookings, setReload, allDesks }) => {
+	useEffect(() => {
+		allBookings.map((booking) => {
+			const deskT = allDesks.find((desk) => booking.deskId === desk.desk_id)
+			allBookings.deskName = deskT.desk_name
+			return allBookings
+		})
+	});
 
 	return (
 		<tbody>
@@ -33,7 +40,7 @@ const TableBody = ({ isSplitView, allBookings, setReload }) => {
 						<td className={classNames({ "time-hide": isSplitView })}>
 							{el["reservationTime"]}
 						</td>
-						<td>{"DK-" + `${el["deskId"]}`.padStart(2, 0)}</td>
+						<td>{el["deskName"]}</td>
 						<td>{el["deskType"]}</td>
 						<td>{el["deskSize"]}</td>
 						<td>

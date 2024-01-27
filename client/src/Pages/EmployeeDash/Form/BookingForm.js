@@ -1,13 +1,12 @@
 import { React, useState, useEffect, useRef } from "react";
 import "../EmployeeDsh.css";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import DayTime from "./DayTime";
 import axios from "axios";
 
-const BookingForm = ({ setReload }) => {
+const BookingForm = ({ setReload, allDesks }) => {
 	const { token, id } = JSON.parse(localStorage.getItem("data"));
-	const [desks, setDesks] = useState([]);
 	const [deskDetails, setDeskDetails] = useState({
 		deskType: "",
 		deskSize: "",
@@ -64,7 +63,7 @@ const BookingForm = ({ setReload }) => {
 	};
 
 	const handleDeskChange = (e) => {
-		const selectedDesk = desks.find((el) => {
+		const selectedDesk = allDesks.find((el) => {
 			const textValue = e.target.options[e.target.selectedIndex].textContent;
 			return el.desk_name === textValue;
 		});
@@ -75,13 +74,6 @@ const BookingForm = ({ setReload }) => {
 			});
 		}
 	};
-
-	useEffect(() => {
-		axios
-			.get("/api/desks")
-			.then((response) => setDesks(response.data))
-			.catch((err) => console.log(err));
-	}, []);
 
 	return (
 		<div className="card h-75 booking-form-card" >
@@ -118,7 +110,7 @@ const BookingForm = ({ setReload }) => {
 							<option selected value="">
 								Choose a desk name
 							</option>
-							{desks.map(({ desk_id, desk_name }, index) => (
+							{allDesks.map(({ desk_id, desk_name }, index) => (
 								<option value={desk_id} key={index}>
 									{desk_name}
 								</option>
