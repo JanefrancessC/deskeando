@@ -147,6 +147,7 @@ const DeskForm = ({ setReload }) => {
 					</button>
 				</div>
 			</form>
+			<ToastContainer position="bottom-center" />
 		</div>
 	);
 };
