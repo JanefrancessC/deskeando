@@ -1,4 +1,4 @@
-import db from "../db";
+import db from "../db.js";
 import { formatDate, formatTime } from "./validators.js";
 
 /**

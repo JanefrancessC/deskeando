@@ -1,4 +1,4 @@
-import { deleteDesk, userAdmin } from "./dataAccess";
+import { deleteDesk, userAdmin } from "./dataAccess.js";
 
 export const deleteDeskByAdmin = async (req, res) => {
 	try {

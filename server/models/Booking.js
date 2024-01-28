@@ -1,4 +1,4 @@
-import { saveBooking } from "../controllers/dataAccess";
+import { saveBooking } from "../controllers/dataAccess.js";
 export class Booking {
     // A Booking Class
 	constructor({ userId, deskId, createdAt, reservationDate, updatedAt }) {

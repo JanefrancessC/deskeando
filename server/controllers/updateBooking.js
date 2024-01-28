@@ -3,8 +3,8 @@ import {
 	getUserBookings,
 	getDeskId,
 	checkAvailability,
-} from "./dataAccess";
-import { isPast, formatDateTime } from "./validators";
+} from "./dataAccess.js";
+import { isPast, formatDateTime } from "./validators.js";
 
 export const updateBooking = async (req, res) => {
 	try {

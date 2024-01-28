@@ -1,4 +1,4 @@
-import { userAdmin, insertDesk, getDeskId } from "./dataAccess";
+import { userAdmin, insertDesk, getDeskId } from "./dataAccess.js";
 
 export const createDesk = async (req, res) => {
 	try {

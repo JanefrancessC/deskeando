@@ -1,6 +1,6 @@
-import { Booking } from "../models/Booking";
-import { ErrorMessage } from "../models/Error";
-import { validateBooking } from "./validators";
+import { Booking } from "../models/Booking.js";
+import { ErrorMessage } from "../models/Error.js";
+import { validateBooking } from "./validators.js";
 
 /**
  * Creates a new booking based on the provided request data.

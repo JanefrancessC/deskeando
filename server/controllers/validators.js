@@ -1,5 +1,5 @@
-import { ErrorMessage } from "../models/Error";
-import { checkAvailability } from "./dataAccess";
+import { ErrorMessage } from "../models/Error.js";
+import { checkAvailability } from "./dataAccess.js";
 
 /**
  * Validates booking details and retrieves additional information for creating a new booking.
